@@ -1,0 +1,14 @@
+{
+  "transactions": [
+    {"id": "tx-1", "type": "deposit", "status": "posted", "amount": "100.00", "occurred_at": "2025-07-02T16:40:00Z",
+     "source_account": null, "destination_account": {"id": "acc-a", "name": "Checking A", "masked_number": "**** 1111"},
+     "account_deltas": [{"account_id": "acc-a", "amount_delta": "100.00"}]},
+    {"id": "tx-2", "type": "transfer", "status": "posted", "amount": "25.00", "occurred_at": "2025-07-03T06:30:00Z",
+     "source_account": {"id": "acc-a", "name": "Checking A"}, "destination_account": {"id": "acc-b", "name": "Savings B"},
+     "account_deltas": [{"account_id": "acc-a", "amount_delta": "-25.00"}, {"account_id": "acc-b", "amount_delta": "25.00"}]},
+    {"id": "tx-3", "kind": "withdrawal", "state": "pending", "amount": "10.00", "created_at": "2025-07-05T12:00:00Z",
+     "source_account_id": "acc-b", "destination_account_id": null},
+    {"id": "tx-4", "type": "fee", "status": "posted", "amount": "1.00", "date": "2025-07-04T23:59:59Z",
+     "entries": [{"account_id": "acc-b", "amount": "-1.00"}]}
+  ]
+}

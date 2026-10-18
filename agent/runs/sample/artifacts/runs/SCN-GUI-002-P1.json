@@ -1,0 +1,258 @@
+{
+  "scenario_id": "SCN-GUI-002-P1",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-35dbe2",
+    "unique_amount": "1.43",
+    "src": "00000000-0000-0000-0000-000000000101"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "api snapshot",
+      "healed": false,
+      "duration_ms": 351,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "goto /transfer",
+      "healed": false,
+      "duration_ms": 735,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 2,
+      "ok": true,
+      "locator_used": "role=combobox[name=\"From account\"]",
+      "healed": false,
+      "duration_ms": 361,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 3,
+      "ok": true,
+      "locator_used": "role=combobox[name=\"To account\"]",
+      "healed": false,
+      "duration_ms": 356,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 4,
+      "ok": true,
+      "locator_used": "role=textbox[name=\"Amount (USD)\"]",
+      "healed": false,
+      "duration_ms": 350,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 5,
+      "ok": true,
+      "locator_used": "role=button[name=\"Transfer funds\"]",
+      "healed": false,
+      "duration_ms": 366,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 6,
+      "ok": true,
+      "locator_used": "api snapshot",
+      "healed": false,
+      "duration_ms": 359,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-35dbe2",
+    "probes": {
+      "0": {
+        "count": 1,
+        "visible": true,
+        "locator": "role=alert"
+      },
+      "1": {
+        "alerts": [
+          {
+            "role": "",
+            "live": "",
+            "classes": "field__error",
+            "title": "",
+            "text": "Source and destination accounts must be different."
+          },
+          {
+            "role": "alert",
+            "live": "",
+            "classes": "alert alert--error",
+            "title": "Transfer not completed",
+            "text": "Transfer not completed\n\nSource and destination accounts must be different.\n\nNo money was moved. Your balances are unchanged."
+          }
+        ]
+      },
+      "2": {
+        "new_tx_ids": [],
+        "foreign_tx_ids": []
+      }
+    },
+    "duration_ms": 4438,
+    "url": "http://localhost:5173/transfer",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-GUI-002-P1__a1__final.png",
+        "caption": "SCN-GUI-002-P1__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-GUI-002-P1/a1_network.json",
+        "caption": "7 API calls during the scenario"
+      }
+    ],
+    "ledger": []
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 63319
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 63323
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 63323
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 63329
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 63329
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4369.75"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8275.00"
+          }
+        ]
+      },
+      "t_ms": 63329
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/transfers",
+      "status": 422,
+      "req_body": {
+        "source_account_id": "00000000-0000-0000-0000-000000000101",
+        "destination_account_id": "00000000-0000-0000-0000-000000000101",
+        "amount": "1.43",
+        "memo": ""
+      },
+      "resp_body": {
+        "error": {
+          "code": "same_account",
+          "message": "Source and destination accounts must be different."
+        }
+      },
+      "t_ms": 65108
+    }
+  ],
+  "state_before": {
+    "taken_at": "2026-10-18T21:29:41.880759Z",
+    "balances": {
+      "00000000-0000-0000-0000-000000000101": "4369.75",
+      "00000000-0000-0000-0000-000000000102": "8275.00"
+    },
+    "tx_ids": [
+      "00000000-0000-0000-0000-000000000212",
+      "00000000-0000-0000-0000-000000000211",
+      "00000000-0000-0000-0000-000000000210",
+      "00000000-0000-0000-0000-000000000209",
+      "00000000-0000-0000-0000-000000000208",
+      "00000000-0000-0000-0000-000000000207",
+      "00000000-0000-0000-0000-000000000206",
+      "00000000-0000-0000-0000-000000000205",
+      "00000000-0000-0000-0000-000000000204",
+      "00000000-0000-0000-0000-000000000203",
+      "00000000-0000-0000-0000-000000000202",
+      "00000000-0000-0000-0000-000000000201"
+    ]
+  },
+  "state_after": {
+    "taken_at": "2026-10-18T21:29:45.113706Z",
+    "balances": {
+      "00000000-0000-0000-0000-000000000101": "4369.75",
+      "00000000-0000-0000-0000-000000000102": "8275.00"
+    },
+    "tx_ids": [
+      "00000000-0000-0000-0000-000000000212",
+      "00000000-0000-0000-0000-000000000211",
+      "00000000-0000-0000-0000-000000000210",
+      "00000000-0000-0000-0000-000000000209",
+      "00000000-0000-0000-0000-000000000208",
+      "00000000-0000-0000-0000-000000000207",
+      "00000000-0000-0000-0000-000000000206",
+      "00000000-0000-0000-0000-000000000205",
+      "00000000-0000-0000-0000-000000000204",
+      "00000000-0000-0000-0000-000000000203",
+      "00000000-0000-0000-0000-000000000202",
+      "00000000-0000-0000-0000-000000000201"
+    ]
+  },
+  "foreign_activity": false,
+  "aborted_reason": null
+}

@@ -1,0 +1,130 @@
+{
+  "run_id": "qa-20261018-1628-861e",
+  "threshold": 0.5,
+  "ground_truth_entries": 6,
+  "defect_recall": 1.0,
+  "precision_on_failures": 1.0,
+  "precision_all_failures_strict": 0.36363636363636365,
+  "true_failures": [
+    "REQ-TRF-005",
+    "REQ-TRF-007",
+    "REQ-HIS-002",
+    "REQ-HIS-005"
+  ],
+  "false_failures": [],
+  "false_pass_count": 0,
+  "false_fail_count": 0,
+  "unlabeled_failures": [
+    "REQ-TRF-006",
+    "REQ-TRF-008",
+    "REQ-TRF-012",
+    "REQ-TRF-013",
+    "REQ-HIS-004",
+    "REQ-GUI-005",
+    "REQ-SED-002"
+  ],
+  "unmatched_entries": 0,
+  "unverified_rate": 0.22448979591836735,
+  "requirements_total": 49,
+  "cost_usd": 0.100767,
+  "wall_time_s": 195.919072,
+  "matches": [
+    {
+      "anchor": "Amount must be a positive number greater than zero, with no more than two digits after the decimal point. Blank, zero, negative, non-numeric, and over-precision values must be rejected",
+      "expected_status": "failed",
+      "severity": "critical",
+      "symptom": "amount 0 and negative amounts are accepted (201, completed transaction); negative moves money in reverse",
+      "requirement_id": "REQ-TRF-005",
+      "requirement_ids": [
+        "REQ-TRF-005"
+      ],
+      "similarity": 0.524,
+      "agent_status": "failed",
+      "agent_statuses": {
+        "REQ-TRF-005": "failed"
+      },
+      "outcome": "correct"
+    },
+    {
+      "anchor": "The amount must not exceed the source account's available balance. If funds are insufficient, the transfer must be rejected, both balances must remain unchanged",
+      "expected_status": "failed",
+      "severity": "critical",
+      "symptom": "overdraft transfer succeeds; checking balance goes negative",
+      "requirement_id": "REQ-TRF-007",
+      "requirement_ids": [
+        "REQ-TRF-007"
+      ],
+      "similarity": 0.765,
+      "agent_status": "failed",
+      "agent_statuses": {
+        "REQ-TRF-007": "failed"
+      },
+      "outcome": "correct"
+    },
+    {
+      "anchor": "The start and end dates are inclusive. A transaction occurring on either boundary date must be included",
+      "expected_status": "failed",
+      "severity": "major",
+      "symptom": "end date is exclusive: start=end=2025-02-14 returns 0 rows; Jan 1-Jan 18 omits the Jan 18 transaction",
+      "requirement_id": "REQ-HIS-005",
+      "requirement_ids": [
+        "REQ-HIS-005"
+      ],
+      "similarity": 1.0,
+      "agent_status": "failed",
+      "agent_statuses": {
+        "REQ-HIS-005": "failed"
+      },
+      "outcome": "correct"
+    },
+    {
+      "anchor": "Each row shows date and time, description or memo, transaction type, amount, status, and relevant account",
+      "expected_status": "failed",
+      "severity": "minor",
+      "symptom": "pending/failed rows show 'No change: $0.00' instead of the transaction amount",
+      "requirement_id": "REQ-HIS-002",
+      "requirement_ids": [
+        "REQ-HIS-002"
+      ],
+      "similarity": 1.0,
+      "agent_status": "failed",
+      "agent_statuses": {
+        "REQ-HIS-002": "failed"
+      },
+      "outcome": "correct"
+    },
+    {
+      "anchor": "Logging out returns the user to the landing page",
+      "expected_status": "passed",
+      "severity": "major",
+      "symptom": "",
+      "requirement_id": "REQ-ACC-003",
+      "requirement_ids": [
+        "REQ-ACC-003"
+      ],
+      "similarity": 1.0,
+      "agent_status": "passed",
+      "agent_statuses": {
+        "REQ-ACC-003": "passed"
+      },
+      "outcome": "correct"
+    },
+    {
+      "anchor": "A profile view displays only synthetic demo-customer details, such as display name and a masked email address",
+      "expected_status": "passed",
+      "severity": "minor",
+      "symptom": "",
+      "requirement_id": "REQ-PRO-001",
+      "requirement_ids": [
+        "REQ-PRO-001"
+      ],
+      "similarity": 1.0,
+      "agent_status": "passed",
+      "agent_statuses": {
+        "REQ-PRO-001": "passed"
+      },
+      "outcome": "correct"
+    }
+  ],
+  "ground_truth_file": "ground_truth.local.yaml"
+}

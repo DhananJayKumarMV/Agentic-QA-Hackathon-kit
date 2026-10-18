@@ -1,0 +1,31 @@
+{
+  "requirement_set_sha": "aaaa",
+  "sitemap_sha": "bbbb",
+  "scenarios": [
+    {
+      "id": "SCN-TRF-001-N1",
+      "requirement_ids": ["REQ-TRF-001"],
+      "polarity": "negative",
+      "title": "Zero amount is rejected",
+      "rationale": "Boundary: the smallest invalid value",
+      "preconditions": ["logged_in"],
+      "params": [{"name": "src", "source": "account", "query": {"select": "index=0", "field": "id"}}],
+      "steps": [
+        {"action": "goto", "value": "/transfer", "note": "Open the transfer page"},
+        {"action": "snapshot_state", "note": "Record balances before submitting"},
+        {"action": "fill", "target": {"key": "transfer.amount"}, "value": "0", "note": "Enter amount 0"},
+        {"action": "click", "target": {"key": "transfer.submit"}, "note": "Submit the transfer"},
+        {"action": "snapshot_state", "note": "Record balances after submitting"}
+      ],
+      "oracles": [
+        {"type": "no_success_ui", "args": {}, "severity": "critical"},
+        {"type": "no_state_change", "args": {}, "severity": "critical"}
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    }
+  ],
+  "coverage": {"REQ-TRF-001": ["SCN-TRF-001-N1"]}
+}

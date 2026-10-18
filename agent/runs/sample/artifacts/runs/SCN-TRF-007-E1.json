@@ -1,0 +1,345 @@
+{
+  "scenario_id": "SCN-TRF-007-E1",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-97aa7e",
+    "unique_amount": "1.56",
+    "src": "00000000-0000-0000-0000-000000000101",
+    "dst": "00000000-0000-0000-0000-000000000102",
+    "exact": "4369.75"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "api snapshot",
+      "healed": false,
+      "duration_ms": 343,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "goto /transfer",
+      "healed": false,
+      "duration_ms": 745,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 2,
+      "ok": true,
+      "locator_used": "role=combobox[name=\"From account\"]",
+      "healed": false,
+      "duration_ms": 367,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 3,
+      "ok": true,
+      "locator_used": "role=combobox[name=\"To account\"]",
+      "healed": false,
+      "duration_ms": 343,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 4,
+      "ok": true,
+      "locator_used": "role=textbox[name=\"Amount (USD)\"]",
+      "healed": false,
+      "duration_ms": 352,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 5,
+      "ok": true,
+      "locator_used": "role=textbox[name=\"Memo (optional)\"]",
+      "healed": false,
+      "duration_ms": 364,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 6,
+      "ok": true,
+      "locator_used": "role=button[name=\"Transfer funds\"]",
+      "healed": false,
+      "duration_ms": 363,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 7,
+      "ok": true,
+      "locator_used": "role=status",
+      "healed": false,
+      "duration_ms": 342,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 8,
+      "ok": true,
+      "locator_used": "api snapshot",
+      "healed": false,
+      "duration_ms": 362,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-97aa7e",
+    "probes": {
+      "0": {
+        "deltas": {
+          "00000000-0000-0000-0000-000000000101": "-4369.75",
+          "00000000-0000-0000-0000-000000000102": "4369.75"
+        }
+      },
+      "1": {
+        "new_tx_ids": [
+          "b7d38a55-19fd-43e7-8feb-9735695a5ff6"
+        ],
+        "foreign_tx_ids": []
+      }
+    },
+    "duration_ms": 3960,
+    "url": "http://localhost:5173/transfer",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-TRF-007-E1__a1__final.png",
+        "caption": "SCN-TRF-007-E1__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-TRF-007-E1/a1_network.json",
+        "caption": "7 API calls during the scenario"
+      }
+    ],
+    "ledger": [
+      {
+        "scenario_id": "SCN-TRF-007-E1",
+        "tx_id": "b7d38a55-19fd-43e7-8feb-9735695a5ff6",
+        "deltas": {
+          "00000000-0000-0000-0000-000000000101": "-4369.75",
+          "00000000-0000-0000-0000-000000000102": "4369.75"
+        },
+        "intended": true,
+        "memo_tag": "qa-28861e-97aa7e"
+      }
+    ]
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 136320
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 136322
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 136322
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 136323
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 136325
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4369.75"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8275.00"
+          }
+        ]
+      },
+      "t_ms": 136325
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/transfers",
+      "status": 201,
+      "req_body": {
+        "source_account_id": "00000000-0000-0000-0000-000000000101",
+        "destination_account_id": "00000000-0000-0000-0000-000000000102",
+        "amount": "4369.75",
+        "memo": "qa-28861e-97aa7e"
+      },
+      "resp_body": {
+        "transaction": {
+          "id": "b7d38a55-19fd-43e7-8feb-9735695a5ff6",
+          "type": "transfer",
+          "status": "completed",
+          "amount": "4369.75",
+          "memo": "qa-28861e-97aa7e",
+          "occurred_at": "2026-10-18T21:30:57.371635Z",
+          "source_account": {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "masked_number": "•••• 1042"
+          },
+          "destination_account": {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "masked_number": "•••• 7781"
+          },
+          "account_deltas": [
+            {
+              "account_id": "00000000-0000-0000-0000-000000000101",
+              "amount_delta": "-4369.75"
+            },
+            {
+              "account_id": "00000000-0000-0000-0000-000000000102",
+              "amount_delta": "4369.75"
+            }
+          ]
+        },
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "0.00"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "12644.75"
+          }
+        ]
+      },
+      "t_ms": 138470
+    }
+  ],
+  "state_before": {
+    "taken_at": "2026-10-18T21:30:54.830752Z",
+    "balances": {
+      "00000000-0000-0000-0000-000000000101": "4369.75",
+      "00000000-0000-0000-0000-000000000102": "8275.00"
+    },
+    "tx_ids": [
+      "06a1eae1-6ac2-43ea-935e-b1ea41752132",
+      "1eb2dbf0-d0d4-4318-bd5d-4b1ea9f1d6e9",
+      "05fbb707-9f45-43a1-bef0-a4e1b2ca9632",
+      "05491626-e5eb-40a4-b04e-14b538eb01ee",
+      "75d03833-c1b8-4906-b693-6a92f763a6c5",
+      "c0339847-b379-42b4-9649-11decae8f966",
+      "75c1a987-ee11-463d-a08d-219db6c0b333",
+      "d310e0b5-d008-4236-849f-2a0bc28ad498",
+      "3b4da4e2-2bb5-4099-a0aa-4287876198df",
+      "f1ffc46d-1e7c-4abc-89e5-3fbaec7bb7fe",
+      "2b5f6f35-9e12-4a6b-b587-13d14391e267",
+      "e84f1c62-fc2c-4295-8105-9446d4bfa9a6",
+      "caed842c-a7d0-4c86-96ac-d3369e6bd7ab",
+      "e9a120d6-7b85-4798-8e61-8d065ec4f98c",
+      "00000000-0000-0000-0000-000000000212",
+      "00000000-0000-0000-0000-000000000211",
+      "00000000-0000-0000-0000-000000000210",
+      "00000000-0000-0000-0000-000000000209",
+      "00000000-0000-0000-0000-000000000208",
+      "00000000-0000-0000-0000-000000000207",
+      "00000000-0000-0000-0000-000000000206",
+      "00000000-0000-0000-0000-000000000205",
+      "00000000-0000-0000-0000-000000000204",
+      "00000000-0000-0000-0000-000000000203",
+      "00000000-0000-0000-0000-000000000202",
+      "00000000-0000-0000-0000-000000000201"
+    ]
+  },
+  "state_after": {
+    "taken_at": "2026-10-18T21:30:58.773108Z",
+    "balances": {
+      "00000000-0000-0000-0000-000000000101": "0.00",
+      "00000000-0000-0000-0000-000000000102": "12644.75"
+    },
+    "tx_ids": [
+      "b7d38a55-19fd-43e7-8feb-9735695a5ff6",
+      "06a1eae1-6ac2-43ea-935e-b1ea41752132",
+      "1eb2dbf0-d0d4-4318-bd5d-4b1ea9f1d6e9",
+      "05fbb707-9f45-43a1-bef0-a4e1b2ca9632",
+      "05491626-e5eb-40a4-b04e-14b538eb01ee",
+      "75d03833-c1b8-4906-b693-6a92f763a6c5",
+      "c0339847-b379-42b4-9649-11decae8f966",
+      "75c1a987-ee11-463d-a08d-219db6c0b333",
+      "d310e0b5-d008-4236-849f-2a0bc28ad498",
+      "3b4da4e2-2bb5-4099-a0aa-4287876198df",
+      "f1ffc46d-1e7c-4abc-89e5-3fbaec7bb7fe",
+      "2b5f6f35-9e12-4a6b-b587-13d14391e267",
+      "e84f1c62-fc2c-4295-8105-9446d4bfa9a6",
+      "caed842c-a7d0-4c86-96ac-d3369e6bd7ab",
+      "e9a120d6-7b85-4798-8e61-8d065ec4f98c",
+      "00000000-0000-0000-0000-000000000212",
+      "00000000-0000-0000-0000-000000000211",
+      "00000000-0000-0000-0000-000000000210",
+      "00000000-0000-0000-0000-000000000209",
+      "00000000-0000-0000-0000-000000000208",
+      "00000000-0000-0000-0000-000000000207",
+      "00000000-0000-0000-0000-000000000206",
+      "00000000-0000-0000-0000-000000000205",
+      "00000000-0000-0000-0000-000000000204",
+      "00000000-0000-0000-0000-000000000203",
+      "00000000-0000-0000-0000-000000000202",
+      "00000000-0000-0000-0000-000000000201"
+    ]
+  },
+  "foreign_activity": false,
+  "aborted_reason": null
+}

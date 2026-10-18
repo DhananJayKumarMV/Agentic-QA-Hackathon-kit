@@ -1,0 +1,5191 @@
+{
+  "run_id": "qa-20261018-1609-f0a3",
+  "target_url": "http://localhost:5173",
+  "prd_sha256": "5bf675015f276b0432ca9ba1c222a9c9688b9d4fccc57247d446974d8e3eed6b",
+  "started_at": "2026-10-18T21:09:44.509657Z",
+  "finished_at": "2026-10-18T21:12:45.613354Z",
+  "summary": {
+    "total_requirements": 49,
+    "by_status": {
+      "passed": 27,
+      "failed": 2,
+      "unverified": 20
+    },
+    "by_area": {
+      "access": {
+        "passed": 5,
+        "failed": 0,
+        "unverified": 1
+      },
+      "dashboard": {
+        "passed": 6,
+        "failed": 0,
+        "unverified": 0
+      },
+      "history": {
+        "passed": 3,
+        "failed": 2,
+        "unverified": 2
+      },
+      "profile": {
+        "passed": 2,
+        "failed": 0,
+        "unverified": 0
+      },
+      "scope": {
+        "passed": 6,
+        "failed": 0,
+        "unverified": 0
+      },
+      "seed": {
+        "passed": 3,
+        "failed": 0,
+        "unverified": 0
+      },
+      "transfers": {
+        "passed": 0,
+        "failed": 0,
+        "unverified": 14
+      },
+      "ui": {
+        "passed": 2,
+        "failed": 0,
+        "unverified": 3
+      }
+    },
+    "by_priority": {
+      "P0": {
+        "passed": 5,
+        "failed": 0,
+        "unverified": 12
+      },
+      "P1": {
+        "passed": 15,
+        "failed": 2,
+        "unverified": 7
+      },
+      "P2": {
+        "passed": 7,
+        "failed": 0,
+        "unverified": 1
+      }
+    },
+    "by_polarity": {
+      "positive": {
+        "passed": 21,
+        "failed": 0,
+        "unverified": 2
+      },
+      "negative": {
+        "passed": 9,
+        "failed": 0,
+        "unverified": 0
+      },
+      "edge": {
+        "passed": 6,
+        "failed": 3,
+        "unverified": 0
+      }
+    },
+    "scenarios_total": 41,
+    "scenarios_flaky": 0,
+    "pass_rate": 0.9310344827586207,
+    "verified_rate": 0.5918367346938775,
+    "defects_total": 2,
+    "defects_by_severity": {
+      "critical": 0,
+      "major": 2,
+      "minor": 0
+    },
+    "coverage": {
+      "REQ-ACC-001": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-ACC-002": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-ACC-003": {
+        "positive": "passed",
+        "negative": "passed",
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-ACC-004": {
+        "positive": null,
+        "negative": "passed",
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-ACC-005": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-ACC-006": {
+        "positive": null,
+        "negative": "passed",
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-DSH-001": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-DSH-002": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-DSH-003": {
+        "positive": "passed",
+        "negative": null,
+        "edge": "passed",
+        "overall": "passed"
+      },
+      "REQ-DSH-004": {
+        "positive": null,
+        "negative": "passed",
+        "edge": "passed",
+        "overall": "passed"
+      },
+      "REQ-DSH-005": {
+        "positive": "passed",
+        "negative": null,
+        "edge": "passed",
+        "overall": "passed"
+      },
+      "REQ-DSH-006": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-TRF-001": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-002": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-003": {
+        "positive": null,
+        "negative": "unverified",
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-004": {
+        "positive": null,
+        "negative": "unverified",
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-005": {
+        "positive": null,
+        "negative": "unverified",
+        "edge": "unverified",
+        "overall": "unverified"
+      },
+      "REQ-TRF-006": {
+        "positive": null,
+        "negative": "unverified",
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-007": {
+        "positive": null,
+        "negative": "unverified",
+        "edge": "unverified",
+        "overall": "unverified"
+      },
+      "REQ-TRF-008": {
+        "positive": null,
+        "negative": "unverified",
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-009": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": "unverified",
+        "overall": "unverified"
+      },
+      "REQ-TRF-010": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": "unverified",
+        "overall": "unverified"
+      },
+      "REQ-TRF-011": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-012": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-013": {
+        "positive": "unverified",
+        "negative": "unverified",
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-TRF-014": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-HIS-001": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-HIS-002": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-HIS-003": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-HIS-004": {
+        "positive": "passed",
+        "negative": "passed",
+        "edge": "failed",
+        "overall": "failed"
+      },
+      "REQ-HIS-005": {
+        "positive": null,
+        "negative": "passed",
+        "edge": "failed",
+        "overall": "failed"
+      },
+      "REQ-HIS-006": {
+        "positive": null,
+        "negative": null,
+        "edge": "passed",
+        "overall": "passed"
+      },
+      "REQ-HIS-007": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-PRO-001": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-PRO-002": {
+        "positive": null,
+        "negative": "passed",
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-GUI-001": {
+        "positive": "passed",
+        "negative": null,
+        "edge": "passed",
+        "overall": "passed"
+      },
+      "REQ-GUI-002": {
+        "positive": "unverified",
+        "negative": null,
+        "edge": null,
+        "overall": "unverified"
+      },
+      "REQ-GUI-003": {
+        "positive": null,
+        "negative": null,
+        "edge": "unverified",
+        "overall": "unverified"
+      },
+      "REQ-GUI-004": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-GUI-005": {
+        "positive": null,
+        "negative": "unverified",
+        "edge": "unverified",
+        "overall": "unverified"
+      },
+      "REQ-SED-001": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-SED-002": {
+        "positive": "passed",
+        "negative": null,
+        "edge": "passed",
+        "overall": "passed"
+      },
+      "REQ-SED-003": {
+        "positive": "passed",
+        "negative": null,
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-SCP-001": {
+        "positive": null,
+        "negative": null,
+        "edge": "passed",
+        "overall": "passed"
+      },
+      "REQ-SCP-002": {
+        "positive": null,
+        "negative": "passed",
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-SCP-003": {
+        "positive": null,
+        "negative": "passed",
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-SCP-004": {
+        "positive": null,
+        "negative": "passed",
+        "edge": null,
+        "overall": "passed"
+      },
+      "REQ-SCP-005": {
+        "positive": null,
+        "negative": "passed",
+        "edge": "passed",
+        "overall": "passed"
+      },
+      "REQ-SCP-006": {
+        "positive": null,
+        "negative": "passed",
+        "edge": null,
+        "overall": "passed"
+      }
+    },
+    "requirements_index": {
+      "REQ-ACC-001": {
+        "area": "access",
+        "statement": "The landing page shows a clearly labeled Enter Demo action that opens the demo dashboard without requiring a password or real identity information.",
+        "source_quote": "The landing page provides a clearly labeled Enter Demo action. It opens the demo dashboard without requiring a password or real identity information.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-ACC-002": {
+        "area": "access",
+        "statement": "The header identifies the active demo customer and provides a Log out action.",
+        "source_quote": "The header identifies the active demo customer and provides a Log out action.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-ACC-003": {
+        "area": "access",
+        "statement": "Logging out returns the user to the landing page.",
+        "source_quote": "Logging out returns the user to the landing page.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-ACC-004": {
+        "area": "access",
+        "statement": "After logout, direct navigation to protected dashboard views returns the user to the landing page or an access-required state and does not show protected content.",
+        "source_quote": "Protected dashboard views should not remain usable after logout; direct navigation to them should return the user to the landing page or an access-required state.",
+        "kind": "security",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-ACC-005": {
+        "area": "access",
+        "statement": "Refreshing a page during a valid demo session preserves the session.",
+        "source_quote": "Refreshing while in a valid demo session should preserve that session.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-ACC-006": {
+        "area": "access",
+        "statement": "A logged-out user does not regain access to a protected page by refreshing it.",
+        "source_quote": "A logged-out user must not regain access merely by refreshing a protected page.",
+        "kind": "security",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-DSH-001": {
+        "area": "dashboard",
+        "statement": "The dashboard shows the customer's checking and savings accounts.",
+        "source_quote": "The dashboard shows the customer's checking and savings accounts.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-DSH-002": {
+        "area": "dashboard",
+        "statement": "Each account card displays a readable name, a masked account identifier, account type, and current available balance in USD.",
+        "source_quote": "Each account displays a readable account name, a masked account identifier, account type, and current available balance in USD.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-DSH-003": {
+        "area": "dashboard",
+        "statement": "Balances are displayed with exactly two decimal places.",
+        "source_quote": "Balances are displayed to two decimal places.",
+        "kind": "ux",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-DSH-004": {
+        "area": "dashboard",
+        "statement": "The UI never exposes a full account identifier.",
+        "source_quote": "The UI must not expose a full account identifier.",
+        "kind": "security",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-DSH-005": {
+        "area": "dashboard",
+        "statement": "Selecting an account opens an account detail view showing its current balance and related transaction history.",
+        "source_quote": "Selecting an account opens an account detail view with its current balance and related transaction history.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-DSH-006": {
+        "area": "dashboard",
+        "statement": "Balances on the dashboard and account detail view agree with each other and with the latest successful transactions.",
+        "source_quote": "Account balances shown on the dashboard and detail view must agree with the latest successful transactions.",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-001": {
+        "area": "transfers",
+        "statement": "The user can transfer funds between the checking and savings accounts of the demo customer.",
+        "source_quote": "The user can transfer funds between the checking and savings accounts owned by the demo customer.",
+        "kind": "functional",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-002": {
+        "area": "transfers",
+        "statement": "The transfer form includes source account, destination account, amount, and an optional memo.",
+        "source_quote": "The transfer form includes source account, destination account, amount, and an optional memo.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-TRF-003": {
+        "area": "transfers",
+        "statement": "A transfer with the same source and destination account is rejected with a clear explanation.",
+        "source_quote": "Same-account transfers must be rejected with a clear explanation",
+        "kind": "validation",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-004": {
+        "area": "transfers",
+        "statement": "A rejected same-account transfer does not alter balances or create a transaction.",
+        "source_quote": "must not alter balances or create a transaction",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-005": {
+        "area": "transfers",
+        "statement": "Blank, zero, negative, non-numeric and over-precision (more than two decimals) amounts are each rejected with a clear validation message.",
+        "source_quote": "Blank, zero, negative, non-numeric, and over-precision values must be rejected with a clear validation message.",
+        "kind": "validation",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-006": {
+        "area": "transfers",
+        "statement": "Rejected invalid amount input does not create a transaction or change balances.",
+        "source_quote": "Rejected input must not create a transaction or change balances.",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-007": {
+        "area": "transfers",
+        "statement": "A transfer exceeding the source account's available balance is rejected.",
+        "source_quote": "The amount must not exceed the source account's available balance. If funds are insufficient, the transfer must be rejected",
+        "kind": "validation",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-008": {
+        "area": "transfers",
+        "statement": "An insufficient-funds transfer leaves both balances unchanged and no completed transfer appears in history.",
+        "source_quote": "both balances must remain unchanged, and no completed transfer must appear in history.",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-009": {
+        "area": "transfers",
+        "statement": "A valid transfer is atomic: the source decreases by the amount and the destination increases by exactly the same amount.",
+        "source_quote": "A valid transfer is atomic: the source balance decreases by the amount and the destination balance increases by the same amount. No partial transfer is allowed.",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-010": {
+        "area": "transfers",
+        "statement": "A successful transfer creates exactly one completed transfer record that appears in both the source and destination account histories.",
+        "source_quote": "A successful transfer creates one completed transfer record that can be found in both relevant account histories.",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-011": {
+        "area": "transfers",
+        "statement": "The transfer record shows amount, date and time, source, destination, status, and memo if supplied.",
+        "source_quote": "The record shows the amount, date and time, source, destination, status, and memo if supplied.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-TRF-012": {
+        "area": "transfers",
+        "statement": "The UI shows a success state only after the transfer has been committed.",
+        "source_quote": "The UI reports success only after the transfer has been committed.",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "partially"
+      },
+      "REQ-TRF-013": {
+        "area": "transfers",
+        "statement": "If a transfer is rejected or fails, the UI explains that it did not complete and does not show a success state.",
+        "source_quote": "If a transfer is rejected or fails, the UI must explain that it did not complete and must not show a success state.",
+        "kind": "ux",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-TRF-014": {
+        "area": "transfers",
+        "statement": "After a successful transfer and a page refresh, the updated balances and the transaction record persist.",
+        "source_quote": "Refreshing after a successful transfer must preserve the updated balances and transaction record.",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-HIS-001": {
+        "area": "history",
+        "statement": "The user can view a combined transaction history and an account-specific history.",
+        "source_quote": "The user can view a combined transaction history and account-specific history.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-HIS-002": {
+        "area": "history",
+        "statement": "Each history row shows date and time, description or memo, transaction type, amount, status, and relevant account.",
+        "source_quote": "Each row shows date and time, description or memo, transaction type, amount, status, and relevant account.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-HIS-003": {
+        "area": "history",
+        "statement": "Amount direction is clear for deposits, withdrawals and transfers.",
+        "source_quote": "Amount direction should be clear for deposits, withdrawals, and transfers.",
+        "kind": "ux",
+        "priority": "P2",
+        "testability": "partially"
+      },
+      "REQ-HIS-004": {
+        "area": "history",
+        "statement": "History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+        "source_quote": "The user can filter history by account, transaction type, status, and date range. When filters are applied, every displayed row must satisfy all selected filters.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-HIS-005": {
+        "area": "history",
+        "statement": "Start and end dates are inclusive: transactions on either boundary date that match other filters are included.",
+        "source_quote": "The start and end dates are inclusive. A transaction occurring on either boundary date must be included when it matches the other filters.",
+        "kind": "data_integrity",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-HIS-006": {
+        "area": "history",
+        "statement": "An empty filter result shows a clear empty state, not an error or unrelated transactions.",
+        "source_quote": "An empty result set must show a clear empty state, not an error or unrelated transactions.",
+        "kind": "ux",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-HIS-007": {
+        "area": "history",
+        "statement": "Clearing filters restores the unfiltered history.",
+        "source_quote": "Clearing filters restores the unfiltered history.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-PRO-001": {
+        "area": "profile",
+        "statement": "The profile view displays only synthetic demo-customer details such as display name and a masked email address.",
+        "source_quote": "A profile view displays only synthetic demo-customer details, such as display name and a masked email address.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-PRO-002": {
+        "area": "profile",
+        "statement": "The profile view does not reveal passwords, authentication tokens, full account identifiers, or another user's data.",
+        "source_quote": "The view must not reveal passwords, authentication tokens, full account identifiers, or data belonging to another user.",
+        "kind": "security",
+        "priority": "P0",
+        "testability": "automatable"
+      },
+      "REQ-GUI-001": {
+        "area": "ui",
+        "statement": "The app works in a current desktop browser at 1280x800 and remains usable at narrower widths.",
+        "source_quote": "The target works in a current desktop browser at a 1280 × 800 viewport and remains usable at narrower widths.",
+        "kind": "ux",
+        "priority": "P2",
+        "testability": "partially"
+      },
+      "REQ-GUI-002": {
+        "area": "ui",
+        "statement": "Interactive controls have readable labels and communicate loading, success, validation and failure states.",
+        "source_quote": "Interactive controls have readable labels and communicate loading, success, validation, and failure states.",
+        "kind": "ux",
+        "priority": "P2",
+        "testability": "partially"
+      },
+      "REQ-GUI-003": {
+        "area": "ui",
+        "statement": "A submitted action does not silently disappear: the UI shows a loading state or prevents duplicate submission while waiting.",
+        "source_quote": "A submitted action should not silently disappear. While waiting, the UI should show a loading state or otherwise prevent accidental duplicate submission.",
+        "kind": "ux",
+        "priority": "P1",
+        "testability": "partially"
+      },
+      "REQ-GUI-004": {
+        "area": "ui",
+        "statement": "Navigation links and buttons lead to the labeled destination or perform the labeled action.",
+        "source_quote": "Navigation links and buttons lead to the labeled destination or perform the labeled action.",
+        "kind": "ux",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-GUI-005": {
+        "area": "ui",
+        "statement": "After a recoverable error the user can retry or return to the dashboard.",
+        "source_quote": "A recoverable error must leave the user able to retry or return to the dashboard.",
+        "kind": "ux",
+        "priority": "P1",
+        "testability": "partially"
+      },
+      "REQ-SED-001": {
+        "area": "seed",
+        "statement": "The demo begins with one customer, one checking account and one savings account.",
+        "source_quote": "The demo begins with one customer, one checking account, one savings account,",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-SED-002": {
+        "area": "seed",
+        "statement": "Seed data includes enough historical transactions across multiple dates to exercise account, type, status and date filters.",
+        "source_quote": "enough historical transactions to exercise account, type, status, and date filters. Seed records should include multiple dates",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable"
+      },
+      "REQ-SED-003": {
+        "area": "seed",
+        "statement": "Seed data includes at least one transfer between the checking and savings accounts.",
+        "source_quote": "at least one transfer between the two accounts.",
+        "kind": "functional",
+        "priority": "P2",
+        "testability": "automatable"
+      },
+      "REQ-SCP-001": {
+        "area": "scope",
+        "statement": "The app never initiates real payments or connects to an external bank.",
+        "source_quote": "The application must never initiate real payments or connect to an external bank.",
+        "kind": "negative_scope",
+        "priority": "P1",
+        "testability": "partially"
+      },
+      "REQ-SCP-002": {
+        "area": "scope",
+        "statement": "The app offers no signup feature.",
+        "source_quote": "The demo has no signup, external payment, bill-pay, loan, card, or multi-user features.",
+        "kind": "negative_scope",
+        "priority": "P2",
+        "testability": "automatable"
+      },
+      "REQ-SCP-003": {
+        "area": "scope",
+        "statement": "The app offers no external payment, bill-pay, loan or card features.",
+        "source_quote": "The demo has no signup, external payment, bill-pay, loan, card, or multi-user features.",
+        "kind": "negative_scope",
+        "priority": "P2",
+        "testability": "automatable"
+      },
+      "REQ-SCP-004": {
+        "area": "scope",
+        "statement": "The app offers no multi-user features, joint accounts or multiple customers.",
+        "source_quote": "Multiple customers, joint accounts, loans, credit cards, budgeting, or investment features.",
+        "kind": "negative_scope",
+        "priority": "P2",
+        "testability": "automatable"
+      },
+      "REQ-SCP-005": {
+        "area": "scope",
+        "statement": "The app offers no real bank integrations or deposits from external sources.",
+        "source_quote": "Real bank integrations, payment rails, or deposits from external sources.",
+        "kind": "negative_scope",
+        "priority": "P1",
+        "testability": "partially"
+      },
+      "REQ-SCP-006": {
+        "area": "scope",
+        "statement": "The app offers no password reset, multi-factor authentication or production-grade identity verification.",
+        "source_quote": "Signup, password reset, multi-factor authentication, or production-grade identity verification.",
+        "kind": "negative_scope",
+        "priority": "P2",
+        "testability": "automatable"
+      }
+    },
+    "scenario_index": {
+      "SCN-GUI-001-P1": {
+        "title": "Key screens usable at 1280x800",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-GUI-001"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-GUI-001-E1": {
+        "title": "Narrow widths 768 and 375 stay usable",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-GUI-001"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-GUI-002-P1": {
+        "title": "Transfer controls have labels and validation feedback",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-GUI-002"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-GUI-003-E1": {
+        "title": "Double submit prevented or loading shown",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-GUI-003"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-GUI-004-P1": {
+        "title": "Navigation links lead to labeled destinations",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-GUI-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-GUI-004-P2": {
+        "title": "Transfer and Profile links reach destinations",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-GUI-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-GUI-004-P3": {
+        "title": "Dashboard quick links lead to labeled pages",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-GUI-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-GUI-005-N1": {
+        "title": "Retry possible after validation error",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-GUI-005"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-GUI-005-E1": {
+        "title": "Dashboard reachable after error",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-GUI-005"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-SED-001-P1": {
+        "title": "Dashboard lists one checking and one savings account",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-SED-001"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-SED-002-P1": {
+        "title": "History spans varied types, statuses, dates",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-SED-002"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-SED-002-E1": {
+        "title": "Each status filter returns seeded rows",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-SED-002"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-SED-003-P1": {
+        "title": "Seed transfer between checking and savings exists",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-SED-003"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-ACC-001-P1": {
+        "title": "Enter Demo opens dashboard without credentials",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-ACC-001"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-ACC-002-P1": {
+        "title": "Header shows customer and Log out",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-ACC-002"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-ACC-003-P1": {
+        "title": "Logout returns to landing page",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-ACC-003"
+        ],
+        "phase": "session_destructive"
+      },
+      "SCN-ACC-003-N1": {
+        "title": "Back after logout does not regain access",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-ACC-003",
+          "REQ-ACC-004"
+        ],
+        "phase": "session_destructive"
+      },
+      "SCN-ACC-004-N1": {
+        "title": "Protected routes blocked when logged out",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-ACC-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-ACC-004-N2": {
+        "title": "Account detail and API refused without session",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-ACC-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-ACC-005-P1": {
+        "title": "Refresh preserves session on dashboard and detail",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-ACC-005"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-ACC-006-N1": {
+        "title": "Refresh after logout does not regain access",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-ACC-006"
+        ],
+        "phase": "session_destructive"
+      },
+      "SCN-HIS-001-P1": {
+        "title": "Combined history shows rows with all fields",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-HIS-001",
+          "REQ-HIS-002"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-001-P2": {
+        "title": "Account-specific history shows only that account",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-HIS-001"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-001-P3": {
+        "title": "Full history link from account detail",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-HIS-001"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-003-P1": {
+        "title": "Amount direction is clear per type",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-HIS-003"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-004-P1": {
+        "title": "Account filter alone",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-HIS-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-004-P2": {
+        "title": "Type filter alone",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-HIS-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-004-P3": {
+        "title": "Status filter alone",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-HIS-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-004-E1": {
+        "title": "Combined account, type, status and date filters",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-HIS-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-005-E1": {
+        "title": "Single boundary date inclusive",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-HIS-005"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-005-E2": {
+        "title": "Earliest and latest dates as range bounds",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-HIS-005"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-004-N1": {
+        "title": "Start date after end date",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-HIS-004",
+          "REQ-HIS-005"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-006-E1": {
+        "title": "Date range before all records shows empty state",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-HIS-006"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-HIS-007-P1": {
+        "title": "Clear filters restores unfiltered history",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-HIS-007",
+          "REQ-HIS-004"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-DSH-001-P1": {
+        "title": "Dashboard lists checking and savings accounts with details",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-DSH-001",
+          "REQ-DSH-002"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-DSH-003-P1": {
+        "title": "Dashboard balances two decimals and match API",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-DSH-003",
+          "REQ-DSH-006"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-DSH-004-N1": {
+        "title": "Dashboard and profile show no full identifiers",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-DSH-004",
+          "REQ-PRO-002"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-DSH-004-E1": {
+        "title": "Account detail masks identifiers and formats balance",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-DSH-004",
+          "REQ-DSH-003"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-DSH-005-P1": {
+        "title": "Account detail shows balance and own history",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-DSH-005",
+          "REQ-DSH-006"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-DSH-005-E1": {
+        "title": "Savings account detail opens with its history",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-DSH-005"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-PRO-001-P1": {
+        "title": "Profile shows display name and masked email",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-PRO-001"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-PRO-002-N1": {
+        "title": "Profile page hides secrets and other users",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-PRO-002"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-SCP-002-N1": {
+        "title": "Landing page has no signup, reset or MFA",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-SCP-002",
+          "REQ-SCP-006"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-SCP-003-N1": {
+        "title": "Logged-in app has no out-of-scope features",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-SCP-003",
+          "REQ-SCP-004",
+          "REQ-SCP-005",
+          "REQ-SCP-006",
+          "REQ-SCP-002"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-SCP-001-E1": {
+        "title": "Dashboard has no external bank or payment UI",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-SCP-001",
+          "REQ-SCP-005"
+        ],
+        "phase": "read_only"
+      },
+      "SCN-TRF-001-P1": {
+        "title": "Checking to savings transfer succeeds",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-TRF-001",
+          "REQ-TRF-002",
+          "REQ-TRF-009",
+          "REQ-TRF-010",
+          "REQ-TRF-011",
+          "REQ-TRF-012"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-TRF-001-P2": {
+        "title": "Savings to checking transfer succeeds",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-TRF-001",
+          "REQ-TRF-009",
+          "REQ-TRF-010"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-TRF-002-P1": {
+        "title": "Transfer form fields present and memo optional",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-TRF-002"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-TRF-003-N1": {
+        "title": "Same-account transfer rejected",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-TRF-003",
+          "REQ-TRF-004",
+          "REQ-TRF-013"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-TRF-005-N1": {
+        "title": "Zero amount rejected",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-TRF-005",
+          "REQ-TRF-006",
+          "REQ-TRF-013"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-TRF-005-N2": {
+        "title": "Negative amount rejected",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-TRF-005",
+          "REQ-TRF-006",
+          "REQ-TRF-013"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-TRF-005-N3": {
+        "title": "Blank amount rejected",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-TRF-005",
+          "REQ-TRF-006",
+          "REQ-TRF-013"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-TRF-005-N4": {
+        "title": "Non-numeric amount rejected",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-TRF-005",
+          "REQ-TRF-006",
+          "REQ-TRF-013"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-TRF-005-N5": {
+        "title": "Over-precision amount rejected",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-TRF-005",
+          "REQ-TRF-006",
+          "REQ-TRF-013"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-TRF-007-N1": {
+        "title": "Amount above source balance by 0.01 rejected",
+        "polarity": "negative",
+        "requirement_ids": [
+          "REQ-TRF-007",
+          "REQ-TRF-008",
+          "REQ-TRF-013",
+          "REQ-TRF-004"
+        ],
+        "phase": "negative_mutation"
+      },
+      "SCN-TRF-007-E1": {
+        "title": "Amount exactly equal to source balance accepted",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-TRF-007",
+          "REQ-TRF-009"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-TRF-005-E1": {
+        "title": "Smallest unit 0.01 accepted",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-TRF-005",
+          "REQ-TRF-009"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-TRF-014-P1": {
+        "title": "Transfer persists after reload",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-TRF-014",
+          "REQ-TRF-012"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-TRF-012-P1": {
+        "title": "Success shown with committed backend state",
+        "polarity": "positive",
+        "requirement_ids": [
+          "REQ-TRF-012",
+          "REQ-TRF-013"
+        ],
+        "phase": "positive_mutation"
+      },
+      "SCN-GUI-003-E2": {
+        "title": "Double submit creates one transfer",
+        "polarity": "edge",
+        "requirement_ids": [
+          "REQ-GUI-003",
+          "REQ-TRF-010"
+        ],
+        "phase": "positive_mutation"
+      }
+    },
+    "wall_time_s": 181.103697,
+    "cost_usd": 0.3209837,
+    "usd_per_requirement": 0.00655068775510204,
+    "executive_summary": "The QA audit identified 49 total requirements across history filtering functionality, with 27 passed and 20 unverified. Two major defects were found with no critical or minor issues. Both defects involve date range filtering: one shows that pending transactions on the end date boundary are being incorrectly omitted from results, and the other reveals that when start and end dates are identical, matching transactions fail to appear despite inclusive boundary requirements. The audit consumed 0.32 USD and completed in 181 seconds.",
+    "executive_summary_source": "llm"
+  },
+  "requirements": [
+    {
+      "requirement_id": "REQ-ACC-001",
+      "status": "unverified",
+      "reason": "SCN-ACC-001-P1: element_visible could not verify: probe failed: ResolveError: could not resolve element 'landing.entry' (role=button[name=\"Enter Demo\"])",
+      "scenario_ids": [
+        "SCN-ACC-001-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-ACC-002",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-ACC-002-P1",
+      "scenario_ids": [
+        "SCN-ACC-002-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-ACC-003",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-ACC-003-P1, SCN-ACC-003-N1",
+      "scenario_ids": [
+        "SCN-ACC-003-P1",
+        "SCN-ACC-003-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-ACC-004",
+      "status": "passed",
+      "reason": "all 3 scenario(s) passed: SCN-ACC-003-N1, SCN-ACC-004-N1, SCN-ACC-004-N2",
+      "scenario_ids": [
+        "SCN-ACC-003-N1",
+        "SCN-ACC-004-N1",
+        "SCN-ACC-004-N2"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-ACC-005",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-ACC-005-P1",
+      "scenario_ids": [
+        "SCN-ACC-005-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-ACC-006",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-ACC-006-N1",
+      "scenario_ids": [
+        "SCN-ACC-006-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-DSH-001",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-DSH-001-P1",
+      "scenario_ids": [
+        "SCN-DSH-001-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-DSH-002",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-DSH-001-P1",
+      "scenario_ids": [
+        "SCN-DSH-001-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-DSH-003",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-DSH-003-P1, SCN-DSH-004-E1",
+      "scenario_ids": [
+        "SCN-DSH-003-P1",
+        "SCN-DSH-004-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-DSH-004",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-DSH-004-N1, SCN-DSH-004-E1",
+      "scenario_ids": [
+        "SCN-DSH-004-N1",
+        "SCN-DSH-004-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-DSH-005",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-DSH-005-P1, SCN-DSH-005-E1",
+      "scenario_ids": [
+        "SCN-DSH-005-P1",
+        "SCN-DSH-005-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-DSH-006",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-DSH-003-P1, SCN-DSH-005-P1",
+      "scenario_ids": [
+        "SCN-DSH-003-P1",
+        "SCN-DSH-005-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-001",
+      "status": "unverified",
+      "reason": "SCN-TRF-001-P1: not executed; SCN-TRF-001-P2: not executed",
+      "scenario_ids": [
+        "SCN-TRF-001-P1",
+        "SCN-TRF-001-P2"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-002",
+      "status": "unverified",
+      "reason": "SCN-TRF-001-P1: not executed; SCN-TRF-002-P1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-001-P1",
+        "SCN-TRF-002-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-003",
+      "status": "unverified",
+      "reason": "SCN-TRF-003-N1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-003-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-004",
+      "status": "unverified",
+      "reason": "SCN-TRF-003-N1: not executed; SCN-TRF-007-N1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-003-N1",
+        "SCN-TRF-007-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-005",
+      "status": "unverified",
+      "reason": "SCN-TRF-005-N1: not executed; SCN-TRF-005-N2: not executed; SCN-TRF-005-N3: not executed; SCN-TRF-005-N4: not executed; SCN-TRF-005-N5: not executed; SCN-TRF-005-E1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-005-N1",
+        "SCN-TRF-005-N2",
+        "SCN-TRF-005-N3",
+        "SCN-TRF-005-N4",
+        "SCN-TRF-005-N5",
+        "SCN-TRF-005-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-006",
+      "status": "unverified",
+      "reason": "SCN-TRF-005-N1: not executed; SCN-TRF-005-N2: not executed; SCN-TRF-005-N3: not executed; SCN-TRF-005-N4: not executed; SCN-TRF-005-N5: not executed",
+      "scenario_ids": [
+        "SCN-TRF-005-N1",
+        "SCN-TRF-005-N2",
+        "SCN-TRF-005-N3",
+        "SCN-TRF-005-N4",
+        "SCN-TRF-005-N5"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-007",
+      "status": "unverified",
+      "reason": "SCN-TRF-007-N1: not executed; SCN-TRF-007-E1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-007-N1",
+        "SCN-TRF-007-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-008",
+      "status": "unverified",
+      "reason": "SCN-TRF-007-N1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-007-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-009",
+      "status": "unverified",
+      "reason": "SCN-TRF-001-P1: not executed; SCN-TRF-001-P2: not executed; SCN-TRF-007-E1: not executed; SCN-TRF-005-E1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-001-P1",
+        "SCN-TRF-001-P2",
+        "SCN-TRF-007-E1",
+        "SCN-TRF-005-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-010",
+      "status": "unverified",
+      "reason": "SCN-TRF-001-P1: not executed; SCN-TRF-001-P2: not executed; SCN-GUI-003-E2: not executed",
+      "scenario_ids": [
+        "SCN-TRF-001-P1",
+        "SCN-TRF-001-P2",
+        "SCN-GUI-003-E2"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-011",
+      "status": "unverified",
+      "reason": "SCN-TRF-001-P1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-001-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-012",
+      "status": "unverified",
+      "reason": "SCN-TRF-001-P1: not executed; SCN-TRF-014-P1: not executed; SCN-TRF-012-P1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-001-P1",
+        "SCN-TRF-014-P1",
+        "SCN-TRF-012-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-013",
+      "status": "unverified",
+      "reason": "SCN-TRF-003-N1: not executed; SCN-TRF-005-N1: not executed; SCN-TRF-005-N2: not executed; SCN-TRF-005-N3: not executed; SCN-TRF-005-N4: not executed; SCN-TRF-005-N5: not executed; SCN-TRF-007-N1: not executed; SCN-TRF-012-P1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-003-N1",
+        "SCN-TRF-005-N1",
+        "SCN-TRF-005-N2",
+        "SCN-TRF-005-N3",
+        "SCN-TRF-005-N4",
+        "SCN-TRF-005-N5",
+        "SCN-TRF-007-N1",
+        "SCN-TRF-012-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-014",
+      "status": "unverified",
+      "reason": "SCN-TRF-014-P1: not executed",
+      "scenario_ids": [
+        "SCN-TRF-014-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-HIS-001",
+      "status": "unverified",
+      "reason": "SCN-HIS-001-P1: triage: not confirmed; The PRD quote requires each row to show an amount, but it does not say what amount a failed or pending transaction must display. The API's account_deltas show 0.00 for the failed deposit, so 'No change: $0.00' is a plausible, deliberate way to show the net effect on the balanc",
+      "scenario_ids": [
+        "SCN-HIS-001-P1",
+        "SCN-HIS-001-P2",
+        "SCN-HIS-001-P3"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-HIS-002",
+      "status": "unverified",
+      "reason": "SCN-HIS-001-P1: triage: not confirmed; The PRD quote requires each row to show an amount, but it does not say what amount a failed or pending transaction must display. The API's account_deltas show 0.00 for the failed deposit, so 'No change: $0.00' is a plausible, deliberate way to show the net effect on the balanc",
+      "scenario_ids": [
+        "SCN-HIS-001-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-HIS-003",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-HIS-003-P1",
+      "scenario_ids": [
+        "SCN-HIS-003-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-HIS-004",
+      "status": "failed",
+      "reason": "SCN-HIS-004-E1 (edge) failed: rows_equal_api_set",
+      "scenario_ids": [
+        "SCN-HIS-004-P1",
+        "SCN-HIS-004-P2",
+        "SCN-HIS-004-P3",
+        "SCN-HIS-004-E1",
+        "SCN-HIS-004-N1",
+        "SCN-HIS-007-P1"
+      ],
+      "expected": "With account=checking and date range 2025-01-03 to 2025-08-08 (inclusive), all matching transactions are shown, including pending withdrawal 211 dated 2025-08-08.",
+      "observed": "Filtered results showed 7 rows and omitted transaction ...0211 (withdrawal, pending, 125.00, 2025-08-08T18:25:00Z), which the API's full record set places in range.",
+      "evidence": [],
+      "severity": "major"
+    },
+    {
+      "requirement_id": "REQ-HIS-005",
+      "status": "failed",
+      "reason": "SCN-HIS-005-E1 (edge) failed: rows_equal_api_set; SCN-HIS-005-E2 (edge) failed: rows_equal_api_set",
+      "scenario_ids": [
+        "SCN-HIS-005-E1",
+        "SCN-HIS-005-E2",
+        "SCN-HIS-004-N1"
+      ],
+      "expected": "[SCN-HIS-005-E1] With start and end date both 2025-09-03, the transaction dated 2025-09-03 (id ...212) must be included, since the start and end dates are inclusive. | [SCN-HIS-005-E2] With start and end date both 2025-09-03, the transaction dated 2025-09-03 (id ...212) must be included, since the start and end dates are inclusive.",
+      "observed": "[SCN-HIS-005-E1] GET /api/transactions?start_date=2025-09-03&end_date=2025-09-03 returned an empty list and the UI showed 0 rows, although transaction ...212 (deposit, failed, occurred_at 2025-09-03T14:50:00Z) exists. | [SCN-HIS-005-E2] GET /api/transactions?start_date=2025-09-03&end_date=2025-09-03 returned an empty list and the UI showed 0 rows, although transaction ...212 (deposit, failed, occurred_at 2025-09-03T14:50:00Z) exists.",
+      "evidence": [],
+      "severity": "major"
+    },
+    {
+      "requirement_id": "REQ-HIS-006",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-HIS-006-E1",
+      "scenario_ids": [
+        "SCN-HIS-006-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-HIS-007",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-HIS-007-P1",
+      "scenario_ids": [
+        "SCN-HIS-007-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-PRO-001",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-PRO-001-P1",
+      "scenario_ids": [
+        "SCN-PRO-001-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-PRO-002",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-DSH-004-N1, SCN-PRO-002-N1",
+      "scenario_ids": [
+        "SCN-DSH-004-N1",
+        "SCN-PRO-002-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-GUI-001",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-GUI-001-P1, SCN-GUI-001-E1",
+      "scenario_ids": [
+        "SCN-GUI-001-P1",
+        "SCN-GUI-001-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-GUI-002",
+      "status": "unverified",
+      "reason": "SCN-GUI-002-P1: not executed",
+      "scenario_ids": [
+        "SCN-GUI-002-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-GUI-003",
+      "status": "unverified",
+      "reason": "SCN-GUI-003-E1: not executed; SCN-GUI-003-E2: not executed",
+      "scenario_ids": [
+        "SCN-GUI-003-E1",
+        "SCN-GUI-003-E2"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-GUI-004",
+      "status": "passed",
+      "reason": "all 3 scenario(s) passed: SCN-GUI-004-P1, SCN-GUI-004-P2, SCN-GUI-004-P3",
+      "scenario_ids": [
+        "SCN-GUI-004-P1",
+        "SCN-GUI-004-P2",
+        "SCN-GUI-004-P3"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-GUI-005",
+      "status": "unverified",
+      "reason": "SCN-GUI-005-N1: not executed; SCN-GUI-005-E1: not executed",
+      "scenario_ids": [
+        "SCN-GUI-005-N1",
+        "SCN-GUI-005-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SED-001",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-SED-001-P1",
+      "scenario_ids": [
+        "SCN-SED-001-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SED-002",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-SED-002-P1, SCN-SED-002-E1",
+      "scenario_ids": [
+        "SCN-SED-002-P1",
+        "SCN-SED-002-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SED-003",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-SED-003-P1",
+      "scenario_ids": [
+        "SCN-SED-003-P1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SCP-001",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-SCP-001-E1",
+      "scenario_ids": [
+        "SCN-SCP-001-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SCP-002",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-SCP-002-N1, SCN-SCP-003-N1",
+      "scenario_ids": [
+        "SCN-SCP-002-N1",
+        "SCN-SCP-003-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SCP-003",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-SCP-003-N1",
+      "scenario_ids": [
+        "SCN-SCP-003-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SCP-004",
+      "status": "passed",
+      "reason": "all 1 scenario(s) passed: SCN-SCP-003-N1",
+      "scenario_ids": [
+        "SCN-SCP-003-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SCP-005",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-SCP-003-N1, SCN-SCP-001-E1",
+      "scenario_ids": [
+        "SCN-SCP-003-N1",
+        "SCN-SCP-001-E1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-SCP-006",
+      "status": "passed",
+      "reason": "all 2 scenario(s) passed: SCN-SCP-002-N1, SCN-SCP-003-N1",
+      "scenario_ids": [
+        "SCN-SCP-002-N1",
+        "SCN-SCP-003-N1"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "SCN-GUI-001-P1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "no_horizontal_overflow",
+            "args": {
+              "widths": [
+                1280
+              ]
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "no horizontal overflow at widths 1280px",
+          "observed": "content fits at every width",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transfer.submit"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "'transfer.submit' is visible",
+          "observed": "'transfer.submit' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "nav.transactions"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "'nav.transactions' is visible",
+          "observed": "'nav.transactions' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Set the browser viewport to 1280x800",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Open the transfer page (value: \"/transfer\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-GUI-001-E1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "no_horizontal_overflow",
+            "args": {
+              "widths": [
+                768,
+                375
+              ]
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "no horizontal overflow at widths 768px, 375px",
+          "observed": "content fits at every width",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transfer.submit"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "'transfer.submit' is visible",
+          "observed": "'transfer.submit' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transfer.amount"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "'transfer.amount' is visible",
+          "observed": "'transfer.amount' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Set the viewport to 768x800",
+        "Open the transactions page (value: \"/transactions\")",
+        "Set the viewport to 375x800",
+        "Open the transfer page (value: \"/transfer\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-GUI-004-P1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/transactions"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "URL path matches //transactions/",
+          "observed": "URL was /transactions",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.heading"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transactions.heading' is visible",
+          "observed": "'transactions.heading' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transactions.transaction_table' is visible",
+          "observed": "'transactions.transaction_table' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Click Transactions in navigation"
+      ]
+    },
+    {
+      "scenario_id": "SCN-GUI-004-P2",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/profile"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "URL path matches //profile/",
+          "observed": "URL was /profile",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "profile.title"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'profile.title' is visible",
+          "observed": "'profile.title' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Click Transfer in navigation",
+        "Click Profile in navigation"
+      ]
+    },
+    {
+      "scenario_id": "SCN-GUI-004-P3",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/transfer"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "URL path matches //transfer/",
+          "observed": "URL was /transfer",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transfer.heading"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transfer.heading' is visible",
+          "observed": "'transfer.heading' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Click Transfer funds link"
+      ]
+    },
+    {
+      "scenario_id": "SCN-SED-001-P1",
+      "status": "passed",
+      "confidence": 0.97,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "Checking",
+              "target": {
+                "key": "dashboard.main_content"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /Checking/",
+          "observed": "dashboard.main_content text: 'DASHBOARD Welcome, Avery Demo Transfer funds View all transactions Your accounts Everyday Checking Checking Account number ending •••• 1042 Available balance $4,369.75USD View details → Rainy Day Savings Savings Account number ending •••• …' (matched 'Checking')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "Savings",
+              "target": {
+                "key": "dashboard.main_content"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /Savings/",
+          "observed": "dashboard.main_content text: 'DASHBOARD Welcome, Avery Demo Transfer funds View all transactions Your accounts Everyday Checking Checking Account number ending •••• 1042 Available balance $4,369.75USD View details → Rainy Day Savings Savings Account number ending •••• …' (matched 'Savings')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "api_status",
+            "args": {
+              "method": "GET",
+              "path_glob": "**/api/accounts",
+              "status": 200
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "GET **/api/accounts responds with status 200",
+          "observed": "observed status(es): 200, 200",
+          "evidence": [],
+          "layer": "api"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "dashboard.account_card",
+                "nth": 1
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'dashboard.account_card' is visible",
+          "observed": "'dashboard.account_card' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "dashboard.account_card",
+                "nth": 2
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'dashboard.account_card' is not shown",
+          "observed": "'dashboard.account_card' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Fetch accounts from the API (value: \"/api/accounts\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-SED-002-P1",
+      "status": "passed",
+      "confidence": 0.97,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {}
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "12 transaction(s) matching no filters (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 12 transaction(s) (note: 4 row(s) show an amount different from the API)",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.row",
+                "nth": 5
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transactions.row' is visible",
+          "observed": "'transactions.row' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "(?i)completed",
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)completed/",
+          "observed": "transactions.transaction_table text: 'All transactions DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Sep 3, 2025, 7:50 AM PDT Returned demo deposit Deposit Rainy Day Savings (•••• 7781) No change: $0.00 Failed Aug 8, 2025, 11:25 AM PDT Pending demo debit Withdrawal Everyd…' (matched 'Completed')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "(?i)pending|failed",
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)pending|failed/",
+          "observed": "transactions.transaction_table text: 'All transactions DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Sep 3, 2025, 7:50 AM PDT Returned demo deposit Deposit Rainy Day Savings (•••• 7781) No change: $0.00 Failed Aug 8, 2025, 11:25 AM PDT Pending demo debit Withdrawal Everyd…' (matched 'Failed')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "(?i)deposit",
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)deposit/",
+          "observed": "transactions.transaction_table text: 'All transactions DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Sep 3, 2025, 7:50 AM PDT Returned demo deposit Deposit Rainy Day Savings (•••• 7781) No change: $0.00 Failed Aug 8, 2025, 11:25 AM PDT Pending demo debit Withdrawal Everyd…' (matched 'deposit')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "(?i)withdrawal",
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)withdrawal/",
+          "observed": "transactions.transaction_table text: 'All transactions DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Sep 3, 2025, 7:50 AM PDT Returned demo deposit Deposit Rainy Day Savings (•••• 7781) No change: $0.00 Failed Aug 8, 2025, 11:25 AM PDT Pending demo debit Withdrawal Everyd…' (matched 'Withdrawal')",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the transactions page (value: \"/transactions\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-SED-002-E1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_satisfy_filters",
+            "args": {
+              "filters": {
+                "status": "{{st}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "every displayed row satisfies status=pending (dates inclusive, America/Los_Angeles)",
+          "observed": "all 2 displayed row(s) satisfy the filters",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "status": "{{st}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "2 transaction(s) matching status=pending (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 2 transaction(s) (note: 2 row(s) show an amount different from the API)",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.row",
+                "nth": 0
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transactions.row' is visible",
+          "observed": "'transactions.row' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the transactions page (value: \"/transactions\")",
+        "Select Pending status (value: \"pending\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-SED-003-P1",
+      "status": "passed",
+      "confidence": 0.97,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_satisfy_filters",
+            "args": {
+              "filters": {
+                "type": "{{ty}}"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "every displayed row satisfies type=transfer (dates inclusive, America/Los_Angeles)",
+          "observed": "all 2 displayed row(s) satisfy the filters",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "type": "{{ty}}"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "2 transaction(s) matching type=transfer (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 2 transaction(s)",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.row",
+                "nth": 0
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "'transactions.row' is visible",
+          "observed": "'transactions.row' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "Checking|1042",
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "text matches /Checking|1042/",
+          "observed": "transactions.transaction_table text: 'Filtered transaction history DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Apr 10, 2025, 8:20 AM PDT Move to checking Transfer From Rainy Day Savings (•••• 7781) To Everyday Checking (•••• 1042) Moved between accounts: $175.00 Complet…' (matched 'Checking')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "Savings|7781",
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "text matches /Savings|7781/",
+          "observed": "transactions.transaction_table text: 'Filtered transaction history DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Apr 10, 2025, 8:20 AM PDT Move to checking Transfer From Rainy Day Savings (•••• 7781) To Everyday Checking (•••• 1042) Moved between accounts: $175.00 Complet…' (matched 'Savings')",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the transactions page (value: \"/transactions\")",
+        "Select Transfer type (value: \"transfer\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-ACC-001-P1",
+      "status": "unverified",
+      "confidence": 0.3,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "landing.entry"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "error",
+          "expected": "element_visible(target={'key': 'landing.entry'})",
+          "observed": "could not verify: probe failed: ResolveError: could not resolve element 'landing.entry' (role=button[name=\"Enter Demo\"])",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/dashboard"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "URL path matches //dashboard/",
+          "observed": "URL was /dashboard",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "dashboard.page_heading"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'dashboard.page_heading' is visible",
+          "observed": "'dashboard.page_heading' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "api_status",
+            "args": {
+              "method": "POST",
+              "path_glob": "**/api/demo/session",
+              "status": 201
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "POST **/api/demo/session responds with status 201",
+          "observed": "observed status(es): 201",
+          "evidence": [],
+          "layer": "api"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "element_visible could not verify: probe failed: ResolveError: could not resolve element 'landing.entry' (role=button[name=\"Enter Demo\"])",
+      "repro_steps": [
+        "Precondition: fresh context",
+        "Open the landing page (value: \"/\")",
+        "Click the Enter Demo button"
+      ]
+    },
+    {
+      "scenario_id": "SCN-ACC-002-P1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "header.customer"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'header.customer' is visible",
+          "observed": "'header.customer' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "header.logout"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'header.logout' is visible",
+          "observed": "'header.logout' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "target": {
+                "key": "header.customer"
+              },
+              "pattern": "\\S+"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /\\S+/",
+          "observed": "header.customer text: 'Signed in as Avery Demo' (matched 'Signed')",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-ACC-004-N1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "profile.email"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'profile.email' is not shown",
+          "observed": "'profile.email' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "header.customer"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'header.customer' is not shown",
+          "observed": "'header.customer' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "transfer.amount"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'transfer.amount' is not shown",
+          "observed": "'transfer.amount' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: fresh context",
+        "Navigate directly to /dashboard while logged out",
+        "Navigate directly to /transactions while logged out",
+        "Navigate directly to /transfer while logged out",
+        "Navigate directly to /profile while logged out"
+      ]
+    },
+    {
+      "scenario_id": "SCN-ACC-004-N2",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "account.balance"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'account.balance' is not shown",
+          "observed": "'account.balance' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "api_status",
+            "args": {
+              "method": "GET",
+              "path_glob": "**/api/accounts",
+              "status_in": [
+                401,
+                403
+              ]
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "GET **/api/accounts responds with status 401 or 403",
+          "observed": "observed status(es): 401",
+          "evidence": [],
+          "layer": "api"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: fresh context",
+        "Navigate directly to the checking account detail URL while logged out (value: \"/accounts/00000000-0000-0000-0000-000000000101\")",
+        "Request the accounts API without a session (value: \"/api/accounts\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-ACC-005-P1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "header.customer"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'header.customer' is visible",
+          "observed": "'header.customer' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "account.balance"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'account.balance' is visible",
+          "observed": "'account.balance' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/accounts/"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "URL path matches //accounts//",
+          "observed": "URL was /accounts/00000000-0000-0000-0000-000000000101",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Refresh the page",
+        "Open the checking account detail page (value: \"/accounts/00000000-0000-0000-0000-000000000101\")",
+        "Refresh the page"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-001-P1",
+      "status": "unverified",
+      "confidence": 0.3,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transactions.transaction_table' is visible",
+          "observed": "'transactions.transaction_table' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.row",
+                "nth": 0
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transactions.row' is visible",
+          "observed": "'transactions.row' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {}
+            },
+            "severity": "major"
+          },
+          "status": "fail",
+          "expected": "12 transaction(s) matching no filters (from the API, dates inclusive in America/Los_Angeles), each row showing its API amount",
+          "observed": "UI shows the right 12 transaction(s) but 4 row(s) do not show the transaction amount: row 00000000-0000-0000-0000-000000000212 (deposit, failed): shows 'No change: $0.00', but the record's own amount field is 700.00 | row 00000000-0000-0000-0000-000000000211 (withdrawal, pending): shows 'No change: $0.00', but the record's own amount field is 125.00 | row 00000000-0000-0000-0000-000000000210 (withdrawal, failed): shows 'No change: $0.00', but the record's own amount field is 900.00 | row 00000000-0000-0000-0000-000000000209 (deposit, pending): shows 'No change: $0.00', but the record's own amount field is 400.00",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "money_format",
+            "args": {
+              "target": {
+                "key": "transactions.row"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "every displayed amount has 2-decimal currency format (/\\$?-?[\\d,]+\\.\\d{2}(?!\\d)/)",
+          "observed": "all 12 values formatted correctly",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "target": {
+                "key": "transactions.transaction_table"
+              },
+              "pattern": "(?i)date"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)date/",
+          "observed": "transactions.transaction_table text: 'All transactions DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Sep 3, 2025, 7:50 AM PDT Returned demo deposit Deposit Rainy Day Savings (•••• 7781) No change: $0.00 Failed Aug 8, 2025, 11:25 AM PDT Pending demo debit Withdrawal Everyd…' (matched 'DATE')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "target": {
+                "key": "transactions.transaction_table"
+              },
+              "pattern": "(?i)(completed|pending|failed)"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)(completed|pending|failed)/",
+          "observed": "transactions.transaction_table text: 'All transactions DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Sep 3, 2025, 7:50 AM PDT Returned demo deposit Deposit Rainy Day Savings (•••• 7781) No change: $0.00 Failed Aug 8, 2025, 11:25 AM PDT Pending demo debit Withdrawal Everyd…' (matched 'Failed')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "target": {
+                "key": "transactions.transaction_table"
+              },
+              "pattern": "(?i)(deposit|withdrawal|transfer)"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)(deposit|withdrawal|transfer)/",
+          "observed": "transactions.transaction_table text: 'All transactions DATE & TIME DESCRIPTION TYPE ACCOUNT AMOUNT STATUS Sep 3, 2025, 7:50 AM PDT Returned demo deposit Deposit Rainy Day Savings (•••• 7781) No change: $0.00 Failed Aug 8, 2025, 11:25 AM PDT Pending demo debit Withdrawal Everyd…' (matched 'deposit')",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "triage: not confirmed; The PRD quote requires each row to show an amount, but it does not say what amount a failed or pending transaction must display. The API's account_deltas show 0.00 for the failed deposit, so 'No change: $0.00' is a plausible, deliberate way to show the net effect on the balance. The oracle assumes the row must show the record's own amount field, which the quote doesn't require, and the rows do show an amount-like value. With no evidence that the PRD forbids this, I can't confirm a defect.\n---\nrows_equal_api_set: expected 12 transaction(s) matching no filters (from the API, dates inclusive in America/Los_Angeles), each row showing its API amount; observed UI shows the right 12 transaction(s) but 4 row(s) do not show the transaction amount: row 00000000-0000-0000-0000-000000000212 (deposit, failed): shows 'No change: $0.00', but the record's own amount field is 700.00 | row 00000000-0000-0000-0000-000000000211 (withdrawal, pending): shows 'No change: $0.00', but the record's own amount field is 125.00 | row 00000000-0000-0000-0000-000000000210 (withdrawal, failed): shows 'No change: $0.00', but the record's own amount field is 900.00 | row 00000000-0000-0000-0000-000000000209 (deposit, pending): shows 'No change: $0.00', but the record's own amount field is 400.00",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-001-P2",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "account.transaction_table"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'account.transaction_table' is visible",
+          "observed": "'account.transaction_table' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "account.row",
+                "nth": 0
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'account.row' is visible",
+          "observed": "'account.row' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "api_status",
+            "args": {
+              "method": "GET",
+              "path_glob": "**/api/transactions*",
+              "status": 200
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "GET **/api/transactions* responds with status 200",
+          "observed": "observed status(es): 200",
+          "evidence": [],
+          "layer": "api"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the savings account detail page (value: \"/accounts/00000000-0000-0000-0000-000000000102\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-001-P3",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/transactions"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "URL path matches //transactions/",
+          "observed": "URL was /transactions?account_id=00000000-0000-0000-0000-000000000101",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transactions.transaction_table' is visible",
+          "observed": "'transactions.transaction_table' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the checking account detail page (value: \"/accounts/00000000-0000-0000-0000-000000000101\")",
+        "Click the Filter full history link"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-003-P1",
+      "status": "passed",
+      "confidence": 0.85,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "llm_judge",
+            "args": {
+              "question": "Is the direction of each amount (money in vs money out) clear via sign, color or label for deposits, withdrawals and transfers?",
+              "inputs": [
+                "visible_message",
+                "screenshot"
+              ]
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "LLM judge: Is the direction of each amount (money in vs money out) clear via sign, color or label for deposits, withdrawals and transfers?",
+          "observed": "LLM judge said pass (confidence 0.95): The page clearly shows direction via labels and signs: deposits use 'Money in:' with '+' sign (e.g., '+$950.00'), withdrawals use 'Money out:' with '−' sign (e.g., '−$300.00'), and transfers use 'Moved between accounts:' label showing the movement direction. The TYPE column also explicitly identifies whether each transaction is a Deposit, Withdrawal, or Transfer.",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-004-P1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_satisfy_filters",
+            "args": {
+              "filters": {
+                "account": "{{acct}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "every displayed row satisfies account=00000000-0000-0000-0000-000000000101 (dates inclusive, America/Los_Angeles)",
+          "observed": "all 8 displayed row(s) satisfy the filters",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "account": "{{acct}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "8 transaction(s) matching account=00000000-0000-0000-0000-000000000101 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 8 transaction(s) (note: 2 row(s) show an amount different from the API)",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Select the checking account in the Account filter (value: \"00000000-0000-0000-0000-000000000101\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-004-P2",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_satisfy_filters",
+            "args": {
+              "filters": {
+                "type": "{{t}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "every displayed row satisfies type=transfer (dates inclusive, America/Los_Angeles)",
+          "observed": "all 2 displayed row(s) satisfy the filters",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "type": "{{t}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "2 transaction(s) matching type=transfer (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 2 transaction(s)",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Select Transfer in the Type filter (value: \"transfer\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-004-P3",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_satisfy_filters",
+            "args": {
+              "filters": {
+                "status": "{{s}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "every displayed row satisfies status=pending (dates inclusive, America/Los_Angeles)",
+          "observed": "all 2 displayed row(s) satisfy the filters",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "status": "{{s}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "2 transaction(s) matching status=pending (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 2 transaction(s) (note: 2 row(s) show an amount different from the API)",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Select Pending in the Status filter (value: \"pending\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-004-E1",
+      "status": "failed",
+      "confidence": 0.95,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_satisfy_filters",
+            "args": {
+              "filters": {
+                "account": "{{acct}}",
+                "start_date": "{{d}}",
+                "end_date": "{{d2}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "every displayed row satisfies account=00000000-0000-0000-0000-000000000101, start_date=2025-01-03, end_date=2025-08-08 (dates inclusive, America/Los_Angeles)",
+          "observed": "all 7 displayed row(s) satisfy the filters",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "account": "{{acct}}",
+                "start_date": "{{d}}",
+                "end_date": "{{d2}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "fail",
+          "expected": "8 transaction(s) matching account=00000000-0000-0000-0000-000000000101, start_date=2025-01-03, end_date=2025-08-08 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows 7 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000211 (withdrawal, pending, 2025-08-08)",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "triage: confirmed severity=major\nexpected: With account=checking and date range 2025-01-03 to 2025-08-08 (inclusive), all matching transactions are shown, including pending withdrawal 211 dated 2025-08-08.\nobserved: Filtered results showed 7 rows and omitted transaction ...0211 (withdrawal, pending, 125.00, 2025-08-08T18:25:00Z), which the API's full record set places in range.\nrationale: The PRD requires that filtering by account and date range yields rows satisfying the filters; the unfiltered API record set includes withdrawal 211 on checking dated 2025-08-08T18:25Z (within the inclusive end date in America/Los_Angeles), yet the app's own filtered request omitted it and the UI shows 7 of 8 rows. The app's filtered backend query returns the wrong set, so this is a backend end-date boundary bug, not a UI or environment issue.\n---\nrows_equal_api_set: expected 8 transaction(s) matching account=00000000-0000-0000-0000-000000000101, start_date=2025-01-03, end_date=2025-08-08 (from the API, dates inclusive in America/Los_Angeles); observed UI shows 7 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000211 (withdrawal, pending, 2025-08-08)",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Select the checking account (value: \"00000000-0000-0000-0000-000000000101\")",
+        "Enter the earliest date as start date (value: \"2025-01-03\")",
+        "Enter the latest date as end date (value: \"2025-08-08\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-005-E1",
+      "status": "failed",
+      "confidence": 0.95,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_satisfy_filters",
+            "args": {
+              "filters": {
+                "start_date": "{{d}}",
+                "end_date": "{{d}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "every displayed row satisfies start_date=2025-09-03, end_date=2025-09-03 (dates inclusive, America/Los_Angeles)",
+          "observed": "all 0 displayed row(s) satisfy the filters",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "start_date": "{{d}}",
+                "end_date": "{{d}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "fail",
+          "expected": "1 transaction(s) matching start_date=2025-09-03, end_date=2025-09-03 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows 0 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000212 (deposit, failed, 2025-09-03)",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.row",
+                "nth": 0
+              }
+            },
+            "severity": "major"
+          },
+          "status": "error",
+          "expected": "element_visible(target={'key': 'transactions.row', 'nth': 0})",
+          "observed": "could not verify: probe failed: ResolveError: could not resolve element 'transactions.row' (test_id=transaction-row)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "triage: confirmed severity=major\nexpected: With start and end date both 2025-09-03, the transaction dated 2025-09-03 (id ...212) must be included, since the start and end dates are inclusive.\nobserved: GET /api/transactions?start_date=2025-09-03&end_date=2025-09-03 returned an empty list and the UI showed 0 rows, although transaction ...212 (deposit, failed, occurred_at 2025-09-03T14:50:00Z) exists.\nrationale: The PRD requires transactions on either boundary date to be included when they match other filters. Transaction ...212 occurred 2025-09-03T14:50:00Z (07:50 Los Angeles, still 2025-09-03) and no other filters were set. The app's own filtered API call (start_date=end_date=2025-09-03) returned an empty list, so the backend wrongly excludes the boundary-date transaction and the UI shows 0 rows.\n---\nrows_equal_api_set: expected 1 transaction(s) matching start_date=2025-09-03, end_date=2025-09-03 (from the API, dates inclusive in America/Los_Angeles); observed UI shows 0 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000212 (deposit, failed, 2025-09-03)",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Enter a date with a known transaction as start date (value: \"2025-09-03\")",
+        "Enter the same date as end date (value: \"2025-09-03\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-005-E2",
+      "status": "failed",
+      "confidence": 0.95,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "start_date": "{{d1}}",
+                "end_date": "{{d2}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "fail",
+          "expected": "12 transaction(s) matching start_date=2025-01-03, end_date=2025-09-03 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows 11 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000212 (deposit, failed, 2025-09-03)",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_satisfy_filters",
+            "args": {
+              "filters": {
+                "start_date": "{{d1}}",
+                "end_date": "{{d2}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "every displayed row satisfies start_date=2025-01-03, end_date=2025-09-03 (dates inclusive, America/Los_Angeles)",
+          "observed": "all 11 displayed row(s) satisfy the filters",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "triage: confirmed severity=major\nexpected: With start and end date both 2025-09-03, the transaction dated 2025-09-03 (id ...212) must be included, since the start and end dates are inclusive.\nobserved: GET /api/transactions?start_date=2025-09-03&end_date=2025-09-03 returned an empty list and the UI showed 0 rows, although transaction ...212 (deposit, failed, occurred_at 2025-09-03T14:50:00Z) exists.\nrationale: The PRD requires transactions on either boundary date to be included when they match other filters. Transaction ...212 occurred 2025-09-03T14:50:00Z (07:50 Los Angeles, still 2025-09-03) and no other filters were set. The app's own filtered API call (start_date=end_date=2025-09-03) returned an empty list, so the backend wrongly excludes the boundary-date transaction and the UI shows 0 rows. (shared triage of SCN-HIS-005-E1)\n---\nrows_equal_api_set: expected 12 transaction(s) matching start_date=2025-01-03, end_date=2025-09-03 (from the API, dates inclusive in America/Los_Angeles); observed UI shows 11 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000212 (deposit, failed, 2025-09-03)",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Enter the earliest record date as start date (value: \"2025-01-03\")",
+        "Enter the latest record date as end date (value: \"2025-09-03\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-004-N1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "start_date": "{{d1}}",
+                "end_date": "{{d2}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "0 transaction(s) matching start_date=2025-09-03, end_date=2025-01-03 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 0 transaction(s)",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "llm_judge",
+            "args": {
+              "question": "Does the page show either a clear empty state or a clear validation message for the reversed date range, without unrelated transactions?",
+              "inputs": [
+                "visible_message",
+                "screenshot"
+              ]
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "LLM judge: Does the page show either a clear empty state or a clear validation message for the reversed date range, without unrelated transactions?",
+          "observed": "LLM judge said pass (confidence 0.95): The page displays a clear validation message stating 'Start date must not be after end date.' This directly addresses the reversed date range scenario without showing unrelated transactions.",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Enter the latest date as start date (value: \"2025-09-03\")",
+        "Enter the earliest date as end date (value: \"2025-01-03\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-006-E1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "empty_state_shown",
+            "args": {},
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "no rows, an empty-state message, and no error alert",
+          "observed": "0 rows; status message 'No transactions match these filters Try a different combination, or clear the f…'",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "row_count_equals",
+            "args": {
+              "n": 0
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "0 row(s) displayed",
+          "observed": "0 row(s) displayed",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "start_date": "{{before}}",
+                "end_date": "{{before2}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "0 transaction(s) matching start_date=2024-12-04, end_date=2024-12-14 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 0 transaction(s)",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Enter a start date well before the earliest record (value: \"2024-12-04\")",
+        "Enter an end date still before the earliest record (value: \"2024-12-14\")",
+        "Click Apply filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-HIS-007-P1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {}
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "12 transaction(s) matching no filters (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 12 transaction(s) (note: 4 row(s) show an amount different from the API)",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "transactions.row",
+                "nth": 0
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'transactions.row' is visible",
+          "observed": "'transactions.row' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Select the savings account in the Account filter (value: \"00000000-0000-0000-0000-000000000102\")",
+        "Select a status in the Status filter (value: \"failed\")",
+        "Click Apply filters",
+        "Click Clear filters"
+      ]
+    },
+    {
+      "scenario_id": "SCN-DSH-001-P1",
+      "status": "passed",
+      "confidence": 0.97,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "dashboard.account_card",
+                "text_contains": "{{chk}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'dashboard.account_card' is visible",
+          "observed": "'dashboard.account_card' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "dashboard.account_card",
+                "text_contains": "{{sav}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'dashboard.account_card' is visible",
+          "observed": "'dashboard.account_card' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "(?i)checking",
+              "target": {
+                "key": "dashboard.account_card",
+                "text_contains": "{{chk}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)checking/",
+          "observed": "dashboard.account_card text: 'Everyday Checking Checking Account number ending •••• 1042 Available balance $4,369.75USD View details →' (matched 'Checking')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "(?i)savings",
+              "target": {
+                "key": "dashboard.account_card",
+                "text_contains": "{{sav}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /(?i)savings/",
+          "observed": "dashboard.account_card text: 'Rainy Day Savings Savings Account number ending •••• 7781 Available balance $8,275.00USD View details →' (matched 'Savings')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "{{chk_mask}}",
+              "target": {
+                "key": "dashboard.account_card",
+                "text_contains": "{{chk}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /••••\\ 1042/",
+          "observed": "dashboard.account_card text: 'Everyday Checking Checking Account number ending •••• 1042 Available balance $4,369.75USD View details →' (matched '•••• 1042')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "{{sav_mask}}",
+              "target": {
+                "key": "dashboard.account_card",
+                "text_contains": "{{sav}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /••••\\ 7781/",
+          "observed": "dashboard.account_card text: 'Rainy Day Savings Savings Account number ending •••• 7781 Available balance $8,275.00USD View details →' (matched '•••• 7781')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "\\$\\d[\\d,]*\\.\\d{2}",
+              "target": {
+                "key": "dashboard.account_card",
+                "nth": 0
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /\\$\\d[\\d,]*\\.\\d{2}/",
+          "observed": "dashboard.account_card text: 'Rainy Day Savings Savings Account number ending •••• 7781 Available balance $8,275.00USD View details →' (matched '$8,275.00')",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard page (value: \"/dashboard\")",
+        "Wait for account cards to load"
+      ]
+    },
+    {
+      "scenario_id": "SCN-DSH-003-P1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "money_format",
+            "args": {
+              "target": {
+                "key": "dashboard.account_balance"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "every displayed amount has 2-decimal currency format (/\\$?-?[\\d,]+\\.\\d{2}(?!\\d)/)",
+          "observed": "all 2 values formatted correctly",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "ui_matches_api",
+            "args": {},
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "UI balances equal the API balances for every account",
+          "observed": "2 account balance(s) match",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard page (value: \"/dashboard\")",
+        "Wait for balances to display"
+      ]
+    },
+    {
+      "scenario_id": "SCN-DSH-004-N1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "masked_identifier",
+            "args": {},
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "account identifiers are masked; no full account id/number is visible",
+          "observed": "none of 2 full identifiers visible",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "text_not_matches",
+            "args": {
+              "pattern": "(?i)password|token|bearer|secret",
+              "target": {
+                "key": "profile.content"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "text does not match /(?i)password|token|bearer|secret/",
+          "observed": "profile.content text: 'PROFILE Your profile Demo customer details Display name Avery Demo Email a***@example.test These are synthetic demo details. DemoBank never stores real identity information.'",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard page (value: \"/dashboard\")",
+        "Open the profile page (value: \"/profile\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-DSH-004-E1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "masked_identifier",
+            "args": {},
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "account identifiers are masked; no full account id/number is visible",
+          "observed": "none of 2 full identifiers visible",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "money_format",
+            "args": {
+              "target": {
+                "key": "account.balance"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "every displayed amount has 2-decimal currency format (/\\$?-?[\\d,]+\\.\\d{2}(?!\\d)/)",
+          "observed": "all 1 values formatted correctly",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the checking account detail page (value: \"/accounts/00000000-0000-0000-0000-000000000101\")",
+        "Wait for balance"
+      ]
+    },
+    {
+      "scenario_id": "SCN-DSH-005-P1",
+      "status": "passed",
+      "confidence": 0.97,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/accounts/"
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "URL path matches //accounts//",
+          "observed": "URL was /accounts/00000000-0000-0000-0000-000000000101",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "account.balance"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'account.balance' is visible",
+          "observed": "'account.balance' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "ui_matches_api",
+            "args": {},
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "UI balances equal the API balances for every account",
+          "observed": "1 account balance(s) match",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "account": "{{chk_id}}"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "8 transaction(s) matching account=00000000-0000-0000-0000-000000000101 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 8 transaction(s) (note: 2 row(s) show an amount different from the API)",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Click the checking account card",
+        "Wait for transaction history"
+      ]
+    },
+    {
+      "scenario_id": "SCN-DSH-005-E1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "{{sav}}",
+              "target": {
+                "key": "account.main"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /Rainy\\ Day\\ Savings/",
+          "observed": "account.main text: 'Dashboard / Rainy Day Savings SAVINGS · •••• 7781 Rainy Day Savings Available balance $8,275.00 USD Transfer from this account Filter full history Transaction history Transaction history for Rainy Day Savings DATE & TIME DESCRIPTION TYPE A…' (matched 'Rainy Day Savings')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "rows_equal_api_set",
+            "args": {
+              "filters": {
+                "account": "{{sav_id}}"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "6 transaction(s) matching account=00000000-0000-0000-0000-000000000102 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows exactly those 6 transaction(s) (note: 2 row(s) show an amount different from the API)",
+          "evidence": [],
+          "layer": "both"
+        },
+        {
+          "oracle": {
+            "type": "ui_matches_api",
+            "args": {},
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "UI balances equal the API balances for every account",
+          "observed": "1 account balance(s) match",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Click the savings account card",
+        "Wait for history"
+      ]
+    },
+    {
+      "scenario_id": "SCN-PRO-001-P1",
+      "status": "passed",
+      "confidence": 0.97,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/profile"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "URL path matches //profile/",
+          "observed": "URL was /profile",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "profile.name"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'profile.name' is visible",
+          "observed": "'profile.name' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "text_matches",
+            "args": {
+              "pattern": "\\*|•|…|\\.\\.\\.",
+              "target": {
+                "key": "profile.email"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text matches /\\*|•|…|\\.\\.\\./",
+          "observed": "profile.email text: 'a***@example.test' (matched '*')",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "api_status",
+            "args": {
+              "method": "GET",
+              "path_glob": "**/api/me",
+              "status": 200
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "GET **/api/me responds with status 200",
+          "observed": "observed status(es): 200",
+          "evidence": [],
+          "layer": "api"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Click Profile in the navigation",
+        "Wait for profile name"
+      ]
+    },
+    {
+      "scenario_id": "SCN-PRO-002-N1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "text_not_matches",
+            "args": {
+              "pattern": "(?i)password|token|jwt|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}",
+              "target": {
+                "key": "profile.content"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "text does not match /(?i)password|token|jwt|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}/",
+          "observed": "profile.content text: 'PROFILE Your profile Demo customer details Display name Avery Demo Email a***@example.test These are synthetic demo details. DemoBank never stores real identity information.'",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "masked_identifier",
+            "args": {},
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "account identifiers are masked; no full account id/number is visible",
+          "observed": "none of 2 full identifiers visible",
+          "evidence": [],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the profile page (value: \"/profile\")",
+        "Fetch the profile API response (value: \"/api/me\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-SCP-002-N1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "text_not_matches",
+            "args": {
+              "pattern": "(?i)sign ?up|register|create account|forgot|reset password|two-factor|multi-factor|verification code|verify your identity",
+              "target": {
+                "key": "landing.main"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "text does not match /(?i)sign ?up|register|create account|forgot|reset password|two-factor|multi-factor|verification code|verify your identity/",
+          "observed": "landing.main text: 'D DemoBank Your accounts, in one simple dashboard. Explore a fictional checking and savings account, review transaction history, and move money between your own accounts. No password needed, and every record is synthetic. Enter Demo DemoBa…'",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "landing.entry"
+              }
+            },
+            "severity": "minor"
+          },
+          "status": "pass",
+          "expected": "'landing.entry' is visible",
+          "observed": "'landing.entry' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: fresh context",
+        "Open the landing page while logged out (value: \"/\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-SCP-003-N1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "text_not_matches",
+            "args": {
+              "pattern": "(?i)bill ?pay|loan|credit card|debit card|budget|invest|deposit funds|add bank|link (a |your )?bank|switch user|joint account|sign ?up|reset password|mfa",
+              "target": {
+                "key": "transfer.main"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text does not match /(?i)bill ?pay|loan|credit card|debit card|budget|invest|deposit funds|add bank|link (a |your )?bank|switch user|joint account|sign ?up|reset password|mfa/",
+          "observed": "transfer.main text: 'MOVE MONEY Transfer between your accounts From account Select an account Everyday Checking (•••• 1042) — $4,369.75 Rainy Day Savings (•••• 7781) — $8,275.00 To account Select an account Everyday Checking (•••• 1042) — $4,369.75 Rainy Day S…'",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "nav.dashboard",
+                "text_contains": "Bill"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'nav.dashboard' is not shown",
+          "observed": "'nav.dashboard' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Open the transfer page (value: \"/transfer\")"
+      ]
+    },
+    {
+      "scenario_id": "SCN-SCP-001-E1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "text_not_matches",
+            "args": {
+              "pattern": "(?i)external bank|connect (a |your )?bank|plaid|paypal|stripe|wire transfer|add money",
+              "target": {
+                "key": "dashboard.main_content"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "text does not match /(?i)external bank|connect (a |your )?bank|plaid|paypal|stripe|wire transfer|add money/",
+          "observed": "dashboard.main_content text: 'DASHBOARD Welcome, Avery Demo Transfer funds View all transactions Your accounts Everyday Checking Checking Account number ending •••• 1042 Available balance $4,369.75USD View details → Rainy Day Savings Savings Account number ending •••• …'",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "api_status",
+            "args": {
+              "method": "GET",
+              "path_glob": "**/api/accounts",
+              "status": 200
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "GET **/api/accounts responds with status 200",
+          "observed": "observed status(es): 200",
+          "evidence": [],
+          "layer": "api"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Wait for cards"
+      ]
+    },
+    {
+      "scenario_id": "SCN-ACC-003-P1",
+      "status": "passed",
+      "confidence": 0.93,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "url_matches",
+            "args": {
+              "pattern": "^/(\\?.*)?$"
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "URL path matches /^/(\\?.*)?$/",
+          "observed": "URL was /",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_visible",
+            "args": {
+              "target": {
+                "key": "landing.entry"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'landing.entry' is visible",
+          "observed": "'landing.entry' is visible (matches: 1)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "header.customer"
+              }
+            },
+            "severity": "major"
+          },
+          "status": "pass",
+          "expected": "'header.customer' is not shown",
+          "observed": "'header.customer' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the dashboard (value: \"/dashboard\")",
+        "Click Log out in the header"
+      ]
+    },
+    {
+      "scenario_id": "SCN-ACC-003-N1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "dashboard.account_card"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'dashboard.account_card' is not shown",
+          "observed": "'dashboard.account_card' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "header.customer"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'header.customer' is not shown",
+          "observed": "'header.customer' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: fresh context",
+        "Open the landing page (value: \"/\")",
+        "Click Enter Demo",
+        "Click Log out",
+        "Press the browser Back button"
+      ]
+    },
+    {
+      "scenario_id": "SCN-ACC-006-N1",
+      "status": "passed",
+      "confidence": 0.89,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "transactions.transaction_table"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'transactions.transaction_table' is not shown",
+          "observed": "'transactions.transaction_table' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        },
+        {
+          "oracle": {
+            "type": "element_absent",
+            "args": {
+              "target": {
+                "key": "header.customer"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "pass",
+          "expected": "'header.customer' is not shown",
+          "observed": "'header.customer' is not visible (matches: 0)",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": "all oracles passed",
+      "repro_steps": [
+        "Precondition: fresh context",
+        "Open the landing page (value: \"/\")",
+        "Click Enter Demo",
+        "Click Log out",
+        "Navigate to the protected /transactions route",
+        "Refresh the page"
+      ]
+    }
+  ],
+  "defects": [
+    {
+      "id": "DEF-001",
+      "title": "History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+      "severity": "major",
+      "priority": "P1",
+      "area": "history",
+      "requirement_ids": [
+        "REQ-HIS-004"
+      ],
+      "requirement_quote": "The user can filter history by account, transaction type, status, and date range. When filters are applied, every displayed row must satisfy all selected filters.",
+      "statement": "History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+      "reason": "SCN-HIS-004-E1 (edge) failed: rows_equal_api_set",
+      "expected": "With account=checking and date range 2025-01-03 to 2025-08-08 (inclusive), all matching transactions are shown, including pending withdrawal 211 dated 2025-08-08.",
+      "observed": "Filtered results showed 7 rows and omitted transaction ...0211 (withdrawal, pending, 125.00, 2025-08-08T18:25:00Z), which the API's full record set places in range.",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Select the checking account (value: \"00000000-0000-0000-0000-000000000101\")",
+        "Enter the earliest date as start date (value: \"2025-01-03\")",
+        "Enter the latest date as end date (value: \"2025-08-08\")",
+        "Click Apply filters"
+      ],
+      "evidence": [],
+      "scenario_ids": [
+        "SCN-HIS-004-P1",
+        "SCN-HIS-004-P2",
+        "SCN-HIS-004-P3",
+        "SCN-HIS-004-E1",
+        "SCN-HIS-004-N1",
+        "SCN-HIS-007-P1"
+      ],
+      "failing_oracles": [
+        {
+          "scenario_id": "SCN-HIS-004-E1",
+          "type": "rows_equal_api_set",
+          "severity": "major",
+          "expected": "8 transaction(s) matching account=00000000-0000-0000-0000-000000000101, start_date=2025-01-03, end_date=2025-08-08 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows 7 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000211 (withdrawal, pending, 2025-08-08)",
+          "layer": "both"
+        }
+      ],
+      "confidence": 0.95,
+      "flaky": false,
+      "related": []
+    },
+    {
+      "id": "DEF-002",
+      "title": "Start and end dates are inclusive: transactions on either boundary date that match other filters are included.",
+      "severity": "major",
+      "priority": "P1",
+      "area": "history",
+      "requirement_ids": [
+        "REQ-HIS-005"
+      ],
+      "requirement_quote": "The start and end dates are inclusive. A transaction occurring on either boundary date must be included when it matches the other filters.",
+      "statement": "Start and end dates are inclusive: transactions on either boundary date that match other filters are included.",
+      "reason": "SCN-HIS-005-E1 (edge) failed: rows_equal_api_set; SCN-HIS-005-E2 (edge) failed: rows_equal_api_set",
+      "expected": "[SCN-HIS-005-E1] With start and end date both 2025-09-03, the transaction dated 2025-09-03 (id ...212) must be included, since the start and end dates are inclusive. | [SCN-HIS-005-E2] With start and end date both 2025-09-03, the transaction dated 2025-09-03 (id ...212) must be included, since the start and end dates are inclusive.",
+      "observed": "[SCN-HIS-005-E1] GET /api/transactions?start_date=2025-09-03&end_date=2025-09-03 returned an empty list and the UI showed 0 rows, although transaction ...212 (deposit, failed, occurred_at 2025-09-03T14:50:00Z) exists. | [SCN-HIS-005-E2] GET /api/transactions?start_date=2025-09-03&end_date=2025-09-03 returned an empty list and the UI showed 0 rows, although transaction ...212 (deposit, failed, occurred_at 2025-09-03T14:50:00Z) exists.",
+      "repro_steps": [
+        "Precondition: logged in",
+        "Open the Transactions page (value: \"/transactions\")",
+        "Enter a date with a known transaction as start date (value: \"2025-09-03\")",
+        "Enter the same date as end date (value: \"2025-09-03\")",
+        "Click Apply filters"
+      ],
+      "evidence": [],
+      "scenario_ids": [
+        "SCN-HIS-005-E1",
+        "SCN-HIS-005-E2",
+        "SCN-HIS-004-N1"
+      ],
+      "failing_oracles": [
+        {
+          "scenario_id": "SCN-HIS-005-E1",
+          "type": "rows_equal_api_set",
+          "severity": "major",
+          "expected": "1 transaction(s) matching start_date=2025-09-03, end_date=2025-09-03 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows 0 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000212 (deposit, failed, 2025-09-03)",
+          "layer": "both"
+        },
+        {
+          "scenario_id": "SCN-HIS-005-E2",
+          "type": "rows_equal_api_set",
+          "severity": "major",
+          "expected": "12 transaction(s) matching start_date=2025-01-03, end_date=2025-09-03 (from the API, dates inclusive in America/Los_Angeles)",
+          "observed": "UI shows 11 row(s); missing 1 expected: 00000000-0000-0000-0000-000000000212 (deposit, failed, 2025-09-03)",
+          "layer": "both"
+        }
+      ],
+      "confidence": 0.95,
+      "flaky": false,
+      "related": []
+    }
+  ],
+  "state_ledger": [],
+  "compensations": [],
+  "cost": {
+    "calls": [
+      {
+        "agent": "spec_analyst",
+        "model": "claude-sonnet-5-5",
+        "purpose": "extract",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "explorer",
+        "model": "claude-haiku-4-5",
+        "purpose": "label:/",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "explorer",
+        "model": "claude-haiku-4-5",
+        "purpose": "label:/dashboard",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "explorer",
+        "model": "claude-haiku-4-5",
+        "purpose": "label:/transactions",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "explorer",
+        "model": "claude-haiku-4-5",
+        "purpose": "label:/transfer",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "explorer",
+        "model": "claude-haiku-4-5",
+        "purpose": "label:/profile",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "explorer",
+        "model": "claude-haiku-4-5",
+        "purpose": "label:/accounts/{id}",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "test_planner",
+        "model": "claude-sonnet-5-5",
+        "purpose": "plan:seed+ui",
+        "input_tokens": 166,
+        "output_tokens": 4547,
+        "cache_read": 0,
+        "cache_write": 16105,
+        "usd": 0.0860645,
+        "cached_artifact_hit": false,
+        "latency_ms": 22665
+      },
+      {
+        "agent": "test_planner",
+        "model": "claude-sonnet-5-5",
+        "purpose": "plan:dashboard+profile+scope",
+        "input_tokens": 234,
+        "output_tokens": 3623,
+        "cache_read": 16105,
+        "cache_write": 0,
+        "usd": 0.039919,
+        "cached_artifact_hit": false,
+        "latency_ms": 18624
+      },
+      {
+        "agent": "test_planner",
+        "model": "claude-sonnet-5-5",
+        "purpose": "plan:access+history",
+        "input_tokens": 217,
+        "output_tokens": 7293,
+        "cache_read": 16105,
+        "cache_write": 0,
+        "usd": 0.076585,
+        "cached_artifact_hit": false,
+        "latency_ms": 36135
+      },
+      {
+        "agent": "test_planner",
+        "model": "claude-sonnet-5-5",
+        "purpose": "plan:transfers",
+        "input_tokens": 226,
+        "output_tokens": 7697,
+        "cache_read": 16105,
+        "cache_write": 0,
+        "usd": 0.080643,
+        "cached_artifact_hit": false,
+        "latency_ms": 47422
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 1201,
+        "output_tokens": 30,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001351,
+        "cached_artifact_hit": false,
+        "latency_ms": 1722
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 1205,
+        "output_tokens": 58,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001495,
+        "cached_artifact_hit": false,
+        "latency_ms": 997
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 1205,
+        "output_tokens": 56,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001485,
+        "cached_artifact_hit": false,
+        "latency_ms": 1552
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 1205,
+        "output_tokens": 56,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001485,
+        "cached_artifact_hit": false,
+        "latency_ms": 1571
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 1282,
+        "output_tokens": 30,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001432,
+        "cached_artifact_hit": false,
+        "latency_ms": 1305
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 846,
+        "output_tokens": 30,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.000996,
+        "cached_artifact_hit": false,
+        "latency_ms": 1380
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 843,
+        "output_tokens": 58,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001133,
+        "cached_artifact_hit": false,
+        "latency_ms": 1098
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 813,
+        "output_tokens": 30,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.000963,
+        "cached_artifact_hit": false,
+        "latency_ms": 756
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "executor_heal",
+        "model": "claude-haiku-4-5",
+        "purpose": "heal",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "verifier",
+        "model": "claude-haiku-4-5",
+        "purpose": "judge",
+        "input_tokens": 749,
+        "output_tokens": 55,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001024,
+        "cached_artifact_hit": false,
+        "latency_ms": 1581
+      },
+      {
+        "agent": "verifier",
+        "model": "claude-haiku-4-5",
+        "purpose": "judge",
+        "input_tokens": 1395,
+        "output_tokens": 118,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001985,
+        "cached_artifact_hit": false,
+        "latency_ms": 2345
+      },
+      {
+        "agent": "verifier",
+        "model": "claude-sonnet-5-5",
+        "purpose": "triage",
+        "input_tokens": 2737,
+        "output_tokens": 269,
+        "cache_read": 1582,
+        "cache_write": 0,
+        "usd": 0.008480399999999999,
+        "cached_artifact_hit": false,
+        "latency_ms": 2618
+      },
+      {
+        "agent": "verifier",
+        "model": "claude-sonnet-5-5",
+        "purpose": "triage",
+        "input_tokens": 2350,
+        "output_tokens": 341,
+        "cache_read": 1582,
+        "cache_write": 0,
+        "usd": 0.008426399999999999,
+        "cached_artifact_hit": false,
+        "latency_ms": 3142
+      },
+      {
+        "agent": "verifier",
+        "model": "claude-sonnet-5-5",
+        "purpose": "triage",
+        "input_tokens": 1895,
+        "output_tokens": 341,
+        "cache_read": 1582,
+        "cache_write": 0,
+        "usd": 0.0075163999999999995,
+        "cached_artifact_hit": false,
+        "latency_ms": 3142
+      },
+      {
+        "agent": "reporter",
+        "model": "claude-haiku-4-5",
+        "purpose": "executive_summary",
+        "input_tokens": 615,
+        "output_tokens": 112,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.001175,
+        "cached_artifact_hit": false,
+        "latency_ms": 1958
+      }
+    ],
+    "by_agent": {
+      "spec_analyst": {
+        "calls": 1.0,
+        "input_tokens": 0.0,
+        "output_tokens": 0.0,
+        "cache_read": 0.0,
+        "cache_write": 0.0,
+        "usd": 0.0,
+        "artifact_cache_hits": 1.0,
+        "cold_usd": 0.0,
+        "cold_unknown_hits": 1.0
+      },
+      "explorer": {
+        "calls": 6.0,
+        "input_tokens": 0.0,
+        "output_tokens": 0.0,
+        "cache_read": 0.0,
+        "cache_write": 0.0,
+        "usd": 0.0,
+        "artifact_cache_hits": 6.0,
+        "cold_usd": 0.0,
+        "cold_unknown_hits": 6.0
+      },
+      "test_planner": {
+        "calls": 4.0,
+        "input_tokens": 843.0,
+        "output_tokens": 23160.0,
+        "cache_read": 48315.0,
+        "cache_write": 16105.0,
+        "usd": 0.2832115,
+        "artifact_cache_hits": 0.0,
+        "cold_usd": 0.2832115,
+        "cold_unknown_hits": 0.0
+      },
+      "executor_heal": {
+        "calls": 20.0,
+        "input_tokens": 8600.0,
+        "output_tokens": 348.0,
+        "cache_read": 0.0,
+        "cache_write": 0.0,
+        "usd": 0.01034,
+        "artifact_cache_hits": 12.0,
+        "cold_usd": 0.014815,
+        "cold_unknown_hits": 9.0
+      },
+      "verifier": {
+        "calls": 5.0,
+        "input_tokens": 9126.0,
+        "output_tokens": 1124.0,
+        "cache_read": 4746.0,
+        "cache_write": 0.0,
+        "usd": 0.027432199999999997,
+        "artifact_cache_hits": 0.0,
+        "cold_usd": 0.027432199999999997,
+        "cold_unknown_hits": 0.0
+      },
+      "reporter": {
+        "calls": 1.0,
+        "input_tokens": 615.0,
+        "output_tokens": 112.0,
+        "cache_read": 0.0,
+        "cache_write": 0.0,
+        "usd": 0.001175,
+        "artifact_cache_hits": 0.0,
+        "cold_usd": 0.001175,
+        "cold_unknown_hits": 0.0
+      }
+    },
+    "by_model": {
+      "claude-sonnet-5-5": {
+        "calls": 8.0,
+        "input_tokens": 7825.0,
+        "output_tokens": 24111.0,
+        "cache_read": 53061.0,
+        "cache_write": 16105.0,
+        "usd": 0.3076347,
+        "artifact_cache_hits": 1.0,
+        "cold_usd": 0.3076347,
+        "cold_unknown_hits": 1.0
+      },
+      "claude-haiku-4-5": {
+        "calls": 29.0,
+        "input_tokens": 11359.0,
+        "output_tokens": 633.0,
+        "cache_read": 0.0,
+        "cache_write": 0.0,
+        "usd": 0.014524,
+        "artifact_cache_hits": 18.0,
+        "cold_usd": 0.018999,
+        "cold_unknown_hits": 15.0
+      }
+    },
+    "total_usd": 0.322159,
+    "budget_usd": 1.0,
+    "degraded": false
+  },
+  "environment": {
+    "target_url": "http://localhost:5173",
+    "api_base": "http://localhost:8000",
+    "timezone": "America/Los_Angeles",
+    "models": {
+      "reasoning": "claude-sonnet-5-5",
+      "fast": "claude-haiku-4-5"
+    },
+    "python": "3.13.9",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "read_only": true,
+    "chaos": null,
+    "parallel": 3,
+    "scenario_timeout_s": 90.0,
+    "resilience": {
+      "recoveries": [
+        {
+          "after": "SCN-HIS-004-N1",
+          "observations": [
+            "page left in an error state (\"We couldn't load transactions\\n\\nStart date must not be after end date.\\n\\nTry again\")",
+            "recovery: error state (\"We couldn't load transactions\\n\\nStart date must not be after end date.\\n\\nTry again\\nBack to dashboard\"); clicked retry once",
+            "error state persisted; opened a new browser context"
+          ]
+        }
+      ],
+      "parallel_contexts": 3,
+      "parallel_scenarios": 34
+    }
+  },
+  "limitations": [
+    "--read-only: 19 data-changing scenarios were not run; their requirements are reported as unverified.",
+    "The agent repaired the browser state 1 time(s) between scenarios (see environment.resilience)."
+  ]
+}

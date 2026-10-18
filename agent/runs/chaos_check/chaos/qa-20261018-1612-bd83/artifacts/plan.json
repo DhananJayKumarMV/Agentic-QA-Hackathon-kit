@@ -1,0 +1,5853 @@
+{
+  "requirement_set_sha": "c7f8ad72d06b4b4b1422a6910f780bab6fe94665b47243bcd66187427f01055b",
+  "sitemap_sha": "21188d6c12292d81aba5ce0694a6af811020478b547f05c2d547a47fe73bcca1",
+  "scenarios": [
+    {
+      "id": "SCN-GUI-001-P1",
+      "requirement_ids": [
+        "REQ-GUI-001"
+      ],
+      "polarity": "positive",
+      "title": "Key screens usable at 1280x800",
+      "rationale": "Positive check of REQ-GUI-001: The app works in a current desktop browser at 1280x800 and remains usable at narrower widths.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "set_viewport",
+          "target": null,
+          "value": "1280x800",
+          "note": "Set the browser viewport to 1280x800"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the transfer page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_horizontal_overflow",
+          "args": {
+            "widths": [
+              1280
+            ]
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.submit"
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "nav.transactions"
+            }
+          },
+          "severity": "minor"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-001-E1",
+      "requirement_ids": [
+        "REQ-GUI-001"
+      ],
+      "polarity": "edge",
+      "title": "Narrow widths 768 and 375 stay usable",
+      "rationale": "Edge check of REQ-GUI-001: The app works in a current desktop browser at 1280x800 and remains usable at narrower widths.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "set_viewport",
+          "target": null,
+          "value": "768x800",
+          "note": "Set the viewport to 768x800"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the transactions page"
+        },
+        {
+          "action": "set_viewport",
+          "target": null,
+          "value": "375x800",
+          "note": "Set the viewport to 375x800"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the transfer page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_horizontal_overflow",
+          "args": {
+            "widths": [
+              768,
+              375
+            ]
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.submit"
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.amount"
+            }
+          },
+          "severity": "minor"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-002-P1",
+      "requirement_ids": [
+        "REQ-GUI-002"
+      ],
+      "polarity": "positive",
+      "title": "Transfer controls have labels and validation feedback",
+      "rationale": "Positive check of REQ-GUI-002: Interactive controls have readable labels and communicate loading, success, validation and failure states.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the same account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.alert"
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "minor"
+        },
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "minor"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "Amount|From account|To account",
+            "target": {
+              "key": "transfer.main"
+            }
+          },
+          "severity": "minor"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-003-E1",
+      "requirement_ids": [
+        "REQ-GUI-003"
+      ],
+      "polarity": "edge",
+      "title": "Double submit prevented or loading shown",
+      "rationale": "Edge check of REQ-GUI-003: A submitted action does not silently disappear: the UI shows a loading state or prevents duplicate submission while waiting.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "not=src",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select checking as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select savings as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{run_tag}}",
+          "note": "Enter the run tag as memo"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Double-click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "button_disabled_during",
+          "args": {
+            "target": {
+              "key": "transfer.submit"
+            },
+            "request_glob": "**/api/transactions*",
+            "delay_ms": 1500
+          },
+          "severity": "major"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "major"
+        },
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{unique_amount}}",
+              "dst": "{{unique_amount}}"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{unique_amount}}",
+        "dst": "{{unique_amount}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-004-P1",
+      "requirement_ids": [
+        "REQ-GUI-004"
+      ],
+      "polarity": "positive",
+      "title": "Navigation links lead to labeled destinations",
+      "rationale": "Positive check of REQ-GUI-004: Navigation links and buttons lead to the labeled destination or perform the labeled action.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "nav.transactions",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transactions in navigation"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/transactions"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.heading"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-004-P2",
+      "requirement_ids": [
+        "REQ-GUI-004"
+      ],
+      "polarity": "positive",
+      "title": "Transfer and Profile links reach destinations",
+      "rationale": "Positive check of REQ-GUI-004: Navigation links and buttons lead to the labeled destination or perform the labeled action.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "nav.transfer",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer in navigation"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "nav.profile",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Profile in navigation"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/profile"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "profile.title"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-004-P3",
+      "requirement_ids": [
+        "REQ-GUI-004"
+      ],
+      "polarity": "positive",
+      "title": "Dashboard quick links lead to labeled pages",
+      "rationale": "Positive check of REQ-GUI-004: Navigation links and buttons lead to the labeled destination or perform the labeled action.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "dashboard.transfer_funds",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds link"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/transfer"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.heading"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-005-N1",
+      "requirement_ids": [
+        "REQ-GUI-005"
+      ],
+      "polarity": "negative",
+      "title": "Retry possible after validation error",
+      "rationale": "Negative check of REQ-GUI-005: After a recoverable error the user can retry or return to the dashboard.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "not=src",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select checking as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select savings as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "0",
+          "note": "Enter 0 in the Amount field"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Replace the amount with the unique amount"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds again"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{unique_amount}}",
+              "dst": "{{unique_amount}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{unique_amount}}",
+        "dst": "{{unique_amount}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-005-E1",
+      "requirement_ids": [
+        "REQ-GUI-005"
+      ],
+      "polarity": "edge",
+      "title": "Dashboard reachable after error",
+      "rationale": "Edge check of REQ-GUI-005: After a recoverable error the user can retry or return to the dashboard.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select checking as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select same account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "nav.dashboard",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Dashboard in navigation"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/dashboard"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "major"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "major"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-SED-001-P1",
+      "requirement_ids": [
+        "REQ-SED-001"
+      ],
+      "polarity": "positive",
+      "title": "Dashboard lists one checking and one savings account",
+      "rationale": "Positive check of REQ-SED-001: The demo begins with one customer, one checking account and one savings account.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "api_get",
+          "target": null,
+          "value": "/api/accounts",
+          "note": "Fetch accounts from the API"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "Checking",
+            "target": {
+              "key": "dashboard.main_content"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "Savings",
+            "target": {
+              "key": "dashboard.main_content"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "api_status",
+          "args": {
+            "method": "GET",
+            "path_glob": "**/api/accounts",
+            "status": 200
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "dashboard.account_card",
+              "nth": 1
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "dashboard.account_card",
+              "nth": 2
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-SED-002-P1",
+      "requirement_ids": [
+        "REQ-SED-002"
+      ],
+      "polarity": "positive",
+      "title": "History spans varied types, statuses, dates",
+      "rationale": "Positive check of REQ-SED-002: Seed data includes enough historical transactions across multiple dates to exercise account, type, status and date filters.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the transactions page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {}
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.row",
+              "nth": 5
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "(?i)completed",
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "(?i)pending|failed",
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "(?i)deposit",
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "(?i)withdrawal",
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-SED-002-E1",
+      "requirement_ids": [
+        "REQ-SED-002"
+      ],
+      "polarity": "edge",
+      "title": "Each status filter returns seeded rows",
+      "rationale": "Edge check of REQ-SED-002: Seed data includes enough historical transactions across multiple dates to exercise account, type, status and date filters.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "st",
+          "source": "literal",
+          "query": {
+            "value": "pending"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the transactions page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transactions.filter_status",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{st}}",
+          "note": "Select Pending status"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_satisfy_filters",
+          "args": {
+            "filters": {
+              "status": "{{st}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "status": "{{st}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.row",
+              "nth": 0
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-SED-003-P1",
+      "requirement_ids": [
+        "REQ-SED-003"
+      ],
+      "polarity": "positive",
+      "title": "Seed transfer between checking and savings exists",
+      "rationale": "Positive check of REQ-SED-003: Seed data includes at least one transfer between the checking and savings accounts.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "ty",
+          "source": "literal",
+          "query": {
+            "value": "transfer"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the transactions page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transactions.filter_type",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{ty}}",
+          "note": "Select Transfer type"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_satisfy_filters",
+          "args": {
+            "filters": {
+              "type": "{{ty}}"
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "type": "{{ty}}"
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.row",
+              "nth": 0
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "Checking|1042",
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "Savings|7781",
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "minor"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-ACC-001-P1",
+      "requirement_ids": [
+        "REQ-ACC-001"
+      ],
+      "polarity": "positive",
+      "title": "Enter Demo opens dashboard without credentials",
+      "rationale": "Positive check of REQ-ACC-001: The landing page shows a clearly labeled Enter Demo action that opens the demo dashboard without requiring a password or real identity information.",
+      "preconditions": [
+        "fresh_context"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/",
+          "note": "Open the landing page"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "landing.entry",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click the Enter Demo button"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "landing.entry"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/dashboard"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "dashboard.page_heading"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "api_status",
+          "args": {
+            "method": "POST",
+            "path_glob": "**/api/demo/session",
+            "status": 201
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-ACC-002-P1",
+      "requirement_ids": [
+        "REQ-ACC-002"
+      ],
+      "polarity": "positive",
+      "title": "Header shows customer and Log out",
+      "rationale": "Positive check of REQ-ACC-002: The header identifies the active demo customer and provides a Log out action.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "header.customer"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "header.logout"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "target": {
+              "key": "header.customer"
+            },
+            "pattern": "\\S+"
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-ACC-003-P1",
+      "requirement_ids": [
+        "REQ-ACC-003"
+      ],
+      "polarity": "positive",
+      "title": "Logout returns to landing page",
+      "rationale": "Positive check of REQ-ACC-003: Logging out returns the user to the landing page.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "logout",
+          "target": {
+            "key": "header.logout",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Log out in the header"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "^/(\\?.*)?$"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "landing.entry"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "header.customer"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "session_destructive",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-ACC-003-N1",
+      "requirement_ids": [
+        "REQ-ACC-003",
+        "REQ-ACC-004"
+      ],
+      "polarity": "negative",
+      "title": "Back after logout does not regain access",
+      "rationale": "Negative check of REQ-ACC-003, REQ-ACC-004: Logging out returns the user to the landing page.",
+      "preconditions": [
+        "fresh_context"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/",
+          "note": "Open the landing page"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "landing.entry",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Enter Demo"
+        },
+        {
+          "action": "logout",
+          "target": {
+            "key": "header.logout",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Log out"
+        },
+        {
+          "action": "back",
+          "target": null,
+          "value": null,
+          "note": "Press the browser Back button"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "dashboard.account_card"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "header.customer"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "session_destructive",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-ACC-004-N1",
+      "requirement_ids": [
+        "REQ-ACC-004"
+      ],
+      "polarity": "negative",
+      "title": "Protected routes blocked when logged out",
+      "rationale": "Negative check of REQ-ACC-004: After logout, direct navigation to protected dashboard views returns the user to the landing page or an access-required state and does not show protected con...",
+      "preconditions": [
+        "fresh_context"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Navigate directly to /dashboard while logged out"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Navigate directly to /transactions while logged out"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Navigate directly to /transfer while logged out"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/profile",
+          "note": "Navigate directly to /profile while logged out"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "profile.email"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "header.customer"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "transfer.amount"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-ACC-004-N2",
+      "requirement_ids": [
+        "REQ-ACC-004"
+      ],
+      "polarity": "negative",
+      "title": "Account detail and API refused without session",
+      "rationale": "Negative check of REQ-ACC-004: After logout, direct navigation to protected dashboard views returns the user to the landing page or an access-required state and does not show protected con...",
+      "preconditions": [
+        "fresh_context"
+      ],
+      "params": [
+        {
+          "name": "acct",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/accounts/{{acct}}",
+          "note": "Navigate directly to the checking account detail URL while logged out"
+        },
+        {
+          "action": "api_get",
+          "target": null,
+          "value": "/api/accounts",
+          "note": "Request the accounts API without a session"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "account.balance"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "api_status",
+          "args": {
+            "method": "GET",
+            "path_glob": "**/api/accounts",
+            "status_in": [
+              401,
+              403
+            ]
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-ACC-005-P1",
+      "requirement_ids": [
+        "REQ-ACC-005"
+      ],
+      "polarity": "positive",
+      "title": "Refresh preserves session on dashboard and detail",
+      "rationale": "Positive check of REQ-ACC-005: Refreshing a page during a valid demo session preserves the session.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "acct",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "reload",
+          "target": null,
+          "value": null,
+          "note": "Refresh the page"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/accounts/{{acct}}",
+          "note": "Open the checking account detail page"
+        },
+        {
+          "action": "reload",
+          "target": null,
+          "value": null,
+          "note": "Refresh the page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "header.customer"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "account.balance"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/accounts/"
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-ACC-006-N1",
+      "requirement_ids": [
+        "REQ-ACC-006"
+      ],
+      "polarity": "negative",
+      "title": "Refresh after logout does not regain access",
+      "rationale": "Negative check of REQ-ACC-006: A logged-out user does not regain access to a protected page by refreshing it.",
+      "preconditions": [
+        "fresh_context"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/",
+          "note": "Open the landing page"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "landing.entry",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Enter Demo"
+        },
+        {
+          "action": "logout",
+          "target": {
+            "key": "header.logout",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Log out"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Navigate to the protected /transactions route"
+        },
+        {
+          "action": "reload",
+          "target": null,
+          "value": null,
+          "note": "Refresh the page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "header.customer"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "session_destructive",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-001-P1",
+      "requirement_ids": [
+        "REQ-HIS-001",
+        "REQ-HIS-002"
+      ],
+      "polarity": "positive",
+      "title": "Combined history shows rows with all fields",
+      "rationale": "Positive check of REQ-HIS-001, REQ-HIS-002: The user can view a combined transaction history and an account-specific history.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.row",
+              "nth": 0
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {}
+          },
+          "severity": "major"
+        },
+        {
+          "type": "money_format",
+          "args": {
+            "target": {
+              "key": "transactions.row"
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "target": {
+              "key": "transactions.transaction_table"
+            },
+            "pattern": "(?i)date"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "target": {
+              "key": "transactions.transaction_table"
+            },
+            "pattern": "(?i)(completed|pending|failed)"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "target": {
+              "key": "transactions.transaction_table"
+            },
+            "pattern": "(?i)(deposit|withdrawal|transfer)"
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-001-P2",
+      "requirement_ids": [
+        "REQ-HIS-001"
+      ],
+      "polarity": "positive",
+      "title": "Account-specific history shows only that account",
+      "rationale": "Positive check of REQ-HIS-001: The user can view a combined transaction history and an account-specific history.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "acct",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/accounts/{{acct}}",
+          "note": "Open the savings account detail page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "account.transaction_table"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "account.row",
+              "nth": 0
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "api_status",
+          "args": {
+            "method": "GET",
+            "path_glob": "**/api/transactions*",
+            "status": 200
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-001-P3",
+      "requirement_ids": [
+        "REQ-HIS-001"
+      ],
+      "polarity": "positive",
+      "title": "Full history link from account detail",
+      "rationale": "Positive check of REQ-HIS-001: The user can view a combined transaction history and an account-specific history.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "acct",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/accounts/{{acct}}",
+          "note": "Open the checking account detail page"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "account.view_full_history",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click the Filter full history link"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/transactions"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.transaction_table"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-003-P1",
+      "requirement_ids": [
+        "REQ-HIS-003"
+      ],
+      "polarity": "positive",
+      "title": "Amount direction is clear per type",
+      "rationale": "Positive check of REQ-HIS-003: Amount direction is clear for deposits, withdrawals and transfers.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "llm_judge",
+          "args": {
+            "question": "Is the direction of each amount (money in vs money out) clear via sign, color or label for deposits, withdrawals and transfers?",
+            "inputs": [
+              "visible_message",
+              "screenshot"
+            ]
+          },
+          "severity": "minor"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-004-P1",
+      "requirement_ids": [
+        "REQ-HIS-004"
+      ],
+      "polarity": "positive",
+      "title": "Account filter alone",
+      "rationale": "Positive check of REQ-HIS-004: History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "acct",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transactions.filter_account",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{acct}}",
+          "note": "Select the checking account in the Account filter"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_satisfy_filters",
+          "args": {
+            "filters": {
+              "account": "{{acct}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "account": "{{acct}}"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-004-P2",
+      "requirement_ids": [
+        "REQ-HIS-004"
+      ],
+      "polarity": "positive",
+      "title": "Type filter alone",
+      "rationale": "Positive check of REQ-HIS-004: History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "t",
+          "source": "transaction",
+          "query": {
+            "pick": "any",
+            "where": {
+              "type": "transfer"
+            },
+            "field": "type"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transactions.filter_type",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{t}}",
+          "note": "Select Transfer in the Type filter"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_satisfy_filters",
+          "args": {
+            "filters": {
+              "type": "{{t}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "type": "{{t}}"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-004-P3",
+      "requirement_ids": [
+        "REQ-HIS-004"
+      ],
+      "polarity": "positive",
+      "title": "Status filter alone",
+      "rationale": "Positive check of REQ-HIS-004: History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "s",
+          "source": "transaction",
+          "query": {
+            "pick": "any",
+            "where": {
+              "status": "pending"
+            },
+            "field": "status"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transactions.filter_status",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{s}}",
+          "note": "Select Pending in the Status filter"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_satisfy_filters",
+          "args": {
+            "filters": {
+              "status": "{{s}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "status": "{{s}}"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-004-E1",
+      "requirement_ids": [
+        "REQ-HIS-004"
+      ],
+      "polarity": "edge",
+      "title": "Combined account, type, status and date filters",
+      "rationale": "Edge check of REQ-HIS-004: History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "acct",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "t",
+          "source": "transaction",
+          "query": {
+            "pick": "any",
+            "where": {
+              "account": "acct"
+            },
+            "field": "type"
+          }
+        },
+        {
+          "name": "s",
+          "source": "transaction",
+          "query": {
+            "pick": "any",
+            "where": {
+              "account": "acct",
+              "type": "deposit"
+            },
+            "field": "status"
+          }
+        },
+        {
+          "name": "d",
+          "source": "transaction",
+          "query": {
+            "pick": "earliest",
+            "where": {
+              "account": "acct"
+            },
+            "field": "local_date"
+          }
+        },
+        {
+          "name": "d2",
+          "source": "transaction",
+          "query": {
+            "pick": "latest",
+            "where": {
+              "account": "acct"
+            },
+            "field": "local_date"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transactions.filter_account",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{acct}}",
+          "note": "Select the checking account"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_start_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{d}}",
+          "note": "Enter the earliest date as start date"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_end_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{d2}}",
+          "note": "Enter the latest date as end date"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_satisfy_filters",
+          "args": {
+            "filters": {
+              "account": "{{acct}}",
+              "start_date": "{{d}}",
+              "end_date": "{{d2}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "account": "{{acct}}",
+              "start_date": "{{d}}",
+              "end_date": "{{d2}}"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-005-E1",
+      "requirement_ids": [
+        "REQ-HIS-005"
+      ],
+      "polarity": "edge",
+      "title": "Single boundary date inclusive",
+      "rationale": "Edge check of REQ-HIS-005: Start and end dates are inclusive: transactions on either boundary date that match other filters are included.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "d",
+          "source": "transaction",
+          "query": {
+            "pick": "any",
+            "where": {},
+            "field": "local_date"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_start_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{d}}",
+          "note": "Enter a date with a known transaction as start date"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_end_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{d}}",
+          "note": "Enter the same date as end date"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_satisfy_filters",
+          "args": {
+            "filters": {
+              "start_date": "{{d}}",
+              "end_date": "{{d}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "start_date": "{{d}}",
+              "end_date": "{{d}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.row",
+              "nth": 0
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-005-E2",
+      "requirement_ids": [
+        "REQ-HIS-005"
+      ],
+      "polarity": "edge",
+      "title": "Earliest and latest dates as range bounds",
+      "rationale": "Edge check of REQ-HIS-005: Start and end dates are inclusive: transactions on either boundary date that match other filters are included.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "d1",
+          "source": "transaction",
+          "query": {
+            "pick": "earliest",
+            "where": {},
+            "field": "local_date"
+          }
+        },
+        {
+          "name": "d2",
+          "source": "transaction",
+          "query": {
+            "pick": "latest",
+            "where": {},
+            "field": "local_date"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_start_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{d1}}",
+          "note": "Enter the earliest record date as start date"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_end_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{d2}}",
+          "note": "Enter the latest record date as end date"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "start_date": "{{d1}}",
+              "end_date": "{{d2}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_satisfy_filters",
+          "args": {
+            "filters": {
+              "start_date": "{{d1}}",
+              "end_date": "{{d2}}"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-004-N1",
+      "requirement_ids": [
+        "REQ-HIS-004",
+        "REQ-HIS-005"
+      ],
+      "polarity": "negative",
+      "title": "Start date after end date",
+      "rationale": "Negative check of REQ-HIS-004, REQ-HIS-005: History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "d1",
+          "source": "transaction",
+          "query": {
+            "pick": "latest",
+            "where": {},
+            "field": "local_date"
+          }
+        },
+        {
+          "name": "d2",
+          "source": "transaction",
+          "query": {
+            "pick": "earliest",
+            "where": {},
+            "field": "local_date"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_start_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{d1}}",
+          "note": "Enter the latest date as start date"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_end_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{d2}}",
+          "note": "Enter the earliest date as end date"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "start_date": "{{d1}}",
+              "end_date": "{{d2}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "llm_judge",
+          "args": {
+            "question": "Does the page show either a clear empty state or a clear validation message for the reversed date range, without unrelated transactions?",
+            "inputs": [
+              "visible_message",
+              "screenshot"
+            ]
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-006-E1",
+      "requirement_ids": [
+        "REQ-HIS-006"
+      ],
+      "polarity": "edge",
+      "title": "Date range before all records shows empty state",
+      "rationale": "Edge check of REQ-HIS-006: An empty filter result shows a clear empty state, not an error or unrelated transactions.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "d",
+          "source": "transaction",
+          "query": {
+            "pick": "earliest",
+            "where": {},
+            "field": "local_date"
+          }
+        },
+        {
+          "name": "before",
+          "source": "date",
+          "query": {
+            "from": "d",
+            "offset_days": -30
+          }
+        },
+        {
+          "name": "before2",
+          "source": "date",
+          "query": {
+            "from": "d",
+            "offset_days": -20
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_start_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{before}}",
+          "note": "Enter a start date well before the earliest record"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transactions.filter_end_date",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{before2}}",
+          "note": "Enter an end date still before the earliest record"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "empty_state_shown",
+          "args": {},
+          "severity": "major"
+        },
+        {
+          "type": "row_count_equals",
+          "args": {
+            "n": 0
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "start_date": "{{before}}",
+              "end_date": "{{before2}}"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-HIS-007-P1",
+      "requirement_ids": [
+        "REQ-HIS-007",
+        "REQ-HIS-004"
+      ],
+      "polarity": "positive",
+      "title": "Clear filters restores unfiltered history",
+      "rationale": "Positive check of REQ-HIS-007, REQ-HIS-004: Clearing filters restores the unfiltered history.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "acct",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        },
+        {
+          "name": "s",
+          "source": "transaction",
+          "query": {
+            "pick": "any",
+            "where": {},
+            "field": "status"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transactions.filter_account",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{acct}}",
+          "note": "Select the savings account in the Account filter"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transactions.filter_status",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{s}}",
+          "note": "Select a status in the Status filter"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_apply",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Apply filters"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "transactions.filter_clear",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Clear filters"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {}
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transactions.row",
+              "nth": 0
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-DSH-001-P1",
+      "requirement_ids": [
+        "REQ-DSH-001",
+        "REQ-DSH-002"
+      ],
+      "polarity": "positive",
+      "title": "Dashboard lists checking and savings accounts with details",
+      "rationale": "Positive check of REQ-DSH-001, REQ-DSH-002: The dashboard shows the customer's checking and savings accounts.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "chk",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "name"
+          }
+        },
+        {
+          "name": "sav",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "name"
+          }
+        },
+        {
+          "name": "chk_mask",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "masked_number"
+          }
+        },
+        {
+          "name": "sav_mask",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "masked_number"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard page"
+        },
+        {
+          "action": "wait_for",
+          "target": {
+            "key": "dashboard.account_card",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Wait for account cards to load"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "dashboard.account_card",
+              "text_contains": "{{chk}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "dashboard.account_card",
+              "text_contains": "{{sav}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "(?i)checking",
+            "target": {
+              "key": "dashboard.account_card",
+              "text_contains": "{{chk}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "(?i)savings",
+            "target": {
+              "key": "dashboard.account_card",
+              "text_contains": "{{sav}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "{{chk_mask}}",
+            "target": {
+              "key": "dashboard.account_card",
+              "text_contains": "{{chk}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "{{sav_mask}}",
+            "target": {
+              "key": "dashboard.account_card",
+              "text_contains": "{{sav}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "\\$\\d[\\d,]*\\.\\d{2}",
+            "target": {
+              "key": "dashboard.account_card",
+              "nth": 0
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-DSH-003-P1",
+      "requirement_ids": [
+        "REQ-DSH-003",
+        "REQ-DSH-006"
+      ],
+      "polarity": "positive",
+      "title": "Dashboard balances two decimals and match API",
+      "rationale": "Positive check of REQ-DSH-003, REQ-DSH-006: Balances are displayed with exactly two decimal places.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard page"
+        },
+        {
+          "action": "wait_for",
+          "target": {
+            "key": "dashboard.account_balance",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Wait for balances to display"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "money_format",
+          "args": {
+            "target": {
+              "key": "dashboard.account_balance"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "ui_matches_api",
+          "args": {},
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-DSH-004-N1",
+      "requirement_ids": [
+        "REQ-DSH-004",
+        "REQ-PRO-002"
+      ],
+      "polarity": "negative",
+      "title": "Dashboard and profile show no full identifiers",
+      "rationale": "Negative check of REQ-DSH-004, REQ-PRO-002: The UI never exposes a full account identifier.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "chk_id",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard page"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/profile",
+          "note": "Open the profile page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "masked_identifier",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "text_not_matches",
+          "args": {
+            "pattern": "(?i)password|token|bearer|secret",
+            "target": {
+              "key": "profile.content"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-DSH-004-E1",
+      "requirement_ids": [
+        "REQ-DSH-004",
+        "REQ-DSH-003"
+      ],
+      "polarity": "edge",
+      "title": "Account detail masks identifiers and formats balance",
+      "rationale": "Edge check of REQ-DSH-004, REQ-DSH-003: The UI never exposes a full account identifier.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "chk_id",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/accounts/{{chk_id}}",
+          "note": "Open the checking account detail page"
+        },
+        {
+          "action": "wait_for",
+          "target": {
+            "key": "account.balance",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Wait for balance"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "masked_identifier",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "money_format",
+          "args": {
+            "target": {
+              "key": "account.balance"
+            }
+          },
+          "severity": "minor"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-DSH-005-P1",
+      "requirement_ids": [
+        "REQ-DSH-005",
+        "REQ-DSH-006"
+      ],
+      "polarity": "positive",
+      "title": "Account detail shows balance and own history",
+      "rationale": "Positive check of REQ-DSH-005, REQ-DSH-006: Selecting an account opens an account detail view showing its current balance and related transaction history.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "chk_id",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "chk",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "name"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "dashboard.account_card",
+            "nth": null,
+            "text_contains": "{{chk}}"
+          },
+          "value": null,
+          "note": "Click the checking account card"
+        },
+        {
+          "action": "wait_for",
+          "target": {
+            "key": "account.transaction_table",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Wait for transaction history"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/accounts/"
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "account.balance"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "ui_matches_api",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "account": "{{chk_id}}"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-DSH-005-E1",
+      "requirement_ids": [
+        "REQ-DSH-005"
+      ],
+      "polarity": "edge",
+      "title": "Savings account detail opens with its history",
+      "rationale": "Edge check of REQ-DSH-005: Selecting an account opens an account detail view showing its current balance and related transaction history.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "sav_id",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        },
+        {
+          "name": "sav",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "name"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "click",
+          "target": {
+            "key": "dashboard.account_card",
+            "nth": null,
+            "text_contains": "{{sav}}"
+          },
+          "value": null,
+          "note": "Click the savings account card"
+        },
+        {
+          "action": "wait_for",
+          "target": {
+            "key": "account.transaction_table",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Wait for history"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "{{sav}}",
+            "target": {
+              "key": "account.main"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "rows_equal_api_set",
+          "args": {
+            "filters": {
+              "account": "{{sav_id}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "ui_matches_api",
+          "args": {},
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-PRO-001-P1",
+      "requirement_ids": [
+        "REQ-PRO-001"
+      ],
+      "polarity": "positive",
+      "title": "Profile shows display name and masked email",
+      "rationale": "Positive check of REQ-PRO-001: The profile view displays only synthetic demo-customer details such as display name and a masked email address.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "click",
+          "target": {
+            "key": "nav.profile",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Profile in the navigation"
+        },
+        {
+          "action": "wait_for",
+          "target": {
+            "key": "profile.name",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Wait for profile name"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "url_matches",
+          "args": {
+            "pattern": "/profile"
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "profile.name"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "\\*|•|…|\\.\\.\\.",
+            "target": {
+              "key": "profile.email"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "api_status",
+          "args": {
+            "method": "GET",
+            "path_glob": "**/api/me",
+            "status": 200
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-PRO-002-N1",
+      "requirement_ids": [
+        "REQ-PRO-002"
+      ],
+      "polarity": "negative",
+      "title": "Profile page hides secrets and other users",
+      "rationale": "Negative check of REQ-PRO-002: The profile view does not reveal passwords, authentication tokens, full account identifiers, or another user's data.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/profile",
+          "note": "Open the profile page"
+        },
+        {
+          "action": "api_get",
+          "target": null,
+          "value": "/api/me",
+          "note": "Fetch the profile API response"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "text_not_matches",
+          "args": {
+            "pattern": "(?i)password|token|jwt|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}",
+            "target": {
+              "key": "profile.content"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "masked_identifier",
+          "args": {},
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-SCP-002-N1",
+      "requirement_ids": [
+        "REQ-SCP-002",
+        "REQ-SCP-006"
+      ],
+      "polarity": "negative",
+      "title": "Landing page has no signup, reset or MFA",
+      "rationale": "Negative check of REQ-SCP-002, REQ-SCP-006: The app offers no signup feature.",
+      "preconditions": [
+        "fresh_context"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/",
+          "note": "Open the landing page while logged out"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "text_not_matches",
+          "args": {
+            "pattern": "(?i)sign ?up|register|create account|forgot|reset password|two-factor|multi-factor|verification code|verify your identity",
+            "target": {
+              "key": "landing.main"
+            }
+          },
+          "severity": "minor"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "landing.entry"
+            }
+          },
+          "severity": "minor"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-SCP-003-N1",
+      "requirement_ids": [
+        "REQ-SCP-003",
+        "REQ-SCP-004",
+        "REQ-SCP-005",
+        "REQ-SCP-006",
+        "REQ-SCP-002"
+      ],
+      "polarity": "negative",
+      "title": "Logged-in app has no out-of-scope features",
+      "rationale": "Negative check of REQ-SCP-003, REQ-SCP-004, REQ-SCP-005, REQ-SCP-006, REQ-SCP-002: The app offers no external payment, bill-pay, loan or card features.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the transfer page"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "text_not_matches",
+          "args": {
+            "pattern": "(?i)bill ?pay|loan|credit card|debit card|budget|invest|deposit funds|add bank|link (a |your )?bank|switch user|joint account|sign ?up|reset password|mfa",
+            "target": {
+              "key": "transfer.main"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "element_absent",
+          "args": {
+            "target": {
+              "key": "nav.dashboard",
+              "text_contains": "Bill"
+            }
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-SCP-001-E1",
+      "requirement_ids": [
+        "REQ-SCP-001",
+        "REQ-SCP-005"
+      ],
+      "polarity": "edge",
+      "title": "Dashboard has no external bank or payment UI",
+      "rationale": "Edge check of REQ-SCP-001, REQ-SCP-005: The app never initiates real payments or connects to an external bank.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [],
+      "steps": [
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/dashboard",
+          "note": "Open the dashboard"
+        },
+        {
+          "action": "wait_for",
+          "target": {
+            "key": "dashboard.account_card",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Wait for cards"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "text_not_matches",
+          "args": {
+            "pattern": "(?i)external bank|connect (a |your )?bank|plaid|paypal|stripe|wire transfer|add money",
+            "target": {
+              "key": "dashboard.main_content"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "api_status",
+          "args": {
+            "method": "GET",
+            "path_glob": "**/api/accounts",
+            "status": 200
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": false,
+      "expected_money_delta": {},
+      "phase": "read_only",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-001-P1",
+      "requirement_ids": [
+        "REQ-TRF-001",
+        "REQ-TRF-002",
+        "REQ-TRF-009",
+        "REQ-TRF-010",
+        "REQ-TRF-011",
+        "REQ-TRF-012"
+      ],
+      "polarity": "positive",
+      "title": "Checking to savings transfer succeeds",
+      "rationale": "Positive check of REQ-TRF-001, REQ-TRF-002, REQ-TRF-009, REQ-TRF-010, REQ-TRF-011, REQ-TRF-012: The user can transfer funds between the checking and savings accounts of the demo customer.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount in the Amount field"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{unique_amount}}",
+              "dst": "{{unique_amount}}"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "tx_present_in_histories",
+          "args": {
+            "accounts": [
+              "src",
+              "dst"
+            ]
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "{{run_tag}}",
+            "target": {
+              "key": "transactions.main"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "(?i)completed",
+            "target": {
+              "key": "transactions.main"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{unique_amount}}",
+        "dst": "{{unique_amount}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-001-P2",
+      "requirement_ids": [
+        "REQ-TRF-001",
+        "REQ-TRF-009",
+        "REQ-TRF-010"
+      ],
+      "polarity": "positive",
+      "title": "Savings to checking transfer succeeds",
+      "rationale": "Positive check of REQ-TRF-001, REQ-TRF-009, REQ-TRF-010: The user can transfer funds between the checking and savings accounts of the demo customer.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the savings account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the checking account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{unique_amount}}",
+              "dst": "{{unique_amount}}"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "tx_present_in_histories",
+          "args": {
+            "accounts": [
+              "src",
+              "dst"
+            ]
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{unique_amount}}",
+        "dst": "{{unique_amount}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-002-P1",
+      "requirement_ids": [
+        "REQ-TRF-002"
+      ],
+      "polarity": "positive",
+      "title": "Transfer form fields present and memo optional",
+      "rationale": "Positive check of REQ-TRF-002: The transfer form includes source account, destination account, amount, and an optional memo.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount, leave memo empty"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.memo"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{unique_amount}}",
+              "dst": "{{unique_amount}}"
+            }
+          },
+          "severity": "major"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "major"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{unique_amount}}",
+        "dst": "{{unique_amount}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-003-N1",
+      "requirement_ids": [
+        "REQ-TRF-003",
+        "REQ-TRF-004",
+        "REQ-TRF-013"
+      ],
+      "polarity": "negative",
+      "title": "Same-account transfer rejected",
+      "rationale": "Negative check of REQ-TRF-003, REQ-TRF-004, REQ-TRF-013: A transfer with the same source and destination account is rejected with a clear explanation.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the same checking account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.alert"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "llm_judge",
+          "args": {
+            "question": "Does the message clearly explain that the transfer did not complete because source and destination are the same account?",
+            "inputs": [
+              "visible_message",
+              "screenshot"
+            ]
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-005-N1",
+      "requirement_ids": [
+        "REQ-TRF-005",
+        "REQ-TRF-006",
+        "REQ-TRF-013"
+      ],
+      "polarity": "negative",
+      "title": "Zero amount rejected",
+      "rationale": "Negative check of REQ-TRF-005, REQ-TRF-006, REQ-TRF-013: Blank, zero, negative, non-numeric and over-precision (more than two decimals) amounts are each rejected with a clear validation message.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "0",
+          "note": "Enter 0 in the Amount field"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.alert"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-005-N2",
+      "requirement_ids": [
+        "REQ-TRF-005",
+        "REQ-TRF-006",
+        "REQ-TRF-013"
+      ],
+      "polarity": "negative",
+      "title": "Negative amount rejected",
+      "rationale": "Negative check of REQ-TRF-005, REQ-TRF-006, REQ-TRF-013: Blank, zero, negative, non-numeric and over-precision (more than two decimals) amounts are each rejected with a clear validation message.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "-5.00",
+          "note": "Enter -5.00 in the Amount field"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.alert"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-005-N3",
+      "requirement_ids": [
+        "REQ-TRF-005",
+        "REQ-TRF-006",
+        "REQ-TRF-013"
+      ],
+      "polarity": "negative",
+      "title": "Blank amount rejected",
+      "rationale": "Negative check of REQ-TRF-005, REQ-TRF-006, REQ-TRF-013: Blank, zero, negative, non-numeric and over-precision (more than two decimals) amounts are each rejected with a clear validation message.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "",
+          "note": "Leave the Amount field blank"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.alert"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-005-N4",
+      "requirement_ids": [
+        "REQ-TRF-005",
+        "REQ-TRF-006",
+        "REQ-TRF-013"
+      ],
+      "polarity": "negative",
+      "title": "Non-numeric amount rejected",
+      "rationale": "Negative check of REQ-TRF-005, REQ-TRF-006, REQ-TRF-013: Blank, zero, negative, non-numeric and over-precision (more than two decimals) amounts are each rejected with a clear validation message.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "abc",
+          "note": "Enter abc in the Amount field"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.alert"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-005-N5",
+      "requirement_ids": [
+        "REQ-TRF-005",
+        "REQ-TRF-006",
+        "REQ-TRF-013"
+      ],
+      "polarity": "negative",
+      "title": "Over-precision amount rejected",
+      "rationale": "Negative check of REQ-TRF-005, REQ-TRF-006, REQ-TRF-013: Blank, zero, negative, non-numeric and over-precision (more than two decimals) amounts are each rejected with a clear validation message.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "1.005",
+          "note": "Enter 1.005 in the Amount field"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.alert"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-007-N1",
+      "requirement_ids": [
+        "REQ-TRF-007",
+        "REQ-TRF-008",
+        "REQ-TRF-013",
+        "REQ-TRF-004"
+      ],
+      "polarity": "negative",
+      "title": "Amount above source balance by 0.01 rejected",
+      "rationale": "Negative check of REQ-TRF-007, REQ-TRF-008, REQ-TRF-013, REQ-TRF-004: A transfer exceeding the source account's available balance is rejected.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        },
+        {
+          "name": "over",
+          "source": "balance",
+          "query": {
+            "of": "src",
+            "plus": "0.01"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{over}}",
+          "note": "Enter the source balance plus 0.01 as amount"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "no_state_change",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "no_success_ui",
+          "args": {},
+          "severity": "critical"
+        },
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.alert"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "llm_judge",
+          "args": {
+            "question": "Does the message clearly explain that the transfer did not complete due to insufficient funds?",
+            "inputs": [
+              "visible_message",
+              "screenshot"
+            ]
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {},
+      "phase": "negative_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-007-E1",
+      "requirement_ids": [
+        "REQ-TRF-007",
+        "REQ-TRF-009"
+      ],
+      "polarity": "edge",
+      "title": "Amount exactly equal to source balance accepted",
+      "rationale": "Edge check of REQ-TRF-007, REQ-TRF-009: A transfer exceeding the source account's available balance is rejected.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "exact",
+          "source": "balance",
+          "query": {
+            "of": "src"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the savings account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the checking account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{exact}}",
+          "note": "Enter the full source balance as amount"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{exact}}",
+              "dst": "{{exact}}"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{exact}}",
+        "dst": "{{exact}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-005-E1",
+      "requirement_ids": [
+        "REQ-TRF-005",
+        "REQ-TRF-009"
+      ],
+      "polarity": "edge",
+      "title": "Smallest unit 0.01 accepted",
+      "rationale": "Edge check of REQ-TRF-005, REQ-TRF-009: Blank, zero, negative, non-numeric and over-precision (more than two decimals) amounts are each rejected with a clear validation message.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "0.01",
+          "note": "Enter 0.01 in the Amount field"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-0.01",
+              "dst": "0.01"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-0.01",
+        "dst": "0.01"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-014-P1",
+      "requirement_ids": [
+        "REQ-TRF-014",
+        "REQ-TRF-012"
+      ],
+      "polarity": "positive",
+      "title": "Transfer persists after reload",
+      "rationale": "Positive check of REQ-TRF-014, REQ-TRF-012: After a successful transfer and a page refresh, the updated balances and the transaction record persist.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transactions",
+          "note": "Open the Transactions page"
+        },
+        {
+          "action": "reload",
+          "target": null,
+          "value": null,
+          "note": "Refresh the page"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{unique_amount}}",
+              "dst": "{{unique_amount}}"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "tx_present_in_histories",
+          "args": {
+            "accounts": [
+              "src",
+              "dst"
+            ]
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "text_matches",
+          "args": {
+            "pattern": "{{run_tag}}",
+            "target": {
+              "key": "transactions.main"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "ui_matches_api",
+          "args": {},
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{unique_amount}}",
+        "dst": "{{unique_amount}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-TRF-012-P1",
+      "requirement_ids": [
+        "REQ-TRF-012",
+        "REQ-TRF-013"
+      ],
+      "polarity": "positive",
+      "title": "Success shown with committed backend state",
+      "rationale": "Positive check of REQ-TRF-012, REQ-TRF-013: The UI shows a success state only after the transfer has been committed.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "wait_for",
+          "target": {
+            "key": "transfer.status",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Wait for the success status"
+        },
+        {
+          "action": "api_get",
+          "target": null,
+          "value": "/api/accounts",
+          "note": "Fetch account balances from the API right after success is shown"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "element_visible",
+          "args": {
+            "target": {
+              "key": "transfer.status"
+            }
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "api_status",
+          "args": {
+            "method": "GET",
+            "path_glob": "**/api/accounts",
+            "status": 200
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{unique_amount}}",
+              "dst": "{{unique_amount}}"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{unique_amount}}",
+        "dst": "{{unique_amount}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    },
+    {
+      "id": "SCN-GUI-003-E2",
+      "requirement_ids": [
+        "REQ-GUI-003",
+        "REQ-TRF-010"
+      ],
+      "polarity": "edge",
+      "title": "Double submit creates one transfer",
+      "rationale": "Edge check of REQ-GUI-003, REQ-TRF-010: A submitted action does not silently disappear: the UI shows a loading state or prevents duplicate submission while waiting.",
+      "preconditions": [
+        "logged_in"
+      ],
+      "params": [
+        {
+          "name": "src",
+          "source": "account",
+          "query": {
+            "select": "type=checking",
+            "field": "id"
+          }
+        },
+        {
+          "name": "dst",
+          "source": "account",
+          "query": {
+            "select": "type=savings",
+            "field": "id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions before the action"
+        },
+        {
+          "action": "goto",
+          "target": null,
+          "value": "/transfer",
+          "note": "Open the Transfer page"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.source",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{src}}",
+          "note": "Select the checking account as source"
+        },
+        {
+          "action": "select",
+          "target": {
+            "key": "transfer.destination",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{dst}}",
+          "note": "Select the savings account as destination"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.amount",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "{{unique_amount}}",
+          "note": "Enter the unique amount"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "key": "transfer.memo",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": "memo {{run_tag}}",
+          "note": "Enter a memo containing the run tag"
+        },
+        {
+          "action": "submit",
+          "target": {
+            "key": "transfer.submit",
+            "nth": null,
+            "text_contains": null
+          },
+          "value": null,
+          "note": "Click Transfer funds"
+        },
+        {
+          "action": "snapshot_state",
+          "target": null,
+          "value": null,
+          "note": "Record balances and transactions after the action"
+        }
+      ],
+      "oracles": [
+        {
+          "type": "button_disabled_during",
+          "args": {
+            "target": {
+              "key": "transfer.submit"
+            },
+            "request_glob": "**/api/transfers*"
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "new_tx_count",
+          "args": {
+            "n": 1
+          },
+          "severity": "critical"
+        },
+        {
+          "type": "balance_delta",
+          "args": {
+            "deltas": {
+              "src": "-{{unique_amount}}",
+              "dst": "{{unique_amount}}"
+            }
+          },
+          "severity": "critical"
+        }
+      ],
+      "mutates_state": true,
+      "expected_money_delta": {
+        "src": "-{{unique_amount}}",
+        "dst": "{{unique_amount}}"
+      },
+      "phase": "positive_mutation",
+      "max_attempts": 2
+    }
+  ],
+  "coverage": {
+    "REQ-ACC-001": [
+      "SCN-ACC-001-P1"
+    ],
+    "REQ-ACC-002": [
+      "SCN-ACC-002-P1"
+    ],
+    "REQ-ACC-003": [
+      "SCN-ACC-003-P1",
+      "SCN-ACC-003-N1"
+    ],
+    "REQ-ACC-004": [
+      "SCN-ACC-003-N1",
+      "SCN-ACC-004-N1",
+      "SCN-ACC-004-N2"
+    ],
+    "REQ-ACC-005": [
+      "SCN-ACC-005-P1"
+    ],
+    "REQ-ACC-006": [
+      "SCN-ACC-006-N1"
+    ],
+    "REQ-DSH-001": [
+      "SCN-DSH-001-P1"
+    ],
+    "REQ-DSH-002": [
+      "SCN-DSH-001-P1"
+    ],
+    "REQ-DSH-003": [
+      "SCN-DSH-003-P1",
+      "SCN-DSH-004-E1"
+    ],
+    "REQ-DSH-004": [
+      "SCN-DSH-004-N1",
+      "SCN-DSH-004-E1"
+    ],
+    "REQ-DSH-005": [
+      "SCN-DSH-005-P1",
+      "SCN-DSH-005-E1"
+    ],
+    "REQ-DSH-006": [
+      "SCN-DSH-003-P1",
+      "SCN-DSH-005-P1"
+    ],
+    "REQ-TRF-001": [
+      "SCN-TRF-001-P1",
+      "SCN-TRF-001-P2"
+    ],
+    "REQ-TRF-002": [
+      "SCN-TRF-001-P1",
+      "SCN-TRF-002-P1"
+    ],
+    "REQ-TRF-003": [
+      "SCN-TRF-003-N1"
+    ],
+    "REQ-TRF-004": [
+      "SCN-TRF-003-N1",
+      "SCN-TRF-007-N1"
+    ],
+    "REQ-TRF-005": [
+      "SCN-TRF-005-N1",
+      "SCN-TRF-005-N2",
+      "SCN-TRF-005-N3",
+      "SCN-TRF-005-N4",
+      "SCN-TRF-005-N5",
+      "SCN-TRF-005-E1"
+    ],
+    "REQ-TRF-006": [
+      "SCN-TRF-005-N1",
+      "SCN-TRF-005-N2",
+      "SCN-TRF-005-N3",
+      "SCN-TRF-005-N4",
+      "SCN-TRF-005-N5"
+    ],
+    "REQ-TRF-007": [
+      "SCN-TRF-007-N1",
+      "SCN-TRF-007-E1"
+    ],
+    "REQ-TRF-008": [
+      "SCN-TRF-007-N1"
+    ],
+    "REQ-TRF-009": [
+      "SCN-TRF-001-P1",
+      "SCN-TRF-001-P2",
+      "SCN-TRF-007-E1",
+      "SCN-TRF-005-E1"
+    ],
+    "REQ-TRF-010": [
+      "SCN-TRF-001-P1",
+      "SCN-TRF-001-P2",
+      "SCN-GUI-003-E2"
+    ],
+    "REQ-TRF-011": [
+      "SCN-TRF-001-P1"
+    ],
+    "REQ-TRF-012": [
+      "SCN-TRF-001-P1",
+      "SCN-TRF-014-P1",
+      "SCN-TRF-012-P1"
+    ],
+    "REQ-TRF-013": [
+      "SCN-TRF-003-N1",
+      "SCN-TRF-005-N1",
+      "SCN-TRF-005-N2",
+      "SCN-TRF-005-N3",
+      "SCN-TRF-005-N4",
+      "SCN-TRF-005-N5",
+      "SCN-TRF-007-N1",
+      "SCN-TRF-012-P1"
+    ],
+    "REQ-TRF-014": [
+      "SCN-TRF-014-P1"
+    ],
+    "REQ-HIS-001": [
+      "SCN-HIS-001-P1",
+      "SCN-HIS-001-P2",
+      "SCN-HIS-001-P3"
+    ],
+    "REQ-HIS-002": [
+      "SCN-HIS-001-P1"
+    ],
+    "REQ-HIS-003": [
+      "SCN-HIS-003-P1"
+    ],
+    "REQ-HIS-004": [
+      "SCN-HIS-004-P1",
+      "SCN-HIS-004-P2",
+      "SCN-HIS-004-P3",
+      "SCN-HIS-004-E1",
+      "SCN-HIS-004-N1",
+      "SCN-HIS-007-P1"
+    ],
+    "REQ-HIS-005": [
+      "SCN-HIS-005-E1",
+      "SCN-HIS-005-E2",
+      "SCN-HIS-004-N1"
+    ],
+    "REQ-HIS-006": [
+      "SCN-HIS-006-E1"
+    ],
+    "REQ-HIS-007": [
+      "SCN-HIS-007-P1"
+    ],
+    "REQ-PRO-001": [
+      "SCN-PRO-001-P1"
+    ],
+    "REQ-PRO-002": [
+      "SCN-DSH-004-N1",
+      "SCN-PRO-002-N1"
+    ],
+    "REQ-GUI-001": [
+      "SCN-GUI-001-P1",
+      "SCN-GUI-001-E1"
+    ],
+    "REQ-GUI-002": [
+      "SCN-GUI-002-P1"
+    ],
+    "REQ-GUI-003": [
+      "SCN-GUI-003-E1",
+      "SCN-GUI-003-E2"
+    ],
+    "REQ-GUI-004": [
+      "SCN-GUI-004-P1",
+      "SCN-GUI-004-P2",
+      "SCN-GUI-004-P3"
+    ],
+    "REQ-GUI-005": [
+      "SCN-GUI-005-N1",
+      "SCN-GUI-005-E1"
+    ],
+    "REQ-SED-001": [
+      "SCN-SED-001-P1"
+    ],
+    "REQ-SED-002": [
+      "SCN-SED-002-P1",
+      "SCN-SED-002-E1"
+    ],
+    "REQ-SED-003": [
+      "SCN-SED-003-P1"
+    ],
+    "REQ-SCP-001": [
+      "SCN-SCP-001-E1"
+    ],
+    "REQ-SCP-002": [
+      "SCN-SCP-002-N1",
+      "SCN-SCP-003-N1"
+    ],
+    "REQ-SCP-003": [
+      "SCN-SCP-003-N1"
+    ],
+    "REQ-SCP-004": [
+      "SCN-SCP-003-N1"
+    ],
+    "REQ-SCP-005": [
+      "SCN-SCP-003-N1",
+      "SCN-SCP-001-E1"
+    ],
+    "REQ-SCP-006": [
+      "SCN-SCP-002-N1",
+      "SCN-SCP-003-N1"
+    ]
+  }
+}

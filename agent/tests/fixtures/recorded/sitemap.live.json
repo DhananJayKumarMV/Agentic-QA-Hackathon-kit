@@ -1,0 +1,1152 @@
+{
+  "base_url": "http://localhost:5173",
+  "api_base": "http://localhost:8000",
+  "pages": {
+    "/": {
+      "route": "/",
+      "title": "Your accounts, in one simple dashboard.",
+      "purpose": "Your accounts, in one simple dashboard.: shows Your accounts, in one simple dashboard.",
+      "elements": {
+        "landing.entry": {
+          "key": "landing.entry",
+          "role": "button",
+          "name": "Enter Demo",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "landing.heading": {
+          "key": "landing.heading",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main h1",
+          "multiple": false,
+          "healed_from": null
+        },
+        "landing.main": {
+          "key": "landing.main",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main",
+          "multiple": false,
+          "healed_from": null
+        }
+      },
+      "forms": {},
+      "observed_states": [],
+      "hints": []
+    },
+    "/dashboard": {
+      "route": "/dashboard",
+      "title": "Welcome, Avery Demo",
+      "purpose": "Welcome, Avery Demo: shows Welcome, Avery Demo",
+      "elements": {
+        "header.demobank_dashboard": {
+          "key": "header.demobank_dashboard",
+          "role": "link",
+          "name": "DemoBank dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.dashboard": {
+          "key": "nav.dashboard",
+          "role": "link",
+          "name": "Dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transactions": {
+          "key": "nav.transactions",
+          "role": "link",
+          "name": "Transactions",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transfer": {
+          "key": "nav.transfer",
+          "role": "link",
+          "name": "Transfer",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.profile": {
+          "key": "nav.profile",
+          "role": "link",
+          "name": "Profile",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "dashboard.transfer_funds": {
+          "key": "dashboard.transfer_funds",
+          "role": "link",
+          "name": "Transfer funds",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "dashboard.view_all_transactions": {
+          "key": "dashboard.view_all_transactions",
+          "role": "link",
+          "name": "View all transactions",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.logout": {
+          "key": "header.logout",
+          "role": "button",
+          "name": "Log out",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.customer": {
+          "key": "header.customer",
+          "role": null,
+          "name": null,
+          "test_id": "active-customer",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "dashboard.account_card": {
+          "key": "dashboard.account_card",
+          "role": null,
+          "name": null,
+          "test_id": "account-card",
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "dashboard.account_balance": {
+          "key": "dashboard.account_balance",
+          "role": null,
+          "name": null,
+          "test_id": "account-balance",
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "dashboard.heading": {
+          "key": "dashboard.heading",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main h1",
+          "multiple": false,
+          "healed_from": null
+        },
+        "dashboard.main": {
+          "key": "dashboard.main",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main",
+          "multiple": false,
+          "healed_from": null
+        }
+      },
+      "forms": {},
+      "observed_states": [
+        "loading"
+      ],
+      "hints": []
+    },
+    "/transactions": {
+      "route": "/transactions",
+      "title": "Transactions",
+      "purpose": "Transactions: lists All transactions in a table; has form(s): Filter transactions",
+      "elements": {
+        "header.demobank_dashboard": {
+          "key": "header.demobank_dashboard",
+          "role": "link",
+          "name": "DemoBank dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.dashboard": {
+          "key": "nav.dashboard",
+          "role": "link",
+          "name": "Dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transactions": {
+          "key": "nav.transactions",
+          "role": "link",
+          "name": "Transactions",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transfer": {
+          "key": "nav.transfer",
+          "role": "link",
+          "name": "Transfer",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.profile": {
+          "key": "nav.profile",
+          "role": "link",
+          "name": "Profile",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.logout": {
+          "key": "header.logout",
+          "role": "button",
+          "name": "Log out",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.filter_apply": {
+          "key": "transactions.filter_apply",
+          "role": "button",
+          "name": "Apply filters",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.filter_clear": {
+          "key": "transactions.filter_clear",
+          "role": "button",
+          "name": "Clear filters",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.filter_account": {
+          "key": "transactions.filter_account",
+          "role": "combobox",
+          "name": "Account",
+          "test_id": null,
+          "label": "Account",
+          "css": "#filter-account",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.filter_type": {
+          "key": "transactions.filter_type",
+          "role": "combobox",
+          "name": "Type",
+          "test_id": null,
+          "label": "Type",
+          "css": "#filter-type",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.filter_status": {
+          "key": "transactions.filter_status",
+          "role": "combobox",
+          "name": "Status",
+          "test_id": null,
+          "label": "Status",
+          "css": "#filter-status",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.filter_start_date": {
+          "key": "transactions.filter_start_date",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": "Start date",
+          "css": "#filter-start",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.filter_end_date": {
+          "key": "transactions.filter_end_date",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": "End date",
+          "css": "#filter-end",
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.customer": {
+          "key": "header.customer",
+          "role": null,
+          "name": null,
+          "test_id": "active-customer",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.result_count": {
+          "key": "transactions.result_count",
+          "role": null,
+          "name": null,
+          "test_id": "result-count",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.transaction_table": {
+          "key": "transactions.transaction_table",
+          "role": null,
+          "name": null,
+          "test_id": "transaction-table",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.transaction_row": {
+          "key": "transactions.transaction_row",
+          "role": null,
+          "name": null,
+          "test_id": "transaction-row",
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "transactions.row": {
+          "key": "transactions.row",
+          "role": null,
+          "name": null,
+          "test_id": "transaction-row",
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "transactions.heading": {
+          "key": "transactions.heading",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main h1",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.main": {
+          "key": "transactions.main",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transactions.alert": {
+          "key": "transactions.alert",
+          "role": "alert",
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "transactions.status": {
+          "key": "transactions.status",
+          "role": "status",
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        }
+      },
+      "forms": {
+        "filters": [
+          "transactions.filter_account",
+          "transactions.filter_type",
+          "transactions.filter_status",
+          "transactions.filter_start_date",
+          "transactions.filter_end_date",
+          "transactions.filter_apply",
+          "transactions.filter_clear"
+        ]
+      },
+      "observed_states": [
+        "loading"
+      ],
+      "hints": [
+        "Start and end dates are inclusive and use Pacific Time."
+      ]
+    },
+    "/transfer": {
+      "route": "/transfer",
+      "title": "Transfer between your accounts",
+      "purpose": "Transfer between your accounts: has form(s): unnamed",
+      "elements": {
+        "header.demobank_dashboard": {
+          "key": "header.demobank_dashboard",
+          "role": "link",
+          "name": "DemoBank dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.dashboard": {
+          "key": "nav.dashboard",
+          "role": "link",
+          "name": "Dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transactions": {
+          "key": "nav.transactions",
+          "role": "link",
+          "name": "Transactions",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transfer": {
+          "key": "nav.transfer",
+          "role": "link",
+          "name": "Transfer",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.profile": {
+          "key": "nav.profile",
+          "role": "link",
+          "name": "Profile",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.account_link": {
+          "key": "transfer.account_link",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main a[href^=\"/accounts/\"]",
+          "multiple": true,
+          "healed_from": null
+        },
+        "header.logout": {
+          "key": "header.logout",
+          "role": "button",
+          "name": "Log out",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.submit": {
+          "key": "transfer.submit",
+          "role": "button",
+          "name": "Transfer funds",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.source": {
+          "key": "transfer.source",
+          "role": "combobox",
+          "name": "From account",
+          "test_id": null,
+          "label": "From account",
+          "css": "#source",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.destination": {
+          "key": "transfer.destination",
+          "role": "combobox",
+          "name": "To account",
+          "test_id": null,
+          "label": "To account",
+          "css": "#destination",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.amount": {
+          "key": "transfer.amount",
+          "role": "textbox",
+          "name": "Amount (USD)",
+          "test_id": null,
+          "label": "Amount (USD)",
+          "css": "#amount",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.memo": {
+          "key": "transfer.memo",
+          "role": "textbox",
+          "name": "Memo (optional)",
+          "test_id": null,
+          "label": "Memo (optional)",
+          "css": "#memo",
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.customer": {
+          "key": "header.customer",
+          "role": null,
+          "name": null,
+          "test_id": "active-customer",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.transfer_balance": {
+          "key": "transfer.transfer_balance",
+          "role": null,
+          "name": null,
+          "test_id": "transfer-balance",
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "transfer.heading": {
+          "key": "transfer.heading",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main h1",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.main": {
+          "key": "transfer.main",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main",
+          "multiple": false,
+          "healed_from": null
+        },
+        "transfer.alert": {
+          "key": "transfer.alert",
+          "role": "alert",
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "transfer.status": {
+          "key": "transfer.status",
+          "role": "status",
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        }
+      },
+      "forms": {
+        "transfer": [
+          "transfer.source",
+          "transfer.destination",
+          "transfer.amount",
+          "transfer.memo",
+          "transfer.submit"
+        ]
+      },
+      "observed_states": [
+        "loading"
+      ],
+      "hints": [
+        "Up to two decimal places, for example 25.00."
+      ]
+    },
+    "/profile": {
+      "route": "/profile",
+      "title": "Your profile",
+      "purpose": "Your profile: shows Your profile",
+      "elements": {
+        "header.demobank_dashboard": {
+          "key": "header.demobank_dashboard",
+          "role": "link",
+          "name": "DemoBank dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.dashboard": {
+          "key": "nav.dashboard",
+          "role": "link",
+          "name": "Dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transactions": {
+          "key": "nav.transactions",
+          "role": "link",
+          "name": "Transactions",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transfer": {
+          "key": "nav.transfer",
+          "role": "link",
+          "name": "Transfer",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.profile": {
+          "key": "nav.profile",
+          "role": "link",
+          "name": "Profile",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.logout": {
+          "key": "header.logout",
+          "role": "button",
+          "name": "Log out",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.customer": {
+          "key": "header.customer",
+          "role": null,
+          "name": null,
+          "test_id": "active-customer",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "profile.profile_name": {
+          "key": "profile.profile_name",
+          "role": null,
+          "name": null,
+          "test_id": "profile-name",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "profile.profile_email": {
+          "key": "profile.profile_email",
+          "role": null,
+          "name": null,
+          "test_id": "profile-email",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "profile.heading": {
+          "key": "profile.heading",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main h1",
+          "multiple": false,
+          "healed_from": null
+        },
+        "profile.main": {
+          "key": "profile.main",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main",
+          "multiple": false,
+          "healed_from": null
+        }
+      },
+      "forms": {},
+      "observed_states": [
+        "loading"
+      ],
+      "hints": []
+    },
+    "/accounts/{id}": {
+      "route": "/accounts/{id}",
+      "title": "Everyday Checking",
+      "purpose": "Everyday Checking: lists Transaction history for Everyday Checking in a table",
+      "elements": {
+        "header.demobank_dashboard": {
+          "key": "header.demobank_dashboard",
+          "role": "link",
+          "name": "DemoBank dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.dashboard": {
+          "key": "nav.dashboard",
+          "role": "link",
+          "name": "Dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transactions": {
+          "key": "nav.transactions",
+          "role": "link",
+          "name": "Transactions",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.transfer": {
+          "key": "nav.transfer",
+          "role": "link",
+          "name": "Transfer",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "nav.profile": {
+          "key": "nav.profile",
+          "role": "link",
+          "name": "Profile",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "account_detail.dashboard": {
+          "key": "account_detail.dashboard",
+          "role": "link",
+          "name": "Dashboard",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "account_detail.transfer_from_this_account": {
+          "key": "account_detail.transfer_from_this_account",
+          "role": "link",
+          "name": "Transfer from this account",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "account_detail.filter_full_history": {
+          "key": "account_detail.filter_full_history",
+          "role": "link",
+          "name": "Filter full history",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.logout": {
+          "key": "header.logout",
+          "role": "button",
+          "name": "Log out",
+          "test_id": null,
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "header.customer": {
+          "key": "header.customer",
+          "role": null,
+          "name": null,
+          "test_id": "active-customer",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "account_detail.account_number": {
+          "key": "account_detail.account_number",
+          "role": null,
+          "name": null,
+          "test_id": "account-number",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "account_detail.account_balance": {
+          "key": "account_detail.account_balance",
+          "role": null,
+          "name": null,
+          "test_id": "account-balance",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "account_detail.transaction_table": {
+          "key": "account_detail.transaction_table",
+          "role": null,
+          "name": null,
+          "test_id": "transaction-table",
+          "label": null,
+          "css": null,
+          "multiple": false,
+          "healed_from": null
+        },
+        "account_detail.transaction_row": {
+          "key": "account_detail.transaction_row",
+          "role": null,
+          "name": null,
+          "test_id": "transaction-row",
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "account_detail.row": {
+          "key": "account_detail.row",
+          "role": null,
+          "name": null,
+          "test_id": "transaction-row",
+          "label": null,
+          "css": null,
+          "multiple": true,
+          "healed_from": null
+        },
+        "account_detail.heading": {
+          "key": "account_detail.heading",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main h1",
+          "multiple": false,
+          "healed_from": null
+        },
+        "account_detail.main": {
+          "key": "account_detail.main",
+          "role": null,
+          "name": null,
+          "test_id": null,
+          "label": null,
+          "css": "main",
+          "multiple": false,
+          "healed_from": null
+        }
+      },
+      "forms": {},
+      "observed_states": [
+        "loading"
+      ],
+      "hints": []
+    }
+  },
+  "api": [
+    {
+      "method": "GET",
+      "path_template": "/api/accounts",
+      "query_params": [],
+      "sample_status": 200,
+      "response_shape": {
+        "accounts": "list"
+      }
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/accounts/{id}",
+      "query_params": [],
+      "sample_status": 200,
+      "response_shape": {
+        "account": "dict"
+      }
+    },
+    {
+      "method": "POST",
+      "path_template": "/api/demo/session",
+      "query_params": [],
+      "sample_status": 201,
+      "response_shape": {
+        "customer": "dict"
+      }
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/me",
+      "query_params": [],
+      "sample_status": 200,
+      "response_shape": {
+        "id": "str",
+        "display_name": "str",
+        "masked_email": "str"
+      }
+    },
+    {
+      "method": "GET",
+      "path_template": "/api/transactions",
+      "query_params": [
+        "account_id",
+        "end_date",
+        "start_date",
+        "status",
+        "type"
+      ],
+      "sample_status": 200,
+      "response_shape": {
+        "transactions": "list"
+      }
+    },
+    {
+      "method": "GET",
+      "path_template": "/health",
+      "query_params": [],
+      "sample_status": 200,
+      "response_shape": {
+        "status": "str"
+      }
+    }
+  ],
+  "auth": {
+    "landing_route": "/",
+    "entry": {
+      "key": "landing.entry",
+      "role": "button",
+      "name": "Enter Demo"
+    },
+    "entry_request": {
+      "method": "POST",
+      "path": "/api/demo/session",
+      "status": 201
+    },
+    "post_login_route": "/dashboard",
+    "logout": {
+      "key": "header.logout",
+      "role": "button",
+      "name": "Log out"
+    },
+    "protected_routes": [
+      "/dashboard",
+      "/transactions",
+      "/transfer",
+      "/profile",
+      "/accounts/{id}"
+    ]
+  },
+  "entities": {
+    "accounts": [
+      {
+        "id": "00000000-0000-0000-0000-000000000101",
+        "name": "Everyday Checking",
+        "type": "checking",
+        "masked_number": "•••• 1042",
+        "balance": "4369.75"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000102",
+        "name": "Rainy Day Savings",
+        "type": "savings",
+        "masked_number": "•••• 7781",
+        "balance": "8275.00"
+      }
+    ],
+    "accounts_endpoint": "/api/accounts",
+    "currency": "USD",
+    "transactions_endpoint": "/api/transactions",
+    "transactions_query_params": [
+      "account_id",
+      "end_date",
+      "start_date",
+      "status",
+      "type"
+    ],
+    "transactions_sample_count": 12,
+    "tx_types": [
+      "deposit",
+      "transfer",
+      "withdrawal"
+    ],
+    "tx_statuses": [
+      "completed",
+      "failed",
+      "pending"
+    ],
+    "date_span": [
+      "2025-01-03T17:00:00Z",
+      "2025-09-03T14:50:00Z"
+    ],
+    "timezone": "America/Los_Angeles",
+    "options": {
+      "transactions.filter_account": [
+        {
+          "value": "",
+          "label": "All accounts"
+        },
+        {
+          "value": "00000000-0000-0000-0000-000000000101",
+          "label": "Everyday Checking (•••• 1042)"
+        },
+        {
+          "value": "00000000-0000-0000-0000-000000000102",
+          "label": "Rainy Day Savings (•••• 7781)"
+        }
+      ],
+      "transactions.filter_type": [
+        {
+          "value": "",
+          "label": "All types"
+        },
+        {
+          "value": "deposit",
+          "label": "Deposit"
+        },
+        {
+          "value": "withdrawal",
+          "label": "Withdrawal"
+        },
+        {
+          "value": "transfer",
+          "label": "Transfer"
+        }
+      ],
+      "transactions.filter_status": [
+        {
+          "value": "",
+          "label": "All statuses"
+        },
+        {
+          "value": "completed",
+          "label": "Completed"
+        },
+        {
+          "value": "pending",
+          "label": "Pending"
+        },
+        {
+          "value": "failed",
+          "label": "Failed"
+        }
+      ],
+      "transfer.source": [
+        {
+          "value": "",
+          "label": "Select an account"
+        },
+        {
+          "value": "00000000-0000-0000-0000-000000000101",
+          "label": "Everyday Checking (•••• 1042) — $4,369.75"
+        },
+        {
+          "value": "00000000-0000-0000-0000-000000000102",
+          "label": "Rainy Day Savings (•••• 7781) — $8,275.00"
+        }
+      ],
+      "transfer.destination": [
+        {
+          "value": "",
+          "label": "Select an account"
+        },
+        {
+          "value": "00000000-0000-0000-0000-000000000101",
+          "label": "Everyday Checking (•••• 1042) — $4,369.75"
+        },
+        {
+          "value": "00000000-0000-0000-0000-000000000102",
+          "label": "Rainy Day Savings (•••• 7781) — $8,275.00"
+        }
+      ]
+    }
+  }
+}

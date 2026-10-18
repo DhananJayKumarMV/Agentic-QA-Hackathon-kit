@@ -1,0 +1,229 @@
+{
+  "scenario_id": "SCN-TRF-005-N3",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-568a1a",
+    "unique_amount": "1.48",
+    "src": "00000000-0000-0000-0000-000000000101",
+    "dst": "00000000-0000-0000-0000-000000000102"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "api snapshot",
+      "healed": false,
+      "duration_ms": 332,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "goto /transfer",
+      "healed": false,
+      "duration_ms": 741,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 2,
+      "ok": true,
+      "locator_used": "role=combobox[name=\"From account\"]",
+      "healed": false,
+      "duration_ms": 370,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 3,
+      "ok": true,
+      "locator_used": "role=combobox[name=\"To account\"]",
+      "healed": false,
+      "duration_ms": 353,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 4,
+      "ok": true,
+      "locator_used": "role=button[name=\"Transfer funds\"]",
+      "healed": false,
+      "duration_ms": 356,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 5,
+      "ok": true,
+      "locator_used": "api snapshot",
+      "healed": false,
+      "duration_ms": 354,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-568a1a",
+    "probes": {
+      "0": {
+        "new_tx_ids": [],
+        "foreign_tx_ids": []
+      },
+      "1": {
+        "alerts": [
+          {
+            "role": "",
+            "live": "",
+            "classes": "field__error",
+            "title": "",
+            "text": "Enter an amount to transfer."
+          }
+        ]
+      },
+      "2": {
+        "error": "ResolveError: could not resolve element 'transfer.alert' (role=status)"
+      }
+    },
+    "duration_ms": 5996,
+    "url": "http://localhost:5173/transfer",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-TRF-005-N3__a1__final.png",
+        "caption": "SCN-TRF-005-N3__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-TRF-005-N3/a1_network.json",
+        "caption": "6 API calls during the scenario"
+      }
+    ],
+    "ledger": []
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 85771
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 85776
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 85776
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 85779
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 85780
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4369.75"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8275.00"
+          }
+        ]
+      },
+      "t_ms": 85780
+    }
+  ],
+  "state_before": {
+    "taken_at": "2026-10-18T21:30:04.337368Z",
+    "balances": {
+      "00000000-0000-0000-0000-000000000101": "4369.75",
+      "00000000-0000-0000-0000-000000000102": "8275.00"
+    },
+    "tx_ids": [
+      "e84f1c62-fc2c-4295-8105-9446d4bfa9a6",
+      "caed842c-a7d0-4c86-96ac-d3369e6bd7ab",
+      "e9a120d6-7b85-4798-8e61-8d065ec4f98c",
+      "00000000-0000-0000-0000-000000000212",
+      "00000000-0000-0000-0000-000000000211",
+      "00000000-0000-0000-0000-000000000210",
+      "00000000-0000-0000-0000-000000000209",
+      "00000000-0000-0000-0000-000000000208",
+      "00000000-0000-0000-0000-000000000207",
+      "00000000-0000-0000-0000-000000000206",
+      "00000000-0000-0000-0000-000000000205",
+      "00000000-0000-0000-0000-000000000204",
+      "00000000-0000-0000-0000-000000000203",
+      "00000000-0000-0000-0000-000000000202",
+      "00000000-0000-0000-0000-000000000201"
+    ]
+  },
+  "state_after": {
+    "taken_at": "2026-10-18T21:30:07.197534Z",
+    "balances": {
+      "00000000-0000-0000-0000-000000000101": "4369.75",
+      "00000000-0000-0000-0000-000000000102": "8275.00"
+    },
+    "tx_ids": [
+      "e84f1c62-fc2c-4295-8105-9446d4bfa9a6",
+      "caed842c-a7d0-4c86-96ac-d3369e6bd7ab",
+      "e9a120d6-7b85-4798-8e61-8d065ec4f98c",
+      "00000000-0000-0000-0000-000000000212",
+      "00000000-0000-0000-0000-000000000211",
+      "00000000-0000-0000-0000-000000000210",
+      "00000000-0000-0000-0000-000000000209",
+      "00000000-0000-0000-0000-000000000208",
+      "00000000-0000-0000-0000-000000000207",
+      "00000000-0000-0000-0000-000000000206",
+      "00000000-0000-0000-0000-000000000205",
+      "00000000-0000-0000-0000-000000000204",
+      "00000000-0000-0000-0000-000000000203",
+      "00000000-0000-0000-0000-000000000202",
+      "00000000-0000-0000-0000-000000000201"
+    ]
+  },
+  "foreign_activity": false,
+  "aborted_reason": null
+}

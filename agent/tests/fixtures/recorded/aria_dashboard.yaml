@@ -1,0 +1,41 @@
+- link "Skip to main content":
+  - /url: "#main"
+- banner:
+  - link "DemoBank dashboard":
+    - /url: /dashboard
+    - text: DemoBank
+  - navigation "Main":
+    - link "Dashboard":
+      - /url: /dashboard
+    - link "Transactions":
+      - /url: /transactions
+    - link "Transfer":
+      - /url: /transfer
+    - link "Profile":
+      - /url: /profile
+  - text: Signed in as Avery Demo
+  - button "Log out"
+- main:
+  - paragraph: Dashboard
+  - heading "Welcome, Avery Demo" [level=1]
+  - link "Transfer funds":
+    - /url: /transfer
+  - link "View all transactions":
+    - /url: /transactions
+  - region "Your accounts":
+    - heading "Your accounts" [level=2]
+    - link "Everyday Checking Checking Account number ending •••• 1042 Available balance $4,369.75USD":
+      - /url: /accounts/00000000-0000-0000-0000-000000000101
+      - heading "Everyday Checking" [level=3]
+      - text: Checking
+      - paragraph: Account number ending •••• 1042
+      - paragraph: Available balance
+      - paragraph: $4,369.75USD
+    - link "Rainy Day Savings Savings Account number ending •••• 7781 Available balance $8,275.00USD":
+      - /url: /accounts/00000000-0000-0000-0000-000000000102
+      - heading "Rainy Day Savings" [level=3]
+      - text: Savings
+      - paragraph: Account number ending •••• 7781
+      - paragraph: Available balance
+      - paragraph: $8,275.00USD
+- contentinfo: DemoBank uses synthetic demo data only. Service online

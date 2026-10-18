@@ -1,0 +1,108 @@
+- link "Skip to main content":
+  - /url: "#main"
+- banner:
+  - link "DemoBank dashboard":
+    - /url: /dashboard
+    - text: DemoBank
+  - navigation "Main":
+    - link "Dashboard":
+      - /url: /dashboard
+    - link "Transactions":
+      - /url: /transactions
+    - link "Transfer":
+      - /url: /transfer
+    - link "Profile":
+      - /url: /profile
+  - text: Signed in as Avery Demo
+  - button "Log out"
+- main:
+  - navigation "Breadcrumb":
+    - link "Dashboard":
+      - /url: /dashboard
+    - text: Everyday Checking
+  - paragraph: Checking · •••• 1042
+  - heading "Everyday Checking" [level=1]
+  - paragraph: Available balance
+  - paragraph: $4,369.75 USD
+  - link "Transfer from this account":
+    - /url: /transfer?from=00000000-0000-0000-0000-000000000101
+  - link "Filter full history":
+    - /url: /transactions?account_id=00000000-0000-0000-0000-000000000101
+  - region "Transaction history":
+    - heading "Transaction history" [level=2]
+    - table "Transaction history for Everyday Checking":
+      - caption: Transaction history for Everyday Checking
+      - rowgroup:
+        - row "Date & time Description Type Account Amount Status":
+          - columnheader "Date & time"
+          - columnheader "Description"
+          - columnheader "Type"
+          - columnheader "Account"
+          - columnheader "Amount"
+          - columnheader "Status"
+      - rowgroup:
+        - 'row "Aug 8, 2025, 11:25 AM PDT Pending demo debit Withdrawal Everyday Checking (•••• 1042) No change: $0.00 Pending"':
+          - cell "Aug 8, 2025, 11:25 AM PDT":
+            - time: Aug 8, 2025, 11:25 AM PDT
+          - cell "Pending demo debit"
+          - cell "Withdrawal"
+          - cell "Everyday Checking (•••• 1042)"
+          - 'cell "No change: $0.00"'
+          - cell "Pending"
+        - 'row "Jul 2, 2025, 9:40 AM PDT Pending demo deposit Deposit Everyday Checking (•••• 1042) No change: $0.00 Pending"':
+          - cell "Jul 2, 2025, 9:40 AM PDT":
+            - time: Jul 2, 2025, 9:40 AM PDT
+          - cell "Pending demo deposit"
+          - cell "Deposit"
+          - cell "Everyday Checking (•••• 1042)"
+          - 'cell "No change: $0.00"'
+          - cell "Pending"
+        - 'row "Jun 15, 2025, 12:00 PM PDT Annual bonus Deposit Everyday Checking (•••• 1042) Money in: +$950.00 Completed"':
+          - cell "Jun 15, 2025, 12:00 PM PDT":
+            - time: Jun 15, 2025, 12:00 PM PDT
+          - cell "Annual bonus"
+          - cell "Deposit"
+          - cell "Everyday Checking (•••• 1042)"
+          - 'cell "Money in: +$950.00"'
+          - cell "Completed"
+        - 'row "Apr 10, 2025, 8:20 AM PDT Move to checking Transfer From Rainy Day Savings (•••• 7781) To Everyday Checking (•••• 1042) Money in: +$175.00 Completed"':
+          - cell "Apr 10, 2025, 8:20 AM PDT":
+            - time: Apr 10, 2025, 8:20 AM PDT
+          - cell "Move to checking"
+          - cell "Transfer"
+          - cell "From Rainy Day Savings (•••• 7781) To Everyday Checking (•••• 1042)"
+          - 'cell "Money in: +$175.00"'
+          - cell "Completed"
+        - 'row "Mar 4, 2025, 6:45 PM PST Demo utilities Withdrawal Everyday Checking (•••• 1042) Money out: −$120.00 Completed"':
+          - cell "Mar 4, 2025, 6:45 PM PST":
+            - time: Mar 4, 2025, 6:45 PM PST
+          - cell "Demo utilities"
+          - cell "Withdrawal"
+          - cell "Everyday Checking (•••• 1042)"
+          - 'cell "Money out: −$120.00"'
+          - cell "Completed"
+        - 'row "Feb 14, 2025, 10:15 AM PST Monthly savings Transfer From Everyday Checking (•••• 1042) To Rainy Day Savings (•••• 7781) Money out: −$250.00 Completed"':
+          - cell "Feb 14, 2025, 10:15 AM PST":
+            - time: Feb 14, 2025, 10:15 AM PST
+          - cell "Monthly savings"
+          - cell "Transfer"
+          - cell "From Everyday Checking (•••• 1042) To Rainy Day Savings (•••• 7781)"
+          - 'cell "Money out: −$250.00"'
+          - cell "Completed"
+        - 'row "Jan 18, 2025, 12:30 PM PST Demo groceries Withdrawal Everyday Checking (•••• 1042) Money out: −$85.25 Completed"':
+          - cell "Jan 18, 2025, 12:30 PM PST":
+            - time: Jan 18, 2025, 12:30 PM PST
+          - cell "Demo groceries"
+          - cell "Withdrawal"
+          - cell "Everyday Checking (•••• 1042)"
+          - 'cell "Money out: −$85.25"'
+          - cell "Completed"
+        - 'row "Jan 3, 2025, 9:00 AM PST Demo payroll Deposit Everyday Checking (•••• 1042) Money in: +$1,200.00 Completed"':
+          - cell "Jan 3, 2025, 9:00 AM PST":
+            - time: Jan 3, 2025, 9:00 AM PST
+          - cell "Demo payroll"
+          - cell "Deposit"
+          - cell "Everyday Checking (•••• 1042)"
+          - 'cell "Money in: +$1,200.00"'
+          - cell "Completed"
+- contentinfo: DemoBank uses synthetic demo data only. Service online

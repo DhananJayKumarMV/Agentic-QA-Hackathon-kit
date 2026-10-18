@@ -1,0 +1,28 @@
+{
+  "prd_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "prompt_version": "spec-v1",
+  "requirements": [
+    {
+      "id": "REQ-TRF-001",
+      "area": "transfers",
+      "statement": "A transfer amount must be greater than zero; zero or negative amounts are rejected with a validation message and no money moves.",
+      "source_quote": "Amount must be a positive number greater than zero",
+      "kind": "validation",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": ["check balances unchanged after rejection", "check no new transaction"],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-HIS-001",
+      "area": "history",
+      "statement": "Date range filters include transactions on both the start and end dates.",
+      "source_quote": "The start and end dates are inclusive",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": ["pick a date that has a transaction and use it as both bounds"],
+      "mutates_state": false
+    }
+  ]
+}

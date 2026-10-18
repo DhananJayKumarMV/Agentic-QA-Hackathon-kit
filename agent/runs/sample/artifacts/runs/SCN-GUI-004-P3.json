@@ -1,0 +1,190 @@
+{
+  "scenario_id": "SCN-GUI-004-P3",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-0606fd",
+    "unique_amount": "1.40"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "goto /dashboard",
+      "healed": false,
+      "duration_ms": 707,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "role=link[name=\"Transfer funds\"]",
+      "healed": false,
+      "duration_ms": 385,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-0606fd",
+    "probes": {
+      "0": {
+        "url": "/transfer",
+        "full_url": "http://localhost:5173/transfer"
+      },
+      "1": {
+        "count": 1,
+        "visible": true,
+        "locator": "role=combobox[name=\"From account\"]"
+      }
+    },
+    "duration_ms": 1435,
+    "url": "http://localhost:5173/transfer",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-GUI-004-P3__a1__final.png",
+        "caption": "SCN-GUI-004-P3__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-GUI-004-P3/a1_network.json",
+        "caption": "10 API calls during the scenario"
+      }
+    ]
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 3186
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 3187
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 3187
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 3187
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 3190
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 3190
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 3190
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4369.75"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8275.00"
+          }
+        ]
+      },
+      "t_ms": 3190
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 3902
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4369.75"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8275.00"
+          }
+        ]
+      },
+      "t_ms": 3909
+    }
+  ],
+  "state_before": null,
+  "state_after": null,
+  "foreign_activity": false,
+  "aborted_reason": null
+}

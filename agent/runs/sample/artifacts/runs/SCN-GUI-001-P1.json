@@ -1,0 +1,173 @@
+{
+  "scenario_id": "SCN-GUI-001-P1",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-e72b5b",
+    "unique_amount": "1.39"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "viewport 1280x800",
+      "healed": false,
+      "duration_ms": 338,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "goto /dashboard",
+      "healed": false,
+      "duration_ms": 799,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 2,
+      "ok": true,
+      "locator_used": "test_id=account-card",
+      "healed": false,
+      "duration_ms": 357,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-e72b5b",
+    "probes": {
+      "0": {
+        "count": 2,
+        "visible": true,
+        "locator": "test_id=account-card"
+      },
+      "1": {
+        "count": 1,
+        "visible": true,
+        "locator": "role=button[name=\"Log out\"]"
+      },
+      "2": {
+        "by_width": {
+          "1280": {
+            "scroll_width": 1280,
+            "client_width": 1280
+          }
+        }
+      }
+    },
+    "duration_ms": 2243,
+    "url": "http://localhost:5173/dashboard",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-GUI-001-P1__a1__final.png",
+        "caption": "SCN-GUI-001-P1__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-GUI-001-P1/a1_network.json",
+        "caption": "8 API calls during the scenario"
+      }
+    ]
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 1845
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 1851
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 1851
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 1851
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 1865
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 1866
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 1867
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4369.75"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8275.00"
+          }
+        ]
+      },
+      "t_ms": 1867
+    }
+  ],
+  "state_before": null,
+  "state_after": null,
+  "foreign_activity": false,
+  "aborted_reason": null
+}

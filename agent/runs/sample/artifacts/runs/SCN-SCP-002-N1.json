@@ -1,0 +1,79 @@
+{
+  "scenario_id": "SCN-SCP-002-N1",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-3bedce",
+    "unique_amount": "1.42"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "goto /",
+      "healed": false,
+      "duration_ms": 746,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "role=button[name=\"Enter Demo\"]",
+      "healed": false,
+      "duration_ms": 356,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-3bedce",
+    "probes": {
+      "0": {
+        "text": "D\nDemoBank\nYour accounts, in one simple dashboard.\n\nExplore a fictional checking and savings account, review transaction history, and move money between your own accounts. No password needed, and every record is synthetic.\n\nEnter Demo\n\nDemoBank never connects to a real bank or moves real money."
+      },
+      "1": {
+        "count": 1,
+        "visible": true,
+        "locator": "role=button[name=\"Enter Demo\"]"
+      }
+    },
+    "duration_ms": 2707,
+    "url": "http://localhost:5173/",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-SCP-002-N1__a1__final.png",
+        "caption": "SCN-SCP-002-N1__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-SCP-002-N1/a1_network.json",
+        "caption": "2 API calls during the scenario"
+      }
+    ]
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 60273
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 60278
+    }
+  ],
+  "state_before": null,
+  "state_after": null,
+  "foreign_activity": false,
+  "aborted_reason": null
+}

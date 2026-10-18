@@ -1,0 +1,191 @@
+{
+  "scenario_id": "SCN-ACC-004-E1",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-4abc93",
+    "unique_amount": "1.61"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "goto /dashboard",
+      "healed": false,
+      "duration_ms": 730,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "role=button[name=\"Log out\"]",
+      "healed": false,
+      "duration_ms": 427,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 2,
+      "ok": true,
+      "locator_used": "back",
+      "healed": false,
+      "duration_ms": 672,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-4abc93",
+    "probes": {
+      "0": {
+        "count": 0,
+        "visible": false,
+        "resolve_error": "could not resolve element 'dashboard.account_card' (role=link[name=\"Rainy Day Savings Savings Account number ending •••• 7781 Available balance $8,275.00USD\"])"
+      },
+      "1": {
+        "count": 0,
+        "visible": false,
+        "resolve_error": "could not resolve element 'header.customer' (test_id=active-customer)"
+      }
+    },
+    "duration_ms": 9557,
+    "url": "http://localhost:5173/",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-ACC-004-E1__a1__final.png",
+        "caption": "SCN-ACC-004-E1__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-ACC-004-E1/a1_network.json",
+        "caption": "11 API calls during the scenario"
+      }
+    ]
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 158669
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 158675
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 158675
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 158675
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 158679
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 158680
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 158681
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4369.75"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8275.00"
+          }
+        ]
+      },
+      "t_ms": 158681
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 159400
+    },
+    {
+      "method": "DELETE",
+      "url": "http://localhost:8000/api/demo/session",
+      "status": 204,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 159400
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 159403
+    }
+  ],
+  "state_before": null,
+  "state_after": null,
+  "foreign_activity": false,
+  "aborted_reason": null
+}

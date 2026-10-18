@@ -1,0 +1,28 @@
+- link "Skip to main content":
+  - /url: "#main"
+- banner:
+  - link "DemoBank dashboard":
+    - /url: /dashboard
+    - text: DemoBank
+  - navigation "Main":
+    - link "Dashboard":
+      - /url: /dashboard
+    - link "Transactions":
+      - /url: /transactions
+    - link "Transfer":
+      - /url: /transfer
+    - link "Profile":
+      - /url: /profile
+  - text: Signed in as Avery Demo
+  - button "Log out"
+- main:
+  - paragraph: Profile
+  - heading "Your profile" [level=1]
+  - region "Demo customer details":
+    - heading "Demo customer details" [level=2]
+    - term: Display name
+    - definition: Avery Demo
+    - term: Email
+    - definition: a***@example.test
+    - paragraph: These are synthetic demo details. DemoBank never stores real identity information.
+- contentinfo: DemoBank uses synthetic demo data only. Service online

@@ -1,0 +1,49 @@
+- link "Skip to main content":
+  - /url: "#main"
+- banner:
+  - link "DemoBank dashboard":
+    - /url: /dashboard
+    - text: DemoBank
+  - navigation "Main":
+    - link "Dashboard":
+      - /url: /dashboard
+    - link "Transactions":
+      - /url: /transactions
+    - link "Transfer":
+      - /url: /transfer
+    - link "Profile":
+      - /url: /profile
+  - text: Signed in as Avery Demo
+  - button "Log out"
+- main:
+  - paragraph: Move money
+  - heading "Transfer between your accounts" [level=1]
+  - text: From account
+  - combobox "From account":
+    - option "Select an account"
+    - option "Everyday Checking (•••• 1042) — $4,369.75" [selected]
+    - option "Rainy Day Savings (•••• 7781) — $8,275.00"
+  - text: To account
+  - combobox "To account":
+    - option "Select an account"
+    - option "Everyday Checking (•••• 1042) — $4,369.75"
+    - option "Rainy Day Savings (•••• 7781) — $8,275.00" [selected]
+  - text: Amount (USD)
+  - textbox "Amount (USD)":
+    - /placeholder: "0.00"
+  - paragraph: Up to two decimal places, for example 25.00.
+  - text: Memo (optional)
+  - textbox "Memo (optional)"
+  - button "Transfer funds"
+  - region "Current balances":
+    - heading "Current balances" [level=2]
+    - list:
+      - listitem:
+        - link "Everyday Checking (•••• 1042)":
+          - /url: /accounts/00000000-0000-0000-0000-000000000101
+        - text: $4,369.75
+      - listitem:
+        - link "Rainy Day Savings (•••• 7781)":
+          - /url: /accounts/00000000-0000-0000-0000-000000000102
+        - text: $8,275.00
+- contentinfo: DemoBank uses synthetic demo data only. Service online

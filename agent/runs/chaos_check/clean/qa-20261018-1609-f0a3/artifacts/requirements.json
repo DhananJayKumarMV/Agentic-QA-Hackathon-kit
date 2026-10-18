@@ -1,0 +1,651 @@
+{
+  "prd_sha256": "5bf675015f276b0432ca9ba1c222a9c9688b9d4fccc57247d446974d8e3eed6b",
+  "prompt_version": "spec-v3",
+  "requirements": [
+    {
+      "id": "REQ-ACC-001",
+      "area": "access",
+      "statement": "The landing page shows a clearly labeled Enter Demo action that opens the demo dashboard without requiring a password or real identity information.",
+      "source_quote": "The landing page provides a clearly labeled Enter Demo action. It opens the demo dashboard without requiring a password or real identity information.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Click Enter Demo from landing page; confirm dashboard loads with no credential prompt"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-ACC-002",
+      "area": "access",
+      "statement": "The header identifies the active demo customer and provides a Log out action.",
+      "source_quote": "The header identifies the active demo customer and provides a Log out action.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check header text for customer name and a visible Log out control"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-ACC-003",
+      "area": "access",
+      "statement": "Logging out returns the user to the landing page.",
+      "source_quote": "Logging out returns the user to the landing page.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Click Log out; confirm landing page with Enter Demo is shown"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-ACC-004",
+      "area": "access",
+      "statement": "After logout, direct navigation to protected dashboard views returns the user to the landing page or an access-required state and does not show protected content.",
+      "source_quote": "Protected dashboard views should not remain usable after logout; direct navigation to them should return the user to the landing page or an access-required state.",
+      "kind": "security",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Log out, open dashboard and account detail URLs directly; confirm no protected content",
+        "Check protected API calls without a session are refused"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-ACC-005",
+      "area": "access",
+      "statement": "Refreshing a page during a valid demo session preserves the session.",
+      "source_quote": "Refreshing while in a valid demo session should preserve that session.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Enter demo, refresh dashboard and detail pages; confirm still signed in with data shown"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-ACC-006",
+      "area": "access",
+      "statement": "A logged-out user does not regain access to a protected page by refreshing it.",
+      "source_quote": "A logged-out user must not regain access merely by refreshing a protected page.",
+      "kind": "security",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Log out, navigate to protected route, refresh; confirm protected content is not shown"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-DSH-001",
+      "area": "dashboard",
+      "statement": "The dashboard shows the customer's checking and savings accounts.",
+      "source_quote": "The dashboard shows the customer's checking and savings accounts.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Confirm one checking and one savings account are listed on dashboard"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-DSH-002",
+      "area": "dashboard",
+      "statement": "Each account card displays a readable name, a masked account identifier, account type, and current available balance in USD.",
+      "source_quote": "Each account displays a readable account name, a masked account identifier, account type, and current available balance in USD.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check each account shows name, masked id, type and USD balance"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-DSH-003",
+      "area": "dashboard",
+      "statement": "Balances are displayed with exactly two decimal places.",
+      "source_quote": "Balances are displayed to two decimal places.",
+      "kind": "ux",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check format of every displayed balance on dashboard and detail views"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-DSH-004",
+      "area": "dashboard",
+      "statement": "The UI never exposes a full account identifier.",
+      "source_quote": "The UI must not expose a full account identifier.",
+      "kind": "security",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Search visible text on all screens for unmasked identifier",
+        "Compare with identifiers in API responses"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-DSH-005",
+      "area": "dashboard",
+      "statement": "Selecting an account opens an account detail view showing its current balance and related transaction history.",
+      "source_quote": "Selecting an account opens an account detail view with its current balance and related transaction history.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Click each account; check balance and only rows involving that account"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-DSH-006",
+      "area": "dashboard",
+      "statement": "Balances on the dashboard and account detail view agree with each other and with the latest successful transactions.",
+      "source_quote": "Account balances shown on the dashboard and detail view must agree with the latest successful transactions.",
+      "kind": "data_integrity",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Compare dashboard, detail and API balances",
+        "Reconcile balance against seed balance plus completed transactions"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-TRF-001",
+      "area": "transfers",
+      "statement": "The user can transfer funds between the checking and savings accounts of the demo customer.",
+      "source_quote": "The user can transfer funds between the checking and savings accounts owned by the demo customer.",
+      "kind": "functional",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Submit valid transfer each direction; compare balances before and after in UI and API"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-002",
+      "area": "transfers",
+      "statement": "The transfer form includes source account, destination account, amount, and an optional memo.",
+      "source_quote": "The transfer form includes source account, destination account, amount, and an optional memo.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check all four fields exist; submit a valid transfer without memo"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-TRF-003",
+      "area": "transfers",
+      "statement": "A transfer with the same source and destination account is rejected with a clear explanation.",
+      "source_quote": "Same-account transfers must be rejected with a clear explanation",
+      "kind": "validation",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Select same account for both; confirm visible error and no success message"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-004",
+      "area": "transfers",
+      "statement": "A rejected same-account transfer does not alter balances or create a transaction.",
+      "source_quote": "must not alter balances or create a transaction",
+      "kind": "data_integrity",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Compare balances and record count before and after in UI and API"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-005",
+      "area": "transfers",
+      "statement": "Blank, zero, negative, non-numeric and over-precision (more than two decimals) amounts are each rejected with a clear validation message.",
+      "source_quote": "Blank, zero, negative, non-numeric, and over-precision values must be rejected with a clear validation message.",
+      "kind": "validation",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Try each invalid class; confirm error message and no success message",
+        "Test boundary 0.01 accepted and 0.001 rejected"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-006",
+      "area": "transfers",
+      "statement": "Rejected invalid amount input does not create a transaction or change balances.",
+      "source_quote": "Rejected input must not create a transaction or change balances.",
+      "kind": "data_integrity",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Compare balances and history count before and after each rejected submission"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-007",
+      "area": "transfers",
+      "statement": "A transfer exceeding the source account's available balance is rejected.",
+      "source_quote": "The amount must not exceed the source account's available balance. If funds are insufficient, the transfer must be rejected",
+      "kind": "validation",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Submit amount above source balance; confirm error and no success",
+        "Test amount exactly equal to balance as boundary"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-008",
+      "area": "transfers",
+      "statement": "An insufficient-funds transfer leaves both balances unchanged and no completed transfer appears in history.",
+      "source_quote": "both balances must remain unchanged, and no completed transfer must appear in history.",
+      "kind": "data_integrity",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Compare both balances and history before and after; look for new completed row"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-009",
+      "area": "transfers",
+      "statement": "A valid transfer is atomic: the source decreases by the amount and the destination increases by exactly the same amount.",
+      "source_quote": "A valid transfer is atomic: the source balance decreases by the amount and the destination balance increases by the same amount. No partial transfer is allowed.",
+      "kind": "data_integrity",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Read both balances before and after in UI and API; compare exact deltas to amount"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-010",
+      "area": "transfers",
+      "statement": "A successful transfer creates exactly one completed transfer record that appears in both the source and destination account histories.",
+      "source_quote": "A successful transfer creates one completed transfer record that can be found in both relevant account histories.",
+      "kind": "data_integrity",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Count new records after transfer; find it in both account histories and combined history"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-011",
+      "area": "transfers",
+      "statement": "The transfer record shows amount, date and time, source, destination, status, and memo if supplied.",
+      "source_quote": "The record shows the amount, date and time, source, destination, status, and memo if supplied.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Compare new record fields with submitted values, including memo"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-012",
+      "area": "transfers",
+      "statement": "The UI shows a success state only after the transfer has been committed.",
+      "source_quote": "The UI reports success only after the transfer has been committed.",
+      "kind": "data_integrity",
+      "priority": "P0",
+      "testability": "partially",
+      "verification_hints": [
+        "When success appears, immediately check API balances and record exist",
+        "Delay or fail the request if possible and watch for early success"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-013",
+      "area": "transfers",
+      "statement": "If a transfer is rejected or fails, the UI explains that it did not complete and does not show a success state.",
+      "source_quote": "If a transfer is rejected or fails, the UI must explain that it did not complete and must not show a success state.",
+      "kind": "ux",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Trigger a rejection; confirm visible not-completed message and no success text"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-TRF-014",
+      "area": "transfers",
+      "statement": "After a successful transfer and a page refresh, the updated balances and the transaction record persist.",
+      "source_quote": "Refreshing after a successful transfer must preserve the updated balances and transaction record.",
+      "kind": "data_integrity",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Reload after transfer; recheck balances and find the record in history"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-HIS-001",
+      "area": "history",
+      "statement": "The user can view a combined transaction history and an account-specific history.",
+      "source_quote": "The user can view a combined transaction history and account-specific history.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Open combined history and each account history; compare row sets"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-HIS-002",
+      "area": "history",
+      "statement": "Each history row shows date and time, description or memo, transaction type, amount, status, and relevant account.",
+      "source_quote": "Each row shows date and time, description or memo, transaction type, amount, status, and relevant account.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check every row for all columns and amount format"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-HIS-003",
+      "area": "history",
+      "statement": "Amount direction is clear for deposits, withdrawals and transfers.",
+      "source_quote": "Amount direction should be clear for deposits, withdrawals, and transfers.",
+      "kind": "ux",
+      "priority": "P2",
+      "testability": "partially",
+      "verification_hints": [
+        "Check sign, color or label per type against balance effect"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-HIS-004",
+      "area": "history",
+      "statement": "History can be filtered by account, transaction type, status and date range, and every displayed row satisfies all selected filters.",
+      "source_quote": "The user can filter history by account, transaction type, status, and date range. When filters are applied, every displayed row must satisfy all selected filters.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Apply each filter and combinations; check every row against all values",
+        "Compare displayed set with independently filtered full data"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-HIS-005",
+      "area": "history",
+      "statement": "Start and end dates are inclusive: transactions on either boundary date that match other filters are included.",
+      "source_quote": "The start and end dates are inclusive. A transaction occurring on either boundary date must be included when it matches the other filters.",
+      "kind": "data_integrity",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Set start and end to a date with known transactions; confirm they appear",
+        "Test earliest and latest record dates as boundaries"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-HIS-006",
+      "area": "history",
+      "statement": "An empty filter result shows a clear empty state, not an error or unrelated transactions.",
+      "source_quote": "An empty result set must show a clear empty state, not an error or unrelated transactions.",
+      "kind": "ux",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Build a filter combination matching nothing; confirm empty message and no rows or error"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-HIS-007",
+      "area": "history",
+      "statement": "Clearing filters restores the unfiltered history.",
+      "source_quote": "Clearing filters restores the unfiltered history.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Apply filters, clear; compare row count and rows with original list"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-PRO-001",
+      "area": "profile",
+      "statement": "The profile view displays only synthetic demo-customer details such as display name and a masked email address.",
+      "source_quote": "A profile view displays only synthetic demo-customer details, such as display name and a masked email address.",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Open profile; check name shown and email masked"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-PRO-002",
+      "area": "profile",
+      "statement": "The profile view does not reveal passwords, authentication tokens, full account identifiers, or another user's data.",
+      "source_quote": "The view must not reveal passwords, authentication tokens, full account identifiers, or data belonging to another user.",
+      "kind": "security",
+      "priority": "P0",
+      "testability": "automatable",
+      "verification_hints": [
+        "Search profile text and API response for tokens, passwords, full identifiers"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-GUI-001",
+      "area": "ui",
+      "statement": "The app works in a current desktop browser at 1280x800 and remains usable at narrower widths.",
+      "source_quote": "The target works in a current desktop browser at a 1280 × 800 viewport and remains usable at narrower widths.",
+      "kind": "ux",
+      "priority": "P2",
+      "testability": "partially",
+      "verification_hints": [
+        "Load key screens at 1280x800 and narrower widths; check no clipped controls"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-GUI-002",
+      "area": "ui",
+      "statement": "Interactive controls have readable labels and communicate loading, success, validation and failure states.",
+      "source_quote": "Interactive controls have readable labels and communicate loading, success, validation, and failure states.",
+      "kind": "ux",
+      "priority": "P2",
+      "testability": "partially",
+      "verification_hints": [
+        "Check labels on controls; observe each feedback state during actions"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-GUI-003",
+      "area": "ui",
+      "statement": "A submitted action does not silently disappear: the UI shows a loading state or prevents duplicate submission while waiting.",
+      "source_quote": "A submitted action should not silently disappear. While waiting, the UI should show a loading state or otherwise prevent accidental duplicate submission.",
+      "kind": "ux",
+      "priority": "P1",
+      "testability": "partially",
+      "verification_hints": [
+        "Double-click submit; confirm loading or disabled state and only one record created"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-GUI-004",
+      "area": "ui",
+      "statement": "Navigation links and buttons lead to the labeled destination or perform the labeled action.",
+      "source_quote": "Navigation links and buttons lead to the labeled destination or perform the labeled action.",
+      "kind": "ux",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Click each link and button; compare resulting page or action with its label"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-GUI-005",
+      "area": "ui",
+      "statement": "After a recoverable error the user can retry or return to the dashboard.",
+      "source_quote": "A recoverable error must leave the user able to retry or return to the dashboard.",
+      "kind": "ux",
+      "priority": "P1",
+      "testability": "partially",
+      "verification_hints": [
+        "After a validation or failure error, confirm retry works or dashboard link is available"
+      ],
+      "mutates_state": true
+    },
+    {
+      "id": "REQ-SED-001",
+      "area": "seed",
+      "statement": "The demo begins with one customer, one checking account and one savings account.",
+      "source_quote": "The demo begins with one customer, one checking account, one savings account,",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check dashboard lists exactly two accounts of the expected types and one customer"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-SED-002",
+      "area": "seed",
+      "statement": "Seed data includes enough historical transactions across multiple dates to exercise account, type, status and date filters.",
+      "source_quote": "enough historical transactions to exercise account, type, status, and date filters. Seed records should include multiple dates",
+      "kind": "functional",
+      "priority": "P1",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check history has varied accounts, types, statuses and dates"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-SED-003",
+      "area": "seed",
+      "statement": "Seed data includes at least one transfer between the checking and savings accounts.",
+      "source_quote": "at least one transfer between the two accounts.",
+      "kind": "functional",
+      "priority": "P2",
+      "testability": "automatable",
+      "verification_hints": [
+        "Filter by transfer type; find a record linking both accounts"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-SCP-001",
+      "area": "scope",
+      "statement": "The app never initiates real payments or connects to an external bank.",
+      "source_quote": "The application must never initiate real payments or connect to an external bank.",
+      "kind": "negative_scope",
+      "priority": "P1",
+      "testability": "partially",
+      "verification_hints": [
+        "Monitor network requests for external bank or payment hosts; check no such UI"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-SCP-002",
+      "area": "scope",
+      "statement": "The app offers no signup feature.",
+      "source_quote": "The demo has no signup, external payment, bill-pay, loan, card, or multi-user features.",
+      "kind": "negative_scope",
+      "priority": "P2",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check landing page and navigation for signup controls or routes"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-SCP-003",
+      "area": "scope",
+      "statement": "The app offers no external payment, bill-pay, loan or card features.",
+      "source_quote": "The demo has no signup, external payment, bill-pay, loan, card, or multi-user features.",
+      "kind": "negative_scope",
+      "priority": "P2",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check all navigation and routes for payment, bill-pay, loan or card entries"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-SCP-004",
+      "area": "scope",
+      "statement": "The app offers no multi-user features, joint accounts or multiple customers.",
+      "source_quote": "Multiple customers, joint accounts, loans, credit cards, budgeting, or investment features.",
+      "kind": "negative_scope",
+      "priority": "P2",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check for user switching, joint-account or budgeting/investment entries"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-SCP-005",
+      "area": "scope",
+      "statement": "The app offers no real bank integrations or deposits from external sources.",
+      "source_quote": "Real bank integrations, payment rails, or deposits from external sources.",
+      "kind": "negative_scope",
+      "priority": "P1",
+      "testability": "partially",
+      "verification_hints": [
+        "Check no deposit or external-source control exists; watch outbound requests"
+      ],
+      "mutates_state": false
+    },
+    {
+      "id": "REQ-SCP-006",
+      "area": "scope",
+      "statement": "The app offers no password reset, multi-factor authentication or production-grade identity verification.",
+      "source_quote": "Signup, password reset, multi-factor authentication, or production-grade identity verification.",
+      "kind": "negative_scope",
+      "priority": "P2",
+      "testability": "automatable",
+      "verification_hints": [
+        "Check landing and header for reset, MFA or identity verification flows"
+      ],
+      "mutates_state": false
+    }
+  ]
+}

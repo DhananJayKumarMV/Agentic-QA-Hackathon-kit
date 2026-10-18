@@ -1,0 +1,19 @@
+# Ground-truth schema for eval/score.py (illustrative, generic entries only).
+#
+# Copy to eval/ground_truth.local.yaml (gitignored) and list the behaviours you have
+# verified by hand on the target. score.py matches each entry to the agent's
+# requirement verdicts by token-Jaccard similarity (>= 0.5) between `anchor` and the
+# requirement's source_quote / statement.
+#
+#   anchor:           a phrase copied from the PRD that identifies the requirement
+#   expected_status:  failed | passed   (what a correct agent should conclude)
+#   symptom:          short description of the observed defect (failed entries)
+#   severity:         critical | major | minor
+- anchor: "A successful transfer must debit the source account by exactly the transfer amount"
+  expected_status: failed
+  symptom: "source balance decreases by more than the entered amount"
+  severity: critical
+- anchor: "Protected pages must redirect signed-out visitors to the landing page"
+  expected_status: passed
+  symptom: ""
+  severity: major

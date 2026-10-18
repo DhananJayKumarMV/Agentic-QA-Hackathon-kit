@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA Audit {{ r.run_id }}</title>
+<style>
+:root {
+  --bg: #fafaf9; --fg: #1c1917; --muted: #57534e; --card: #ffffff; --line: #e7e5e4;
+  --pass: #15803d; --pass-bg: #dcfce7; --fail: #b91c1c; --fail-bg: #fee2e2;
+  --unv: #a16207; --unv-bg: #fef9c3; --none: #a8a29e; --accent: #1d4ed8;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18181b; --fg: #f4f4f5; --muted: #a1a1aa; --card: #232327; --line: #3f3f46;
+    --pass: #4ade80; --pass-bg: #14532d; --fail: #f87171; --fail-bg: #5f1d1d;
+    --unv: #facc15; --unv-bg: #4a3b0a; --none: #71717a; --accent: #93c5fd;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+main { max-width: 1180px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 1.6rem; margin: 0 0 4px; }
+h2 { font-size: 1.2rem; margin: 32px 0 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+h3 { font-size: 1rem; margin: 16px 0 6px; }
+a { color: var(--accent); }
+.muted { color: var(--muted); }
+.meta { color: var(--muted); font-size: 0.85rem; }
+td code, th code { white-space: nowrap; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85em; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0; }
+.tile { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+.tile .v { font-size: 1.6rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.tile .k { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: .04em; }
+.tile.passed .v { color: var(--pass); } .tile.failed .v { color: var(--fail); } .tile.unverified .v { color: var(--unv); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; background: var(--card); font-size: 0.85rem; }
+th, td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: var(--bg); font-weight: 600; white-space: nowrap; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+tr.total td { font-weight: 650; }
+.badge { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 0.85em; font-weight: 600; white-space: nowrap; }
+.passed { --b: var(--pass); --bb: var(--pass-bg); } .failed { --b: var(--fail); --bb: var(--fail-bg); }
+.unverified { --b: var(--unv); --bb: var(--unv-bg); }
+.critical { --b: var(--fail); --bb: var(--fail-bg); } .major { --b: var(--unv); --bb: var(--unv-bg); }
+.minor { --b: var(--muted); --bb: var(--line); } .none { --b: var(--none); --bb: transparent; }
+.badge { color: var(--b, var(--fg)); background: var(--bb, transparent); border: 1px solid var(--b, var(--line)); }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.filters button { font: inherit; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--card); color: var(--fg); cursor: pointer; }
+.filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+details.defect { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--b, var(--line));
+  border-radius: 8px; margin: 10px 0; padding: 0 14px; }
+details.defect > summary { cursor: pointer; padding: 10px 0; font-weight: 600; list-style-position: outside; }
+details.defect[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+blockquote { margin: 8px 0; padding: 4px 12px; border-left: 3px solid var(--line); color: var(--muted); }
+.ev { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin: 8px 0 14px; }
+.ev dt { font-weight: 600; } .ev dd { margin: 0; white-space: pre-wrap; word-break: break-word; }
+.shots { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 14px; }
+.shots figure { margin: 0; max-width: 420px; }
+.shots img { width: 420px; max-width: 100%; height: auto; max-height: 340px; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 4px; cursor: zoom-in; display: block; }
+.shots figcaption { font-size: 0.85em; color: var(--muted); }
+#lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center;
+  justify-content: center; z-index: 10; cursor: zoom-out; padding: 2vmin; }
+#lightbox.open { display: flex; }
+#lightbox img { max-width: 100%; max-height: 100%; }
+ol.repro li { margin: 2px 0; }
+ul.parts { margin: 0; padding-left: 18px; } ul.parts li { margin: 2px 0; }
+.why { margin: 0 0 4px; } .tech { font-size: 0.9em; color: var(--muted); }
+.shots.small figure, .shots.small img { width: 220px; }
+.legend { font-size: 0.8rem; color: var(--muted); margin: 4px 0 8px; }
+.toc { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 0.85rem; }
+footer { margin-top: 40px; color: var(--muted); font-size: 0.8rem; }
+@media print {
+  :root { --bg: #ffffff; --fg: #000000; --card: #ffffff; --line: #cccccc; color-scheme: light; }
+  body { font-size: 11px; }
+  .filters, #lightbox, .noprint { display: none !important; }
+  [data-status] { display: table-row !important; }
+  details.defect { break-inside: auto; }
+  .scroll { overflow: visible !important; }
+  table { font-size: 9.5px; }
+  th { white-space: normal; }
+  td code, th code { white-space: normal; overflow-wrap: anywhere; }
+  #req-table .reason { display: none; }
+  td:first-child code { white-space: nowrap; overflow-wrap: normal; }
+  .shots img { width: 330px; max-height: 280px; }
+  .shots figure { max-width: 330px; break-inside: avoid; }
+  .ev, ol.repro, blockquote { break-inside: avoid; }
+  h2 { break-after: avoid; }
+  table { page-break-inside: auto; } tr { break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>QA Audit Report</h1>
+  <div class="meta">
+    Target <a href="{{ r.target_url }}">{{ r.target_url }}</a> &middot; run <code>{{ r.run_id }}</code>
+    &middot; PRD <code>{{ r.prd_sha256[:12] }}</code><br>
+    {{ r.started_at.isoformat() }} &rarr; {{ r.finished_at.isoformat() }} ({{ "%.0f"|format(s.wall_time_s or 0) }} s) &middot; generated {{ generated_at }}
+  </div>
+  <nav class="toc noprint"><a href="#summary">Summary</a><a href="#coverage">Coverage</a><a href="#defects">Defects ({{ defects|length }})</a><a href="#unverified">Unverified ({{ unverified|length }})</a><a href="#scenarios">Scenarios</a><a href="#state">State ledger</a><a href="#cost">Cost</a>{% if resilience %}<a href="#resilience">Resilience</a>{% endif %}<a href="#environment">Environment</a></nav>
+</header>
+
+<section id="summary">
+  <h2>Executive summary</h2>
+  <div class="card">{{ s.executive_summary }}</div>
+  <div class="tiles">
+    {% for st in statuses %}
+    <div class="tile {{ st }}"><div class="k">{{ st }}</div><div class="v">{{ s.by_status[st] }}</div></div>
+    {% endfor %}
+    <div class="tile"><div class="k">Defects</div><div class="v">{{ s.defects_total }}</div>
+      <div class="muted">{% for k, v in s.defects_by_severity.items() %}{{ v }} {{ k }}{% if not loop.last %} &middot; {% endif %}{% endfor %}</div></div>
+    <div class="tile"><div class="k">Pass rate (verified)</div><div class="v">{{ s.pass_rate|pct }}</div>
+      <div class="muted">{{ s.verified_rate|pct }} verified</div></div>
+    <div class="tile"><div class="k">Model cost</div><div class="v">{{ cost.total_usd|usd }}</div>
+      <div class="muted">{{ s.usd_per_requirement|usd }} / requirement</div></div>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>Area</th>{% for st in statuses %}<th class="n">{{ st }}</th>{% endfor %}</tr></thead>
+    <tbody>
+    {% for area, c in s.by_area.items() %}
+      <tr><td>{{ area }}</td>{% for st in statuses %}<td class="n">{{ c[st] }}</td>{% endfor %}</tr>
+    {% endfor %}
+    </tbody>
+    <thead><tr><th>Scenario polarity</th>{% for st in statuses %}<th class="n">{{ st }}</th>{% endfor %}</tr></thead>
+    <tbody>
+    {% for pol, c in s.by_polarity.items() %}
+      <tr><td>{{ pol }}</td>{% for st in statuses %}<td class="n">{{ c[st] }}</td>{% endfor %}</tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</section>
+
+<section id="coverage">
+  <h2>Requirements and coverage</h2>
+  <div class="filters" role="group" aria-label="Filter by status">
+    <button type="button" data-filter="all" aria-pressed="true">All ({{ rows|length }})</button>
+    {% for st in statuses %}
+    <button type="button" data-filter="{{ st }}" aria-pressed="false">{{ st }} ({{ s.by_status[st] }})</button>
+    {% endfor %}
+  </div>
+  <p class="legend">Polarity cells show the worst status among that polarity's scenarios; "-" means no scenario of that kind.{% if any_failed_elsewhere %} <sup>*</sup> passed, but a covering scenario failed on a different requirement (reported there).{% endif %}</p>
+  <div class="scroll"><table id="req-table">
+    <thead><tr><th>ID</th><th>Area</th><th>Pri</th><th>Requirement</th>
+      {% for p in polarities %}<th>{{ p }}</th>{% endfor %}<th>Result</th><th class="reason">Reason</th></tr></thead>
+    <tbody>
+    {% for row in rows %}
+      <tr data-status="{{ row.status }}">
+        <td><code>{{ row.id }}</code>{% if row.defect %}<br><a href="#{{ row.defect }}">{{ row.defect }}</a>{% endif %}</td>
+        <td>{{ row.area }}</td><td>{{ row.priority }}</td>
+        <td>{{ row.statement }}</td>
+        {% for p in polarities %}{% set c = row.coverage.get(p) %}
+        <td><span class="badge {{ c or 'none' }}">{{ c or "-" }}</span></td>
+        {% endfor %}
+        <td><span class="badge {{ row.status }}">{{ row.status }}</span>{% if row.failed_elsewhere %}<sup title="covering scenario failed on another requirement">*</sup>{% endif %}</td>
+        <td class="reason">{{ row.reason }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</section>
+
+<section id="defects">
+  <h2>Defects ({{ defects|length }})</h2>
+  {% if defects %}
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Severity</th><th>Requirement(s)</th><th>Requirement not met</th><th>What the agent observed</th></tr></thead>
+    <tbody>
+    {% for d in defects %}
+      <tr><td><a href="#{{ d.id }}">{{ d.id }}</a></td><td><span class="badge {{ d.severity }}">{{ d.severity }}</span></td>
+        <td>{{ d.requirement_ids|join(", ") }}</td><td>{{ d.title }}</td><td>{{ d.headline }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  {% for d in defects %}
+  <details class="defect {{ d.severity }}" id="{{ d.id }}"{% if loop.index <= 8 %} open{% endif %}>
+    <summary>{{ d.id }} <span class="badge {{ d.severity }}">{{ d.severity }}</span> <span class="muted">Not met:</span> {{ d.title }}</summary>
+    <div class="meta">Requirement(s) {{ d.requirement_ids|join(", ") }} &middot; scenario(s) {{ d.scenario_ids|join(", ") or "-" }}
+      {% if d.priority %}&middot; priority {{ d.priority }}{% endif %}
+      {% if d.confidence is not none %}&middot; confidence {{ "%.2f"|format(d.confidence) }}{% endif %}
+      {% if d.flaky %}&middot; flaky{% endif %}
+      {% if d.related %}&middot; related: {% for x in d.related %}<a href="#{{ x }}">{{ x }}</a>{% if not loop.last %}, {% endif %}{% endfor %} (same failing scenarios){% endif %}</div>
+    {% if d.requirement_quote %}<blockquote>{{ d.requirement_quote }}</blockquote>{% endif %}
+    <dl class="ev">
+      {% for label, parts in [("Expected", d.expected_parts), ("Observed", d.observed_parts)] %}
+      <dt>{{ label }}</dt><dd>{% if parts|length > 1 %}<ul class="parts">{% for p in parts %}<li>{% if p.scenario %}<code>{{ p.scenario }}</code> {% endif %}{{ p.text }}</li>{% endfor %}</ul>{% else %}{{ (parts[0].text if parts else "") or "-" }}{% endif %}</dd>
+      {% endfor %}
+      {% if d.reason %}<dt>Failed on</dt><dd>{{ d.reason }}</dd>{% endif %}
+    </dl>
+    <h3>Steps to reproduce</h3>
+    <ol class="repro">{% for step in d.repro_steps %}<li>{{ step }}</li>{% endfor %}</ol>
+    {% if d.evidence %}
+    <h3>Evidence</h3>
+    <div class="shots">
+      {% for e in d.evidence if e.data_uri %}
+      <figure><img src="{{ e.data_uri }}" alt="{{ e.caption }}" loading="lazy" class="zoom"><figcaption>{{ e.caption }} &middot; click to enlarge</figcaption></figure>
+      {% endfor %}
+    </div>
+    <ul>
+      {% for e in d.evidence if not e.data_uri %}
+      <li>{{ e.kind }}: <a href="{{ e.link }}">{{ e.caption or e.link }}</a>{% if not e.exists %} <span class="muted">(file not found)</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if d.failing_oracles %}
+    <h3>Failed checks</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Scenario</th><th>Check</th><th>Layer</th><th>Expected</th><th>Observed</th></tr></thead>
+      <tbody>{% for o in d.failing_oracles %}
+        <tr><td><code>{{ o.scenario_id }}</code></td><td><code>{{ o.type }}</code></td><td>{{ o.layer }}</td><td>{{ o.expected }}</td><td>{{ o.observed }}</td></tr>
+      {% endfor %}</tbody>
+    </table></div>
+    {% endif %}
+  </details>
+  {% endfor %}
+  {% else %}
+  <p>No failed requirements.</p>
+  {% endif %}
+</section>
+
+<section id="unverified">
+  <h2>Unverified ({{ unverified|length }})</h2>
+  {% if unverified %}
+  <p class="legend">Unverified is neither a pass nor a defect: the agent could not collect conclusive evidence and says so instead of guessing.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Requirement</th><th>Why unverified</th><th>Scenarios run</th><th>Evidence</th></tr></thead>
+    <tbody>{% for row in unverified %}
+      <tr><td><code>{{ row.id }}</code><br><span class="muted">{{ row.area }} &middot; {{ row.priority }}</span></td><td>{{ row.statement }}</td>
+        <td><p class="why">{{ row.why }}</p><div class="tech">Technical reason: {{ row.reason }}</div></td>
+        <td>{% for sc in row.scenarios %}<code>{{ sc.id }}</code> {{ sc.polarity }}: <span class="badge {{ sc.status if sc.status in statuses else 'none' }}">{{ sc.status }}</span>{% if not loop.last %}<br>{% endif %}{% else %}none{% endfor %}</td>
+        <td><div class="shots small">{% for e in row.evidence if e.data_uri %}<figure><img src="{{ e.data_uri }}" alt="{{ e.caption }}" loading="lazy" class="zoom"><figcaption>{{ e.caption }}</figcaption></figure>{% endfor %}</div>
+          {% for e in row.evidence if not e.data_uri %}<a href="{{ e.link }}">{{ e.caption or e.kind }}</a>{% if not loop.last %}<br>{% endif %}{% endfor %}</td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+  {% else %}<p>None.</p>{% endif %}
+</section>
+
+<section id="scenarios">
+  <h2>Scenarios ({{ scenarios|length }})</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>ID</th><th>Title</th><th>Polarity</th><th>Requirements</th><th>Status</th><th class="n">Confidence</th><th class="n">Attempts</th></tr></thead>
+    <tbody>{% for sc in scenarios %}
+      <tr data-status="{{ sc.status }}"><td><code>{{ sc.id }}</code></td><td>{{ sc.title }}</td><td>{{ sc.polarity }}</td>
+        <td>{{ sc.requirement_ids|join(", ") }}</td><td><span class="badge {{ sc.status }}">{{ sc.status }}</span>{% if sc.flaky %} flaky{% endif %}</td>
+        <td class="n">{{ "%.2f"|format(sc.confidence) }}</td><td class="n">{{ sc.attempts }}</td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+</section>
+
+<section id="state">
+  <h2>State ledger and compensations</h2>
+  <p class="legend">Every mutation the agent made is tagged and recorded; unintended ones (accepted by a bug) are reversed by a compensating transfer.</p>
+  {% if ledger %}
+  <div class="scroll"><table>
+    <thead><tr><th>Scenario</th><th>Tx</th><th>Deltas</th><th>Intended</th><th>Memo tag</th></tr></thead>
+    <tbody>{% for e in ledger %}
+      <tr><td>{{ e.scenario_id }}</td><td><code>{{ e.tx_id or "-" }}</code></td>
+        <td>{% for k, v in e.deltas.items() %}{{ k }}: {{ v }}{% if not loop.last %}<br>{% endif %}{% endfor %}</td>
+        <td>{% if e.intended %}yes{% else %}<span class="badge failed">no</span>{% endif %}</td><td><code>{{ e.memo_tag }}</code></td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+  {% else %}<p>No state mutations were recorded.</p>{% endif %}
+  {% if compensations %}
+  <h3>Compensations</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Reason</th><th>Tx</th><th>Deltas</th><th>OK</th></tr></thead>
+    <tbody>{% for c in compensations %}
+      <tr><td>{{ c.reason }}</td><td><code>{{ c.tx_id or "-" }}</code></td>
+        <td>{% for k, v in c.deltas.items() %}{{ k }}: {{ v }}{% if not loop.last %}<br>{% endif %}{% endfor %}</td>
+        <td>{% if c.ok %}yes{% else %}<span class="badge failed">failed</span>{% endif %}</td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+  {% else %}<p>No compensations were needed.</p>{% endif %}
+</section>
+
+<section id="cost">
+  <h2>Cost</h2>
+  <p>Total estimated model cost <strong>{{ cost.total_usd|usd }}</strong> of a {{ cost.budget_usd|usd }} budget
+    ({{ "%.1f"|format(cost.budget_used_pct) }}%){% if cost.degraded %}; <span class="badge unverified">budget guard engaged</span> optional checks dropped{% endif %}.</p>
+  {% for title, buckets in [("Agent", cost.by_agent), ("Model", cost.by_model)] %}
+  <h3>Per {{ title|lower }}</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>{{ title }}</th>{% if title == "Agent" %}<th>Model(s)</th>{% endif %}<th class="n">Calls</th><th class="n">Input tok</th><th class="n">Output tok</th>
+      <th class="n">Cache read</th><th class="n">Cache write</th><th class="n">USD</th>{% if title == "Agent" %}<th class="n">Share</th>{% endif %}<th class="n">Artifact-cache hits</th></tr></thead>
+    <tbody>
+    {% for name, b in buckets.items() %}
+      <tr><td>{{ name }}</td>{% if title == "Agent" %}<td>{{ cost.agent_models.get(name, [])|join(", ") or "-" }}</td>{% endif %}<td class="n">{{ b.calls|num }}</td><td class="n">{{ b.input_tokens|num }}</td><td class="n">{{ b.output_tokens|num }}</td>
+        <td class="n">{{ b.cache_read|num }}</td><td class="n">{{ b.cache_write|num }}</td><td class="n">{{ b.usd|usd }}</td>{% if title == "Agent" %}<td class="n">{{ cost.share.get(name, 0)|pct }}</td>{% endif %}<td class="n">{{ b.artifact_cache_hits|num }}</td></tr>
+    {% endfor %}
+      <tr class="total"><td>total</td>{% if title == "Agent" %}<td></td>{% endif %}<td class="n">{{ cost.totals.calls|num }}</td><td class="n">{{ cost.totals.input_tokens|num }}</td>
+        <td class="n">{{ cost.totals.output_tokens|num }}</td><td class="n">{{ cost.totals.cache_read|num }}</td><td class="n">{{ cost.totals.cache_write|num }}</td>
+        <td class="n">{{ cost.totals.usd|usd }}</td>{% if title == "Agent" %}<td class="n">100%</td>{% endif %}<td class="n">{{ cost.totals.artifact_cache_hits|num }}</td></tr>
+    </tbody>
+  </table></div>
+  {% endfor %}
+  <br>
+  <div class="card">
+  {% if cost.warm %}
+    <strong>Cold vs warm:</strong> warm run; {{ cost.artifact_cache_hits }} of {{ cost.totals.calls|num }} model calls were served from the
+    on-disk artifact cache at no cost. A cold run is estimated at <strong>{{ cost.estimated_cold_usd|usd }}</strong>
+    (each hit priced at the average live call for the same agent and purpose).
+  {% else %}
+    <strong>Cold vs warm:</strong> cold run (no artifact-cache hits). Re-runs against the same PRD and site reuse cached artifacts and cost less.
+  {% endif %}
+    Prompt-cache reads made up {{ cost.cache_read_share|pct }} of input tokens.
+  </div>
+</section>
+
+<section id="environment">
+  <h2>Environment</h2>
+  {% if env %}
+  <div class="scroll"><table><tbody>
+    {% for k, v in env.items() %}<tr><th>{{ k }}</th><td>{{ v }}</td></tr>{% endfor %}
+  </tbody></table></div>
+  {% else %}<p>Not recorded.</p>{% endif %}
+</section>
+
+{% if resilience %}
+<section id="resilience">
+  <h2>Resilience</h2>
+  <p>{% if resilience.chaos %}Chaos mode was <strong>on</strong>: {% for k, v in resilience.chaos.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}.
+     {% if resilience.chaos_stats %}Injected: {% for k, v in resilience.chaos_stats.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}.{% endif %}
+    {% else %}Chaos mode was off for this run.{% endif %} {% if resilience.parallel_contexts %}{{ resilience.parallel_scenarios }} read-only scenarios ran in {{ resilience.parallel_contexts }} parallel browser contexts.{% endif %}</p>
+  {% if resilience.recoveries %}
+  <div class="scroll"><table>
+    <thead><tr><th>After scenario</th><th>What the agent saw and did</th></tr></thead>
+    <tbody>{% for rc in resilience.recoveries %}
+      <tr><td><code>{{ rc.after }}</code></td><td><ol class="repro">{% for o in rc.observations %}<li>{{ o }}</li>{% endfor %}</ol></td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+  {% else %}<p>No browser recoveries were needed.</p>{% endif %}
+</section>
+{% endif %}
+
+<section id="limitations">
+  <h2>Limitations</h2>
+  <ul>{% for l in r.limitations %}<li>{{ l }}</li>{% else %}<li>None recorded.</li>{% endfor %}</ul>
+</section>
+
+<footer>Generated by qa-agent. Machine-readable results: report.json.</footer>
+</main>
+<div id="lightbox" role="dialog" aria-label="Screenshot"><img alt=""></div>
+<script>
+(function () {
+  var buttons = document.querySelectorAll(".filters button");
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = b.getAttribute("data-filter");
+      buttons.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      document.querySelectorAll("#req-table tbody tr").forEach(function (tr) {
+        tr.hidden = !(f === "all" || tr.getAttribute("data-status") === f);
+      });
+    });
+  });
+  var lb = document.getElementById("lightbox"), lbImg = lb.querySelector("img");
+  document.querySelectorAll("img.zoom").forEach(function (img) {
+    img.addEventListener("click", function () { lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add("open"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("open"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("open"); });
+  window.addEventListener("beforeprint", function () {
+    document.querySelectorAll("details").forEach(function (d) { d.open = true; });
+  });
+})();
+</script>
+</body>
+</html>

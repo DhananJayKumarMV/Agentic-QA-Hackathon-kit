@@ -1,0 +1,41 @@
+[
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/api/me",
+    "status": 0,
+    "req_body": null,
+    "resp_body": null,
+    "t_ms": 51671
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/health",
+    "status": 0,
+    "req_body": null,
+    "resp_body": null,
+    "t_ms": 51676
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/api/me",
+    "status": 401,
+    "req_body": null,
+    "resp_body": {
+      "error": {
+        "code": "unauthenticated",
+        "message": "A valid demo session is required."
+      }
+    },
+    "t_ms": 51677
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/health",
+    "status": 200,
+    "req_body": null,
+    "resp_body": {
+      "status": "ok"
+    },
+    "t_ms": 51681
+  }
+]

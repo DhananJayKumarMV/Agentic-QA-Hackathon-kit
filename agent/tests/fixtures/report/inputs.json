@@ -1,0 +1,711 @@
+{
+  "run_id": "20261018-120000-abcd",
+  "target_url": "http://localhost:5173",
+  "prd_sha256": "abababababababababababababababababababababababababababababababab",
+  "started_at": "2026-10-18T12:00:00+00:00",
+  "finished_at": "2026-10-18T12:04:10+00:00",
+  "requirements": {
+    "prd_sha256": "abababababababababababababababababababababababababababababababab",
+    "prompt_version": "v1",
+    "requirements": [
+      {
+        "id": "REQ-ACC-001",
+        "area": "access",
+        "statement": "Unauthenticated visitors are redirected to the landing page.",
+        "source_quote": "Protected pages must redirect signed-out visitors to the landing page.",
+        "kind": "security",
+        "priority": "P0",
+        "testability": "automatable",
+        "verification_hints": [],
+        "mutates_state": false
+      },
+      {
+        "id": "REQ-TRF-001",
+        "area": "transfers",
+        "statement": "A completed transfer moves exactly the entered amount.",
+        "source_quote": "A successful transfer must debit the source account by exactly the transfer amount.",
+        "kind": "data_integrity",
+        "priority": "P0",
+        "testability": "automatable",
+        "verification_hints": [],
+        "mutates_state": false
+      },
+      {
+        "id": "REQ-TRF-003",
+        "area": "transfers",
+        "statement": "A completed transfer credits the destination by the entered amount.",
+        "source_quote": "The destination account must be credited by the same amount.",
+        "kind": "data_integrity",
+        "priority": "P1",
+        "testability": "automatable",
+        "verification_hints": [],
+        "mutates_state": false
+      },
+      {
+        "id": "REQ-PRO-001",
+        "area": "profile",
+        "statement": "The profile page shows the customer's display name.",
+        "source_quote": "The profile page shows the customer's display name and email.",
+        "kind": "functional",
+        "priority": "P1",
+        "testability": "automatable",
+        "verification_hints": [],
+        "mutates_state": false
+      },
+      {
+        "id": "REQ-HIS-001",
+        "area": "history",
+        "statement": "Transaction memos are displayed as plain text.",
+        "source_quote": "Memos are shown exactly as entered.",
+        "kind": "security",
+        "priority": "P2",
+        "testability": "automatable",
+        "verification_hints": [],
+        "mutates_state": false
+      },
+      {
+        "id": "REQ-UI-001",
+        "area": "ui",
+        "statement": "Pages do not overflow horizontally on mobile widths.",
+        "source_quote": "The layout must work at 375px width without horizontal scrolling.",
+        "kind": "ux",
+        "priority": "P2",
+        "testability": "automatable",
+        "verification_hints": [],
+        "mutates_state": false
+      }
+    ]
+  },
+  "plan": {
+    "requirement_set_sha": "x",
+    "sitemap_sha": "y",
+    "scenarios": [
+      {
+        "id": "SC-ACC-001",
+        "requirement_ids": [
+          "REQ-ACC-001"
+        ],
+        "polarity": "positive",
+        "title": "Signed-out redirect",
+        "rationale": "r",
+        "preconditions": [
+          "logged_in"
+        ],
+        "params": [],
+        "steps": [
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Open a protected page while signed out"
+          }
+        ],
+        "oracles": [
+          {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/"
+            },
+            "severity": "major"
+          }
+        ],
+        "mutates_state": false,
+        "expected_money_delta": {},
+        "phase": "read_only",
+        "max_attempts": 2
+      },
+      {
+        "id": "SC-ACC-002",
+        "requirement_ids": [
+          "REQ-ACC-001"
+        ],
+        "polarity": "negative",
+        "title": "Deep link while signed out",
+        "rationale": "r",
+        "preconditions": [
+          "logged_in"
+        ],
+        "params": [],
+        "steps": [
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Open a deep link while signed out"
+          }
+        ],
+        "oracles": [
+          {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/"
+            },
+            "severity": "major"
+          }
+        ],
+        "mutates_state": false,
+        "expected_money_delta": {},
+        "phase": "read_only",
+        "max_attempts": 2
+      },
+      {
+        "id": "SC-TRF-001",
+        "requirement_ids": [
+          "REQ-TRF-001",
+          "REQ-TRF-003"
+        ],
+        "polarity": "positive",
+        "title": "Transfer moves exact amount",
+        "rationale": "r",
+        "preconditions": [
+          "logged_in"
+        ],
+        "params": [],
+        "steps": [
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Sign in"
+          },
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Open the transfer form"
+          },
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Enter amount 1.00"
+          },
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Submit"
+          }
+        ],
+        "oracles": [
+          {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/"
+            },
+            "severity": "major"
+          }
+        ],
+        "mutates_state": false,
+        "expected_money_delta": {},
+        "phase": "positive_mutation",
+        "max_attempts": 2
+      },
+      {
+        "id": "SC-TRF-002",
+        "requirement_ids": [
+          "REQ-TRF-003"
+        ],
+        "polarity": "edge",
+        "title": "Transfer of minimal amount",
+        "rationale": "r",
+        "preconditions": [
+          "logged_in"
+        ],
+        "params": [],
+        "steps": [
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Sign in"
+          },
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Transfer 0.01"
+          }
+        ],
+        "oracles": [
+          {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/"
+            },
+            "severity": "major"
+          }
+        ],
+        "mutates_state": false,
+        "expected_money_delta": {},
+        "phase": "positive_mutation",
+        "max_attempts": 2
+      },
+      {
+        "id": "SC-PRO-001",
+        "requirement_ids": [
+          "REQ-PRO-001"
+        ],
+        "polarity": "positive",
+        "title": "Profile shows name",
+        "rationale": "r",
+        "preconditions": [
+          "logged_in"
+        ],
+        "params": [],
+        "steps": [
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Sign in"
+          },
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Open profile"
+          }
+        ],
+        "oracles": [
+          {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/"
+            },
+            "severity": "major"
+          }
+        ],
+        "mutates_state": false,
+        "expected_money_delta": {},
+        "phase": "read_only",
+        "max_attempts": 2
+      },
+      {
+        "id": "SC-HIS-001",
+        "requirement_ids": [
+          "REQ-HIS-001"
+        ],
+        "polarity": "negative",
+        "title": "Memo with markup",
+        "rationale": "r",
+        "preconditions": [
+          "logged_in"
+        ],
+        "params": [],
+        "steps": [
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Sign in"
+          },
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Open history"
+          }
+        ],
+        "oracles": [
+          {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/"
+            },
+            "severity": "major"
+          }
+        ],
+        "mutates_state": false,
+        "expected_money_delta": {},
+        "phase": "read_only",
+        "max_attempts": 2
+      },
+      {
+        "id": "SC-UI-001",
+        "requirement_ids": [
+          "REQ-UI-001"
+        ],
+        "polarity": "edge",
+        "title": "Narrow viewport",
+        "rationale": "r",
+        "preconditions": [
+          "logged_in"
+        ],
+        "params": [],
+        "steps": [
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Set viewport to a phone width"
+          },
+          {
+            "action": "goto",
+            "target": null,
+            "value": null,
+            "note": "Open dashboard"
+          }
+        ],
+        "oracles": [
+          {
+            "type": "url_matches",
+            "args": {
+              "pattern": "/"
+            },
+            "severity": "major"
+          }
+        ],
+        "mutates_state": false,
+        "expected_money_delta": {},
+        "phase": "read_only",
+        "max_attempts": 2
+      }
+    ],
+    "coverage": {
+      "REQ-ACC-001": [
+        "SC-ACC-001",
+        "SC-ACC-002"
+      ],
+      "REQ-TRF-001": [
+        "SC-TRF-001"
+      ],
+      "REQ-TRF-003": [
+        "SC-TRF-001",
+        "SC-TRF-002"
+      ],
+      "REQ-PRO-001": [
+        "SC-PRO-001"
+      ],
+      "REQ-HIS-001": [
+        "SC-HIS-001"
+      ],
+      "REQ-UI-001": [
+        "SC-UI-001"
+      ]
+    }
+  },
+  "scenario_verdicts": [
+    {
+      "scenario_id": "SC-ACC-001",
+      "status": "passed",
+      "confidence": 1.0,
+      "oracle_results": [],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": null,
+      "repro_steps": []
+    },
+    {
+      "scenario_id": "SC-ACC-002",
+      "status": "passed",
+      "confidence": 1.0,
+      "oracle_results": [],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": null,
+      "repro_steps": []
+    },
+    {
+      "scenario_id": "SC-TRF-001",
+      "status": "failed",
+      "confidence": 0.95,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "balance_delta",
+            "args": {
+              "deltas": {
+                "src": "-1.00"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "fail",
+          "expected": "source -1.00",
+          "observed": "source -2.00",
+          "evidence": [
+            {
+              "kind": "screenshot",
+              "path": "evidence/SC-TRF-001_after.png",
+              "caption": "Balances after transfer"
+            },
+            {
+              "kind": "network",
+              "path": "evidence/SC-TRF-001_network.json",
+              "caption": "POST transfer response"
+            }
+          ],
+          "layer": "both"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": null,
+      "repro_steps": [
+        "Open the site and enter the demo",
+        "Open the transfer form",
+        "Transfer 1.00 from checking to savings",
+        "Compare the checking balance before and after"
+      ]
+    },
+    {
+      "scenario_id": "SC-TRF-002",
+      "status": "failed",
+      "confidence": 0.9,
+      "oracle_results": [
+        {
+          "oracle": {
+            "type": "balance_delta",
+            "args": {
+              "deltas": {
+                "src": "-1.00"
+              }
+            },
+            "severity": "critical"
+          },
+          "status": "fail",
+          "expected": "dest +0.01",
+          "observed": "dest +0.02",
+          "evidence": [],
+          "layer": "ui"
+        }
+      ],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": null,
+      "repro_steps": [
+        "Transfer 0.01"
+      ]
+    },
+    {
+      "scenario_id": "SC-PRO-001",
+      "status": "failed",
+      "confidence": 0.8,
+      "oracle_results": [],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": null,
+      "repro_steps": [
+        "Sign in",
+        "Open the profile page"
+      ]
+    },
+    {
+      "scenario_id": "SC-HIS-001",
+      "status": "failed",
+      "confidence": 0.7,
+      "oracle_results": [],
+      "attempts": 1,
+      "flaky": true,
+      "judge_notes": null,
+      "repro_steps": [
+        "Create a transfer with memo <script>alert(1)</script>",
+        "Open history"
+      ]
+    },
+    {
+      "scenario_id": "SC-UI-001",
+      "status": "unverified",
+      "confidence": 0.0,
+      "oracle_results": [],
+      "attempts": 1,
+      "flaky": false,
+      "judge_notes": null,
+      "repro_steps": []
+    }
+  ],
+  "requirement_verdicts": [
+    {
+      "requirement_id": "REQ-UI-001",
+      "status": "unverified",
+      "reason": "Probe timed out locating the dashboard",
+      "scenario_ids": [
+        "SC-UI-001"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-HIS-001",
+      "status": "failed",
+      "reason": "Memo markup executed",
+      "scenario_ids": [
+        "SC-HIS-001"
+      ],
+      "expected": "Memo rendered as text",
+      "observed": "Row shows <script>alert(1)</script> as live markup",
+      "evidence": [],
+      "severity": "minor"
+    },
+    {
+      "requirement_id": "REQ-PRO-001",
+      "status": "failed",
+      "reason": "Name missing",
+      "scenario_ids": [
+        "SC-PRO-001"
+      ],
+      "expected": "Display name visible",
+      "observed": "Profile header is empty",
+      "evidence": [],
+      "severity": null
+    },
+    {
+      "requirement_id": "REQ-TRF-003",
+      "status": "failed",
+      "reason": "Balance moved by the wrong amount",
+      "scenario_ids": [
+        "SC-TRF-001",
+        "SC-TRF-002"
+      ],
+      "expected": "Balance changes by 0.01",
+      "observed": "Balance changed by 0.02 instead of 0.01",
+      "evidence": [],
+      "severity": "major"
+    },
+    {
+      "requirement_id": "REQ-TRF-001",
+      "status": "failed",
+      "reason": "Balance moved by the wrong amount",
+      "scenario_ids": [
+        "SC-TRF-001"
+      ],
+      "expected": "Balance changes by 1.00",
+      "observed": "Balance changed by 2.00 instead of 1.00",
+      "evidence": [
+        {
+          "kind": "screenshot",
+          "path": "evidence/SC-TRF-001_after.png",
+          "caption": "Balances after transfer"
+        }
+      ],
+      "severity": "critical"
+    },
+    {
+      "requirement_id": "REQ-ACC-001",
+      "status": "passed",
+      "reason": "All oracles passed",
+      "scenario_ids": [
+        "SC-ACC-001",
+        "SC-ACC-002"
+      ],
+      "expected": "",
+      "observed": "",
+      "evidence": [],
+      "severity": null
+    }
+  ],
+  "ledger": [
+    {
+      "scenario_id": "SC-TRF-001",
+      "tx_id": "tx-a",
+      "deltas": {
+        "acct-1": "-2.00",
+        "acct-2": "+1.00"
+      },
+      "intended": true,
+      "memo_tag": "qa-run-1"
+    }
+  ],
+  "compensations": [
+    {
+      "reason": "reverse SC-TRF-001",
+      "tx_id": "tx-b",
+      "deltas": {
+        "acct-1": "+2.00",
+        "acct-2": "-1.00"
+      },
+      "ok": true
+    }
+  ],
+  "cost": {
+    "calls": [
+      {
+        "agent": "spec_analyst",
+        "model": "claude-sonnet-5-5",
+        "purpose": "extract",
+        "input_tokens": 1200,
+        "output_tokens": 3000,
+        "cache_read": 0,
+        "cache_write": 4000,
+        "usd": 0.0424,
+        "cached_artifact_hit": false,
+        "latency_ms": 0
+      },
+      {
+        "agent": "test_planner",
+        "model": "claude-sonnet-5-5",
+        "purpose": "plan",
+        "input_tokens": 2000,
+        "output_tokens": 6000,
+        "cache_read": 4000,
+        "cache_write": 1000,
+        "usd": 0.0673,
+        "cached_artifact_hit": false,
+        "latency_ms": 0
+      },
+      {
+        "agent": "verifier",
+        "model": "claude-haiku-4-5",
+        "purpose": "judge",
+        "input_tokens": 800,
+        "output_tokens": 200,
+        "cache_read": 1500,
+        "cache_write": 0,
+        "usd": 0.00195,
+        "cached_artifact_hit": false,
+        "latency_ms": 0
+      },
+      {
+        "agent": "verifier",
+        "model": "claude-haiku-4-5",
+        "purpose": "judge",
+        "input_tokens": 700,
+        "output_tokens": 150,
+        "cache_read": 1500,
+        "cache_write": 0,
+        "usd": 0.0016,
+        "cached_artifact_hit": false,
+        "latency_ms": 0
+      },
+      {
+        "agent": "verifier",
+        "model": "claude-haiku-4-5",
+        "purpose": "judge",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      },
+      {
+        "agent": "explorer",
+        "model": "claude-sonnet-5-5",
+        "purpose": "explore",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read": 0,
+        "cache_write": 0,
+        "usd": 0.0,
+        "cached_artifact_hit": true,
+        "latency_ms": 0
+      }
+    ],
+    "by_agent": {},
+    "by_model": {},
+    "total_usd": 0.11325,
+    "budget_usd": 1.0,
+    "degraded": false
+  },
+  "environment": {
+    "browser": "chromium",
+    "python": "3.13"
+  },
+  "limitations": [
+    "Mobile layout checked only at configured widths."
+  ]
+}

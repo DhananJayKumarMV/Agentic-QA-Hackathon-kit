@@ -1,0 +1,7 @@
+- main:
+  - text: DemoBank
+  - heading "Your accounts, in one simple dashboard." [level=1]
+  - paragraph: Explore a fictional checking and savings account, review transaction history, and move money between your own accounts. No password needed, and every record is synthetic.
+  - button "Enter Demo"
+  - paragraph: DemoBank never connects to a real bank or moves real money.
+- contentinfo: Service online

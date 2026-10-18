@@ -1,0 +1,12 @@
+{
+  "scenario_id": "SCN-TRF-001-N1",
+  "attempt": 1,
+  "resolved_params": {"src": "acc-a"},
+  "steps": [{"step_idx": 0, "ok": true, "locator_used": "goto /transfer", "healed": false, "duration_ms": 420, "error": null, "evidence": []}],
+  "observations": {"alert_text": "Sent!"},
+  "network": [{"method": "POST", "url": "http://api.example.test/api/transfers", "status": 201, "req_body": {"amount": "0"}, "resp_body": {"ok": true}, "t_ms": 900}],
+  "state_before": {"taken_at": "2026-01-01T00:00:00Z", "balances": {"acc-a": "10.00"}, "tx_ids": ["t1"]},
+  "state_after": {"taken_at": "2026-01-01T00:00:02Z", "balances": {"acc-a": "10.00"}, "tx_ids": ["t1", "t2"]},
+  "foreign_activity": false,
+  "aborted_reason": null
+}

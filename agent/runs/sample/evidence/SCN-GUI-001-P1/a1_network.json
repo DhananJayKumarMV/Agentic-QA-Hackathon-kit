@@ -1,0 +1,95 @@
+[
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/api/me",
+    "status": 0,
+    "req_body": null,
+    "resp_body": null,
+    "t_ms": 1845
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/api/me",
+    "status": 0,
+    "req_body": null,
+    "resp_body": null,
+    "t_ms": 1851
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/api/accounts",
+    "status": 0,
+    "req_body": null,
+    "resp_body": null,
+    "t_ms": 1851
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/health",
+    "status": 0,
+    "req_body": null,
+    "resp_body": null,
+    "t_ms": 1851
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/api/me",
+    "status": 200,
+    "req_body": null,
+    "resp_body": {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "display_name": "Avery Demo",
+      "masked_email": "a***@example.test"
+    },
+    "t_ms": 1865
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/api/me",
+    "status": 200,
+    "req_body": null,
+    "resp_body": {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "display_name": "Avery Demo",
+      "masked_email": "a***@example.test"
+    },
+    "t_ms": 1866
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/health",
+    "status": 200,
+    "req_body": null,
+    "resp_body": {
+      "status": "ok"
+    },
+    "t_ms": 1867
+  },
+  {
+    "method": "GET",
+    "url": "http://localhost:8000/api/accounts",
+    "status": 200,
+    "req_body": null,
+    "resp_body": {
+      "accounts": [
+        {
+          "id": "00000000-0000-0000-0000-000000000101",
+          "name": "Everyday Checking",
+          "type": "checking",
+          "masked_number": "\u2022\u2022\u2022\u2022 1042",
+          "currency": "USD",
+          "balance": "4369.75"
+        },
+        {
+          "id": "00000000-0000-0000-0000-000000000102",
+          "name": "Rainy Day Savings",
+          "type": "savings",
+          "masked_number": "\u2022\u2022\u2022\u2022 7781",
+          "currency": "USD",
+          "balance": "8275.00"
+        }
+      ]
+    },
+    "t_ms": 1867
+  }
+]

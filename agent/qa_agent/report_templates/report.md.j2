@@ -1,0 +1,243 @@
+# QA Audit Report: {{ r.target_url }}
+
+| | |
+|---|---|
+| Run | `{{ r.run_id }}` |
+| Target | {{ r.target_url }} |
+| PRD sha256 | `{{ r.prd_sha256[:16] }}` |
+| Started | {{ r.started_at.isoformat() }} |
+| Finished | {{ r.finished_at.isoformat() }} ({{ "%.0f"|format(s.wall_time_s or 0) }} s) |
+| Generated | {{ generated_at }} |
+
+## Executive summary
+
+{{ s.executive_summary }}
+
+## Scorecard
+
+| Status | Requirements |
+|---|---:|
+{% for st in statuses %}
+| {{ st }} | {{ s.by_status[st] }} |
+{% endfor %}
+| **total** | **{{ s.total_requirements }}** |
+
+Pass rate on verified requirements: {{ s.pass_rate|pct }}. Verified (passed or failed): {{ s.verified_rate|pct }}.
+Defects: {{ s.defects_total }} ({% for k, v in s.defects_by_severity.items() %}{{ v }} {{ k }}{% if not loop.last %}, {% endif %}{% endfor %}).
+Estimated cost: {{ cost.total_usd|usd }} ({{ s.usd_per_requirement|usd }} per requirement).
+
+### By area
+
+| Area | Passed | Failed | Unverified |
+|---|---:|---:|---:|
+{% for area, c in s.by_area.items() %}
+| {{ area }} | {{ c.passed }} | {{ c.failed }} | {{ c.unverified }} |
+{% endfor %}
+
+### Scenarios by polarity
+
+| Polarity | Passed | Failed | Unverified |
+|---|---:|---:|---:|
+{% for pol, c in s.by_polarity.items() %}
+| {{ pol }} | {{ c.passed }} | {{ c.failed }} | {{ c.unverified }} |
+{% endfor %}
+
+## Coverage matrix
+
+Each cell is the worst status among scenarios of that polarity ("-" = no scenario).{% if any_failed_elsewhere %} A `*` marks a passed requirement whose covering scenario failed on a different requirement (that failure is reported there).{% endif %}
+
+
+| Requirement | Area | Pri | Positive | Negative | Edge | Result | Defect |
+|---|---|---|---|---|---|---|---|
+{% for row in rows %}
+| {{ row.id }} | {{ row.area }} | {{ row.priority }} | {% for p in polarities %}{{ row.coverage.get(p) or "-" }} | {% endfor %}**{{ row.status }}**{% if row.failed_elsewhere %}\*{% endif %} | {{ row.defect or "" }} |
+{% endfor %}
+
+## Defects
+
+{% if defects %}
+| ID | Severity | Requirement(s) | Requirement not met | What the agent observed |
+|---|---|---|---|---|
+{% for d in defects %}
+| [{{ d.id }}](#{{ d.id|lower }}) | {{ d.severity }} | {{ d.requirement_ids|join(", ") }} | {{ d.title|mdcell }} | {{ d.headline|mdcell }} |
+{% endfor %}
+
+{% for d in defects %}
+### {{ d.id }}
+
+**Requirement not met:** {{ d.title }}
+
+- Severity: **{{ d.severity }}**{% if d.priority %} (requirement priority {{ d.priority }}){% endif %}{% if d.confidence is not none %}, confidence {{ "%.2f"|format(d.confidence) }}{% endif %}{% if d.flaky %}, flaky{% endif %}
+
+- Requirement(s): {{ d.requirement_ids|join(", ") }}; scenario(s): {{ d.scenario_ids|join(", ") or "-" }}
+{% if d.related %}
+- Related defect(s) with the same failing scenarios: {% for x in d.related %}[{{ x }}](#{{ x|lower }}){% if not loop.last %}, {% endif %}{% endfor %}
+
+{% endif %}
+{% if d.requirement_quote %}
+
+> {{ d.requirement_quote|replace("\n", "\n> ") }}
+{% endif %}
+
+{% for label, parts in [("Expected", d.expected_parts), ("Observed", d.observed_parts)] %}
+{% if parts|length > 1 %}
+**{{ label }}:**
+
+{% for p in parts %}
+- {% if p.scenario %}`{{ p.scenario }}`: {% endif %}{{ p.text }}
+{% endfor %}
+{% else %}
+**{{ label }}:** {{ (parts[0].text if parts else "") or "-" }}
+{% endif %}
+
+{% endfor %}
+**Steps to reproduce**
+
+{% for step in d.repro_steps %}
+{{ loop.index }}. {{ step }}
+{% endfor %}
+{% if d.failing_oracles %}
+
+**Failed checks**
+
+| Scenario | Check | Layer | Expected | Observed |
+|---|---|---|---|---|
+{% for o in d.failing_oracles %}
+| {{ o.scenario_id }} | {{ o.type }} | {{ o.layer }} | {{ o.expected|mdcell }} | {{ o.observed|mdcell }} |
+{% endfor %}
+{% endif %}
+{% if d.evidence %}
+
+**Evidence**
+
+{% for e in d.evidence %}
+{% if e.kind == "screenshot" %}
+- ![{{ e.caption }}]({{ e.link }}) [{{ e.caption or e.link }}]({{ e.link }})
+{% else %}
+- {{ e.kind }}: [{{ e.caption or e.link }}]({{ e.link }})
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% endfor %}
+{% else %}
+No failed requirements.
+{% endif %}
+
+## Unverified requirements
+
+{% if unverified %}
+An unverified requirement is neither a pass nor a defect: the agent could not collect conclusive evidence and says so instead of guessing.
+
+| Requirement | Statement | Why unverified | Scenarios run | Evidence |
+|---|---|---|---|---|
+{% for row in unverified %}
+| {{ row.id }} | {{ row.statement|mdcell }} | {{ row.why|mdcell }}<br>Technical reason: {{ row.reason|mdcell }} | {% for sc in row.scenarios %}{{ sc.id }} ({{ sc.polarity }}): {{ sc.status }}{% if not loop.last %}<br>{% endif %}{% else %}none{% endfor %} | {% for e in row.evidence %}[{{ e.kind }}]({{ e.link }}){% if not loop.last %}, {% endif %}{% else %}-{% endfor %} |
+{% endfor %}
+{% else %}
+None.
+{% endif %}
+
+## All requirement results
+
+| Requirement | Status | Statement | Reason |
+|---|---|---|---|
+{% for row in rows %}
+| {{ row.id }} | {{ row.status }} | {{ row.statement|mdcell }} | {{ row.reason|mdcell }} |
+{% endfor %}
+
+## State ledger and compensations
+
+Every mutation the agent made is tagged and recorded; unintended ones (accepted by a bug) are reversed by a compensating transfer.
+
+{% if ledger %}
+| Scenario | Tx | Deltas | Intended | Memo tag |
+|---|---|---|---|---|
+{% for e in ledger %}
+| {{ e.scenario_id }} | {{ e.tx_id or "-" }} | {% for k, v in e.deltas.items() %}{{ k }}: {{ v }}{% if not loop.last %}; {% endif %}{% endfor %} | {{ "yes" if e.intended else "**NO**" }} | {{ e.memo_tag|mdcell }} |
+{% endfor %}
+{% else %}
+No state mutations were recorded.
+{% endif %}
+
+{% if compensations %}
+| Compensation reason | Tx | Deltas | OK |
+|---|---|---|---|
+{% for c in compensations %}
+| {{ c.reason|mdcell }} | {{ c.tx_id or "-" }} | {% for k, v in c.deltas.items() %}{{ k }}: {{ v }}{% if not loop.last %}; {% endif %}{% endfor %} | {{ "yes" if c.ok else "**FAILED**" }} |
+{% endfor %}
+{% else %}
+No compensations were needed.
+{% endif %}
+
+## Cost
+
+Total estimated model cost: **{{ cost.total_usd|usd }}** of a {{ cost.budget_usd|usd }} budget ({{ "%.1f"|format(cost.budget_used_pct) }}%){% if cost.degraded %}; budget guard engaged, optional checks dropped{% endif %}.
+
+### Per agent
+
+| Agent | Model(s) | Calls | Input tok | Output tok | Cache read | Cache write | USD | Share | Artifact-cache hits |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+{% for name, b in cost.by_agent.items() %}
+| {{ name }} | {{ cost.agent_models.get(name, [])|join(", ") or "-" }} | {{ b.calls|num }} | {{ b.input_tokens|num }} | {{ b.output_tokens|num }} | {{ b.cache_read|num }} | {{ b.cache_write|num }} | {{ b.usd|usd }} | {{ cost.share.get(name, 0)|pct }} | {{ b.artifact_cache_hits|num }} |
+{% endfor %}
+| **total** | | **{{ cost.totals.calls|num }}** | **{{ cost.totals.input_tokens|num }}** | **{{ cost.totals.output_tokens|num }}** | **{{ cost.totals.cache_read|num }}** | **{{ cost.totals.cache_write|num }}** | **{{ cost.totals.usd|usd }}** | **100%** | **{{ cost.totals.artifact_cache_hits|num }}** |
+
+### Per model
+
+| Model | Calls | Input tok | Output tok | Cache read | Cache write | USD | Artifact-cache hits |
+|---|---:|---:|---:|---:|---:|---:|---:|
+{% for name, b in cost.by_model.items() %}
+| {{ name }} | {{ b.calls|num }} | {{ b.input_tokens|num }} | {{ b.output_tokens|num }} | {{ b.cache_read|num }} | {{ b.cache_write|num }} | {{ b.usd|usd }} | {{ b.artifact_cache_hits|num }} |
+{% endfor %}
+
+{% if cost.warm %}
+**Cold vs warm:** this was a warm run: {{ cost.artifact_cache_hits }} of {{ cost.totals.calls|num }} model calls were served from the on-disk artifact cache at no cost. A cold run (empty cache) is estimated at **{{ cost.estimated_cold_usd|usd }}** (each cache hit priced at the average of live calls for the same agent and purpose).
+{% else %}
+**Cold vs warm:** this was a cold run (no artifact-cache hits); re-running against the same PRD and site reuses cached requirement, sitemap and plan artifacts and costs less.
+{% endif %}
+Prompt-cache reads made up {{ cost.cache_read_share|pct }} of input tokens.
+
+## Environment
+
+{% if env %}
+| Key | Value |
+|---|---|
+{% for k, v in env.items() %}
+| {{ k }} | {{ v|mdcell }} |
+{% endfor %}
+{% else %}
+Not recorded.
+{% endif %}
+{% if resilience %}
+
+## Resilience
+
+{% if resilience.chaos %}
+Chaos mode was **on**: {% for k, v in resilience.chaos.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}.{% if resilience.chaos_stats %} Injected faults: {% for k, v in resilience.chaos_stats.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}.{% endif %}
+
+{% else %}
+Chaos mode was off for this run.
+{% endif %}
+{% if resilience.parallel_contexts %}
+{{ resilience.parallel_scenarios }} read-only scenarios ran in {{ resilience.parallel_contexts }} parallel browser contexts.
+{% endif %}
+{% if resilience.recoveries %}
+
+| After scenario | What the agent saw and did |
+|---|---|
+{% for rc in resilience.recoveries %}
+| {{ rc.after }} | {{ rc.observations|join(" → ")|mdcell }} |
+{% endfor %}
+{% else %}
+No browser recoveries were needed.
+{% endif %}
+{% endif %}
+
+## Limitations
+
+{% for l in r.limitations %}
+- {{ l }}
+{% else %}
+- None recorded.
+{% endfor %}

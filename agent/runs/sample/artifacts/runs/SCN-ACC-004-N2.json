@@ -1,0 +1,185 @@
+{
+  "scenario_id": "SCN-ACC-004-N2",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-3d9e2f",
+    "unique_amount": "1.40"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "goto /transactions",
+      "healed": false,
+      "duration_ms": 749,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "goto /profile",
+      "healed": false,
+      "duration_ms": 734,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 2,
+      "ok": true,
+      "locator_used": "GET /api/accounts",
+      "healed": false,
+      "duration_ms": 347,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-3d9e2f",
+    "api_calls": [
+      {
+        "method": "GET",
+        "path": "/api/accounts",
+        "status": 401,
+        "body": {
+          "error": {
+            "code": "unauthenticated",
+            "message": "A valid demo session is required."
+          }
+        }
+      }
+    ],
+    "probes": {
+      "0": {
+        "count": 0,
+        "visible": false,
+        "resolve_error": "could not resolve element 'profile.name' (test_id=profile-name)"
+      },
+      "1": {
+        "count": 0,
+        "visible": false,
+        "resolve_error": "could not resolve element 'transactions.transaction_table' (test_id=transaction-table)"
+      },
+      "2": {
+        "events": [
+          {
+            "method": "GET",
+            "url": "http://localhost:8000/api/accounts",
+            "status": 401
+          }
+        ]
+      }
+    },
+    "duration_ms": 8450,
+    "url": "http://localhost:5173/",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-ACC-004-N2__a1__final.png",
+        "caption": "SCN-ACC-004-N2__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-ACC-004-N2/a1_network.json",
+        "caption": "9 API calls during the scenario"
+      }
+    ]
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 42004
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 42005
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 401,
+      "req_body": null,
+      "resp_body": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "A valid demo session is required."
+        }
+      },
+      "t_ms": 42008
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 42010
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 42744
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 42749
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 401,
+      "req_body": null,
+      "resp_body": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "A valid demo session is required."
+        }
+      },
+      "t_ms": 42751
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 42754
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 401,
+      "req_body": null,
+      "resp_body": {
+        "error": {
+          "code": "unauthenticated",
+          "message": "A valid demo session is required."
+        }
+      },
+      "t_ms": 43417
+    }
+  ],
+  "state_before": null,
+  "state_after": null,
+  "foreign_activity": false,
+  "aborted_reason": null
+}

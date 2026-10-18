@@ -1,0 +1,469 @@
+{
+  "scenario_id": "SCN-TRF-012-E2",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-237867",
+    "unique_amount": "1.58",
+    "src": "00000000-0000-0000-0000-000000000101",
+    "dst": "00000000-0000-0000-0000-000000000102"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "api snapshot",
+      "healed": false,
+      "duration_ms": 334,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "goto /transfer",
+      "healed": false,
+      "duration_ms": 729,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 2,
+      "ok": true,
+      "locator_used": "role=combobox[name=\"From account\"]",
+      "healed": false,
+      "duration_ms": 366,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 3,
+      "ok": true,
+      "locator_used": "role=combobox[name=\"To account\"]",
+      "healed": false,
+      "duration_ms": 352,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 4,
+      "ok": true,
+      "locator_used": "role=textbox[name=\"Amount (USD)\"]",
+      "healed": false,
+      "duration_ms": 357,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 5,
+      "ok": true,
+      "locator_used": "role=button[name=\"Transfer funds\"]",
+      "healed": false,
+      "duration_ms": 2335,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 6,
+      "ok": true,
+      "locator_used": "role=status",
+      "healed": false,
+      "duration_ms": 342,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 7,
+      "ok": true,
+      "locator_used": "api snapshot",
+      "healed": false,
+      "duration_ms": 362,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-237867",
+    "probes": {
+      "0": {
+        "disabled_while_pending": true,
+        "busy_text": "Submitting transfer…",
+        "matching_requests": 1,
+        "request_source": "any POST (request_glob matched none: /api/transfers)",
+        "second_click": "dispatched",
+        "locator": "role=button[name=\"Transfer funds\"]",
+        "dom_tagged": true,
+        "initial": {
+          "disabled": false,
+          "aria_busy": null,
+          "aria_disabled": null,
+          "text": "Transfer funds"
+        },
+        "samples": [
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          },
+          {
+            "disabled": true,
+            "aria_busy": "true",
+            "aria_disabled": null,
+            "text": "Submitting transfer…"
+          }
+        ],
+        "observed_during_step": 5
+      },
+      "1": {
+        "new_tx_ids": [
+          "75971e69-b5d7-4f6a-bc3f-650a2f8994be"
+        ],
+        "foreign_tx_ids": []
+      },
+      "2": {
+        "deltas": {
+          "00000000-0000-0000-0000-000000000101": "-1.58",
+          "00000000-0000-0000-0000-000000000102": "1.58"
+        }
+      }
+    },
+    "duration_ms": 5546,
+    "url": "http://localhost:5173/transfer",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-TRF-012-E2__a1__final.png",
+        "caption": "SCN-TRF-012-E2__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-TRF-012-E2/a1_network.json",
+        "caption": "7 API calls during the scenario"
+      }
+    ],
+    "ledger": [
+      {
+        "scenario_id": "SCN-TRF-012-E2",
+        "tx_id": "75971e69-b5d7-4f6a-bc3f-650a2f8994be",
+        "deltas": {
+          "00000000-0000-0000-0000-000000000101": "-1.58",
+          "00000000-0000-0000-0000-000000000102": "1.58"
+        },
+        "intended": true,
+        "memo_tag": "qa-28861e-237867"
+      }
+    ]
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 144022
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 144026
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 144027
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 144032
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 144033
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/accounts",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4369.75"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8275.00"
+          }
+        ]
+      },
+      "t_ms": 144033
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:8000/api/transfers",
+      "status": 201,
+      "req_body": {
+        "source_account_id": "00000000-0000-0000-0000-000000000101",
+        "destination_account_id": "00000000-0000-0000-0000-000000000102",
+        "amount": "1.58",
+        "memo": ""
+      },
+      "resp_body": {
+        "transaction": {
+          "id": "75971e69-b5d7-4f6a-bc3f-650a2f8994be",
+          "type": "transfer",
+          "status": "completed",
+          "amount": "1.58",
+          "memo": null,
+          "occurred_at": "2026-10-18T21:31:06.731397Z",
+          "source_account": {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "masked_number": "•••• 1042"
+          },
+          "destination_account": {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "masked_number": "•••• 7781"
+          },
+          "account_deltas": [
+            {
+              "account_id": "00000000-0000-0000-0000-000000000101",
+              "amount_delta": "-1.58"
+            },
+            {
+              "account_id": "00000000-0000-0000-0000-000000000102",
+              "amount_delta": "1.58"
+            }
+          ]
+        },
+        "accounts": [
+          {
+            "id": "00000000-0000-0000-0000-000000000101",
+            "name": "Everyday Checking",
+            "type": "checking",
+            "masked_number": "•••• 1042",
+            "currency": "USD",
+            "balance": "4368.17"
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000102",
+            "name": "Rainy Day Savings",
+            "type": "savings",
+            "masked_number": "•••• 7781",
+            "currency": "USD",
+            "balance": "8276.58"
+          }
+        ]
+      },
+      "t_ms": 147828
+    }
+  ],
+  "state_before": {
+    "taken_at": "2026-10-18T21:31:02.552226Z",
+    "balances": {
+      "00000000-0000-0000-0000-000000000101": "4369.75",
+      "00000000-0000-0000-0000-000000000102": "8275.00"
+    },
+    "tx_ids": [
+      "fec35287-d6ae-42b0-bb41-729f035541d5",
+      "fe6cb677-7a76-44ef-b2f2-dd721a24bedb",
+      "a962a354-e4c1-4842-a980-3e807ca9ac33",
+      "b7d38a55-19fd-43e7-8feb-9735695a5ff6",
+      "06a1eae1-6ac2-43ea-935e-b1ea41752132",
+      "1eb2dbf0-d0d4-4318-bd5d-4b1ea9f1d6e9",
+      "05fbb707-9f45-43a1-bef0-a4e1b2ca9632",
+      "05491626-e5eb-40a4-b04e-14b538eb01ee",
+      "75d03833-c1b8-4906-b693-6a92f763a6c5",
+      "c0339847-b379-42b4-9649-11decae8f966",
+      "75c1a987-ee11-463d-a08d-219db6c0b333",
+      "d310e0b5-d008-4236-849f-2a0bc28ad498",
+      "3b4da4e2-2bb5-4099-a0aa-4287876198df",
+      "f1ffc46d-1e7c-4abc-89e5-3fbaec7bb7fe",
+      "2b5f6f35-9e12-4a6b-b587-13d14391e267",
+      "e84f1c62-fc2c-4295-8105-9446d4bfa9a6",
+      "caed842c-a7d0-4c86-96ac-d3369e6bd7ab",
+      "e9a120d6-7b85-4798-8e61-8d065ec4f98c",
+      "00000000-0000-0000-0000-000000000212",
+      "00000000-0000-0000-0000-000000000211",
+      "00000000-0000-0000-0000-000000000210",
+      "00000000-0000-0000-0000-000000000209",
+      "00000000-0000-0000-0000-000000000208",
+      "00000000-0000-0000-0000-000000000207",
+      "00000000-0000-0000-0000-000000000206",
+      "00000000-0000-0000-0000-000000000205",
+      "00000000-0000-0000-0000-000000000204",
+      "00000000-0000-0000-0000-000000000203",
+      "00000000-0000-0000-0000-000000000202",
+      "00000000-0000-0000-0000-000000000201"
+    ]
+  },
+  "state_after": {
+    "taken_at": "2026-10-18T21:31:08.084770Z",
+    "balances": {
+      "00000000-0000-0000-0000-000000000101": "4368.17",
+      "00000000-0000-0000-0000-000000000102": "8276.58"
+    },
+    "tx_ids": [
+      "75971e69-b5d7-4f6a-bc3f-650a2f8994be",
+      "fec35287-d6ae-42b0-bb41-729f035541d5",
+      "fe6cb677-7a76-44ef-b2f2-dd721a24bedb",
+      "a962a354-e4c1-4842-a980-3e807ca9ac33",
+      "b7d38a55-19fd-43e7-8feb-9735695a5ff6",
+      "06a1eae1-6ac2-43ea-935e-b1ea41752132",
+      "1eb2dbf0-d0d4-4318-bd5d-4b1ea9f1d6e9",
+      "05fbb707-9f45-43a1-bef0-a4e1b2ca9632",
+      "05491626-e5eb-40a4-b04e-14b538eb01ee",
+      "75d03833-c1b8-4906-b693-6a92f763a6c5",
+      "c0339847-b379-42b4-9649-11decae8f966",
+      "75c1a987-ee11-463d-a08d-219db6c0b333",
+      "d310e0b5-d008-4236-849f-2a0bc28ad498",
+      "3b4da4e2-2bb5-4099-a0aa-4287876198df",
+      "f1ffc46d-1e7c-4abc-89e5-3fbaec7bb7fe",
+      "2b5f6f35-9e12-4a6b-b587-13d14391e267",
+      "e84f1c62-fc2c-4295-8105-9446d4bfa9a6",
+      "caed842c-a7d0-4c86-96ac-d3369e6bd7ab",
+      "e9a120d6-7b85-4798-8e61-8d065ec4f98c",
+      "00000000-0000-0000-0000-000000000212",
+      "00000000-0000-0000-0000-000000000211",
+      "00000000-0000-0000-0000-000000000210",
+      "00000000-0000-0000-0000-000000000209",
+      "00000000-0000-0000-0000-000000000208",
+      "00000000-0000-0000-0000-000000000207",
+      "00000000-0000-0000-0000-000000000206",
+      "00000000-0000-0000-0000-000000000205",
+      "00000000-0000-0000-0000-000000000204",
+      "00000000-0000-0000-0000-000000000203",
+      "00000000-0000-0000-0000-000000000202",
+      "00000000-0000-0000-0000-000000000201"
+    ]
+  },
+  "foreign_activity": false,
+  "aborted_reason": null
+}

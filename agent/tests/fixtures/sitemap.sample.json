@@ -1,0 +1,24 @@
+{
+  "base_url": "http://app.example.test",
+  "api_base": "http://api.example.test",
+  "pages": {
+    "/transfer": {
+      "route": "/transfer",
+      "title": "Transfer",
+      "purpose": "Move money between the user's own accounts",
+      "elements": {
+        "transfer.source": {"key": "transfer.source", "role": "combobox", "name": "From account", "label": "From account"},
+        "transfer.amount": {"key": "transfer.amount", "role": "textbox", "name": "Amount", "label": "Amount"},
+        "transfer.submit": {"key": "transfer.submit", "role": "button", "name": "Send"}
+      },
+      "forms": {"transfer": ["transfer.source", "transfer.amount", "transfer.submit"]},
+      "observed_states": ["loading"],
+      "hints": []
+    }
+  },
+  "api": [
+    {"method": "GET", "path_template": "/api/accounts", "query_params": [], "sample_status": 200, "response_shape": {"accounts": "list"}}
+  ],
+  "auth": {"entry": {"role": "button", "name": "Start"}, "protected_routes": ["/transfer"]},
+  "entities": {"accounts": [{"id": "acc-a", "name": "Account A", "type": "checking"}]}
+}

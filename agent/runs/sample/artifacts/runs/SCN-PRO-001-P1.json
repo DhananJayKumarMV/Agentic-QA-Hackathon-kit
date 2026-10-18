@@ -1,0 +1,192 @@
+{
+  "scenario_id": "SCN-PRO-001-P1",
+  "attempt": 1,
+  "resolved_params": {
+    "run_tag": "qa-28861e-f39200",
+    "unique_amount": "1.50"
+  },
+  "steps": [
+    {
+      "step_idx": 0,
+      "ok": true,
+      "locator_used": "goto /profile",
+      "healed": false,
+      "duration_ms": 697,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 1,
+      "ok": true,
+      "locator_used": "test_id=profile-name",
+      "healed": false,
+      "duration_ms": 335,
+      "error": null,
+      "evidence": []
+    },
+    {
+      "step_idx": 2,
+      "ok": true,
+      "locator_used": "GET /api/me",
+      "healed": false,
+      "duration_ms": 338,
+      "error": null,
+      "evidence": []
+    }
+  ],
+  "observations": {
+    "run_tag": "qa-28861e-f39200",
+    "api_calls": [
+      {
+        "method": "GET",
+        "path": "/api/me",
+        "status": 200,
+        "body": {
+          "id": "00000000-0000-0000-0000-000000000001",
+          "display_name": "Avery Demo",
+          "masked_email": "a***@example.test"
+        }
+      }
+    ],
+    "probes": {
+      "0": {
+        "count": 1,
+        "visible": true,
+        "locator": "test_id=profile-name"
+      },
+      "1": {
+        "text": "a***@example.test"
+      },
+      "2": {
+        "visible_text": "Skip to main content\nD\nDemoBank\nDashboard\nTransactions\nTransfer\nProfile\nSigned in as\nAvery Demo\nLog out\n\nPROFILE\n\nYour profile\nDemo customer details\nDisplay name\nAvery Demo\nEmail\na***@example.test\n\nThese are synthetic demo details. DemoBank never stores real identity information.\n\nDemoBank uses synthetic demo data only.\nService online",
+        "url": "http://localhost:5173/profile",
+        "full_ids": [
+          "00000000-0000-0000-0000-000000000101",
+          "00000000-0000-0000-0000-000000000102"
+        ]
+      },
+      "3": {
+        "text": "PROFILE\n\nYour profile\nDemo customer details\nDisplay name\nAvery Demo\nEmail\na***@example.test\n\nThese are synthetic demo details. DemoBank never stores real identity information."
+      },
+      "4": {
+        "events": [
+          {
+            "method": "GET",
+            "url": "http://localhost:8000/api/me",
+            "status": 0
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:8000/api/me",
+            "status": 0
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:8000/api/me",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:8000/api/me",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:8000/api/me",
+            "status": 200
+          }
+        ]
+      }
+    },
+    "duration_ms": 1713,
+    "url": "http://localhost:5173/profile",
+    "evidence": [
+      {
+        "kind": "screenshot",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-PRO-001-P1__a1__final.png",
+        "caption": "SCN-PRO-001-P1__a1__final"
+      },
+      {
+        "kind": "network",
+        "path": "runs/qa-20261018-1628-861e/evidence/SCN-PRO-001-P1/a1_network.json",
+        "caption": "7 API calls during the scenario"
+      }
+    ]
+  },
+  "network": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 25824
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 25826
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 0,
+      "req_body": null,
+      "resp_body": null,
+      "t_ms": 25826
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 25827
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 25829
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/health",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "status": "ok"
+      },
+      "t_ms": 25829
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8000/api/me",
+      "status": 200,
+      "req_body": null,
+      "resp_body": {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "display_name": "Avery Demo",
+        "masked_email": "a***@example.test"
+      },
+      "t_ms": 26812
+    }
+  ],
+  "state_before": null,
+  "state_after": null,
+  "foreign_activity": false,
+  "aborted_reason": null
+}
