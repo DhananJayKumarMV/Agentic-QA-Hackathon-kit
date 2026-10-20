@@ -7,6 +7,11 @@ expected and observed values, reproduction steps, and the API cost of the run. S
 use Claude Sonnet 5.5 and Haiku 4.5, but **deterministic oracles decide every verdict**. The LLMs plan,
 label and triage. They never mark anything as passed.
 
+**Video walkthrough.** Here's a five-minute video that walks you through the project and the sample run:
+[`docs/video/qa-agent-walkthrough.mp4`](docs/video/qa-agent-walkthrough.mp4). It shows the agent reading the
+spec, operating the site and producing the report, including the defect evidence, the cost breakdown and the
+chaos-mode results.
+
 **Headline results.** Sample run `qa-20261018-1628-861e`, committed under [`runs/sample/`](runs/sample/),
 run against the local DemoBank target. It was recorded just before two small additions: console-error
 evidence and the optional `--repo` input. Both are covered by tests and were checked live without LLM calls.

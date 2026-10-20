@@ -8,3 +8,6 @@ runs/*
 !runs/sample/
 eval/ground_truth.local.yaml
 !runs/chaos_check/
+docs/video/narration.md
+docs/video/qa-agent-walkthrough.srt
+docs/VIDEO_SCRIPT.md
